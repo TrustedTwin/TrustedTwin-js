@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    ValueEntry,
-    ValueEntryFromJSON,
-    ValueEntryFromJSONTyped,
-    ValueEntryToJSON,
-} from './ValueEntry';
+    PostForeignLedgerEntriesValue,
+    PostForeignLedgerEntriesValueFromJSON,
+    PostForeignLedgerEntriesValueFromJSONTyped,
+    PostForeignLedgerEntriesValueToJSON,
+} from './PostForeignLedgerEntriesValue';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface PostForeignLedger {
     /**
      * 
-     * @type {{ [key: string]: ValueEntry; }}
+     * @type {{ [key: string]: PostForeignLedgerEntriesValue; }}
      * @memberof PostForeignLedger
      */
-    entries?: { [key: string]: ValueEntry; };
+    entries?: { [key: string]: PostForeignLedgerEntriesValue; };
 }
 
 export function PostForeignLedgerFromJSON(json: any): PostForeignLedger {
@@ -44,7 +44,7 @@ export function PostForeignLedgerFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'entries': !exists(json, 'entries') ? undefined : (mapValues(json['entries'], ValueEntryFromJSON)),
+        'entries': !exists(json, 'entries') ? undefined : (mapValues(json['entries'], PostForeignLedgerEntriesValueFromJSON)),
     };
 }
 
@@ -57,7 +57,7 @@ export function PostForeignLedgerToJSON(value?: PostForeignLedger | null): any {
     }
     return {
         
-        'entries': value.entries === undefined ? undefined : (mapValues(value.entries, ValueEntryToJSON)),
+        'entries': value.entries === undefined ? undefined : (mapValues(value.entries, PostForeignLedgerEntriesValueToJSON)),
     };
 }
 

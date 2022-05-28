@@ -12,16 +12,18 @@
  * Do not edit the class manually.
  */
 
+
 /**
  * 
  * @export
- * @enum {string}
  */
-export enum LedgerAlias {
-    Personal = 'personal',
-    Owner = 'owner',
-    Creator = 'creator'
-}
+export const LedgerAlias = {
+    Personal: 'personal',
+    Owner: 'owner',
+    Creator: 'creator'
+} as const;
+export type LedgerAlias = typeof LedgerAlias[keyof typeof LedgerAlias];
+
 
 export function LedgerAliasFromJSON(json: any): LedgerAlias {
     return LedgerAliasFromJSONTyped(json, false);

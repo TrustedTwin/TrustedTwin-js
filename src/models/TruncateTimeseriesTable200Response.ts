@@ -26,6 +26,12 @@ import {
     TimeseriesColumnsToJSON,
 } from './TimeseriesColumns';
 import {
+    TimeseriesTableResponse,
+    TimeseriesTableResponseFromJSON,
+    TimeseriesTableResponseFromJSONTyped,
+    TimeseriesTableResponseToJSON,
+} from './TimeseriesTableResponse';
+import {
     TimeseriesTableResponseStats,
     TimeseriesTableResponseStatsFromJSON,
     TimeseriesTableResponseStatsFromJSONTyped,
@@ -35,52 +41,52 @@ import {
 /**
  * 
  * @export
- * @interface TimeseriesTableResponse
+ * @interface TruncateTimeseriesTable200Response
  */
-export interface TimeseriesTableResponse {
+export interface TruncateTimeseriesTable200Response {
     /**
      * 
      * @type {TimeseriesTableResponseStats}
-     * @memberof TimeseriesTableResponse
+     * @memberof TruncateTimeseriesTable200Response
      */
     stats: TimeseriesTableResponseStats;
     /**
      * 
      * @type {TimeseriesColumns}
-     * @memberof TimeseriesTableResponse
+     * @memberof TruncateTimeseriesTable200Response
      */
     dimensions: TimeseriesColumns;
     /**
      * 
      * @type {TimeseriesColumns}
-     * @memberof TimeseriesTableResponse
+     * @memberof TruncateTimeseriesTable200Response
      */
     measurements: TimeseriesColumns;
     /**
      * 
      * @type {LedgerTimeseries}
-     * @memberof TimeseriesTableResponse
+     * @memberof TruncateTimeseriesTable200Response
      */
     defaults?: LedgerTimeseries;
     /**
      * 
      * @type {string}
-     * @memberof TimeseriesTableResponse
+     * @memberof TruncateTimeseriesTable200Response
      */
     retention?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof TimeseriesTableResponse
+     * @memberof TruncateTimeseriesTable200Response
      */
     chunk?: string | null;
 }
 
-export function TimeseriesTableResponseFromJSON(json: any): TimeseriesTableResponse {
-    return TimeseriesTableResponseFromJSONTyped(json, false);
+export function TruncateTimeseriesTable200ResponseFromJSON(json: any): TruncateTimeseriesTable200Response {
+    return TruncateTimeseriesTable200ResponseFromJSONTyped(json, false);
 }
 
-export function TimeseriesTableResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimeseriesTableResponse {
+export function TruncateTimeseriesTable200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): TruncateTimeseriesTable200Response {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -95,7 +101,7 @@ export function TimeseriesTableResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-export function TimeseriesTableResponseToJSON(value?: TimeseriesTableResponse | null): any {
+export function TruncateTimeseriesTable200ResponseToJSON(value?: TruncateTimeseriesTable200Response | null): any {
     if (value === undefined) {
         return undefined;
     }

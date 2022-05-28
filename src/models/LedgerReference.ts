@@ -33,16 +33,18 @@ export interface LedgerReference {
     status?: LedgerReferenceStatusEnum;
 }
 
+
 /**
-* @export
-* @enum {string}
-*/
-export enum LedgerReferenceStatusEnum {
-    NotFound = 'not_found',
-    LoopDetected = 'loop_detected',
-    TooManyHops = 'too_many_hops',
-    Ok = 'ok'
-}
+ * @export
+ */
+export const LedgerReferenceStatusEnum = {
+    NotFound: 'not_found',
+    LoopDetected: 'loop_detected',
+    TooManyHops: 'too_many_hops',
+    Ok: 'ok'
+} as const;
+export type LedgerReferenceStatusEnum = typeof LedgerReferenceStatusEnum[keyof typeof LedgerReferenceStatusEnum];
+
 
 export function LedgerReferenceFromJSON(json: any): LedgerReference {
     return LedgerReferenceFromJSONTyped(json, false);

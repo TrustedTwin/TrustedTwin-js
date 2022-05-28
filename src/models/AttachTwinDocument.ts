@@ -51,14 +51,16 @@ export interface AttachTwinDocument {
     hash?: string;
 }
 
+
 /**
-* @export
-* @enum {string}
-*/
-export enum AttachTwinDocumentStorageClassEnum {
-    AccessOptimized = 'access_optimized',
-    CostOptimized = 'cost_optimized'
-}
+ * @export
+ */
+export const AttachTwinDocumentStorageClassEnum = {
+    AccessOptimized: 'access_optimized',
+    CostOptimized: 'cost_optimized'
+} as const;
+export type AttachTwinDocumentStorageClassEnum = typeof AttachTwinDocumentStorageClassEnum[keyof typeof AttachTwinDocumentStorageClassEnum];
+
 
 export function AttachTwinDocumentFromJSON(json: any): AttachTwinDocument {
     return AttachTwinDocumentFromJSONTyped(json, false);

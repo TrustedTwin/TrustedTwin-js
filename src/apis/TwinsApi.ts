@@ -12,1066 +12,1697 @@
  * Do not edit the class manually.
  */
 
-
-import * as runtime from '../runtime';
+import * as runtime from "../runtime";
 import {
-    AttachTwinDocument,
-    AttachTwinDocumentFromJSON,
-    AttachTwinDocumentToJSON,
-    AttachTwinDocumentResponse,
-    AttachTwinDocumentResponseFromJSON,
-    AttachTwinDocumentResponseToJSON,
-    Description,
-    DescriptionFromJSON,
-    DescriptionToJSON,
-    ErrorObject,
-    ErrorObjectFromJSON,
-    ErrorObjectToJSON,
-    GetDoc,
-    GetDocFromJSON,
-    GetDocToJSON,
-    IdentityProperties,
-    IdentityPropertiesFromJSON,
-    IdentityPropertiesToJSON,
-    IdentityRemovalProperties,
-    IdentityRemovalPropertiesFromJSON,
-    IdentityRemovalPropertiesToJSON,
-    LedgerAlias,
-    LedgerAliasFromJSON,
-    LedgerAliasToJSON,
-    LedgerEntriesHistory,
-    LedgerEntriesHistoryFromJSON,
-    LedgerEntriesHistoryToJSON,
-    PatchIdentityProperties,
-    PatchIdentityPropertiesFromJSON,
-    PatchIdentityPropertiesToJSON,
-    PatchUserLedger,
-    PatchUserLedgerFromJSON,
-    PatchUserLedgerToJSON,
-    PatchedUserLedger,
-    PatchedUserLedgerFromJSON,
-    PatchedUserLedgerToJSON,
-    PostLedgerEntries,
-    PostLedgerEntriesFromJSON,
-    PostLedgerEntriesToJSON,
-    PostTwinIdentities,
-    PostTwinIdentitiesFromJSON,
-    PostTwinIdentitiesToJSON,
-    ResolvedIdentities,
-    ResolvedIdentitiesFromJSON,
-    ResolvedIdentitiesToJSON,
-    TerminationCertificate,
-    TerminationCertificateFromJSON,
-    TerminationCertificateToJSON,
-    Twin,
-    TwinFromJSON,
-    TwinToJSON,
-    TwinAlive,
-    TwinAliveFromJSON,
-    TwinAliveToJSON,
-    TwinDocs,
-    TwinDocsFromJSON,
-    TwinDocsToJSON,
-    UpdateTwinDoc,
-    UpdateTwinDocFromJSON,
-    UpdateTwinDocToJSON,
-    UserLedger,
-    UserLedgerFromJSON,
-    UserLedgerToJSON,
-} from '../models';
+  AttachTwinDocument,
+  AttachTwinDocumentFromJSON,
+  AttachTwinDocumentToJSON,
+  AttachTwinDocumentResponse,
+  AttachTwinDocumentResponseFromJSON,
+  AttachTwinDocumentResponseToJSON,
+  Description,
+  DescriptionFromJSON,
+  DescriptionToJSON,
+  ErrorObject,
+  ErrorObjectFromJSON,
+  ErrorObjectToJSON,
+  GetDoc,
+  GetDocFromJSON,
+  GetDocToJSON,
+  IdentityProperties,
+  IdentityPropertiesFromJSON,
+  IdentityPropertiesToJSON,
+  IdentityRemovalProperties,
+  IdentityRemovalPropertiesFromJSON,
+  IdentityRemovalPropertiesToJSON,
+  LedgerAlias,
+  LedgerAliasFromJSON,
+  LedgerAliasToJSON,
+  LedgerEntriesHistory,
+  LedgerEntriesHistoryFromJSON,
+  LedgerEntriesHistoryToJSON,
+  PatchIdentityProperties,
+  PatchIdentityPropertiesFromJSON,
+  PatchIdentityPropertiesToJSON,
+  PatchUserLedger,
+  PatchUserLedgerFromJSON,
+  PatchUserLedgerToJSON,
+  PatchedUserLedger,
+  PatchedUserLedgerFromJSON,
+  PatchedUserLedgerToJSON,
+  PostLedgerEntries,
+  PostLedgerEntriesFromJSON,
+  PostLedgerEntriesToJSON,
+  PostTwinIdentities,
+  PostTwinIdentitiesFromJSON,
+  PostTwinIdentitiesToJSON,
+  ResolvedIdentities,
+  ResolvedIdentitiesFromJSON,
+  ResolvedIdentitiesToJSON,
+  TerminationCertificate,
+  TerminationCertificateFromJSON,
+  TerminationCertificateToJSON,
+  Twin,
+  TwinFromJSON,
+  TwinToJSON,
+  TwinAlive,
+  TwinAliveFromJSON,
+  TwinAliveToJSON,
+  TwinDocs,
+  TwinDocsFromJSON,
+  TwinDocsToJSON,
+  UpdateTwinDoc,
+  UpdateTwinDocFromJSON,
+  UpdateTwinDocToJSON,
+  UserLedger,
+  UserLedgerFromJSON,
+  UserLedgerToJSON,
+  GetTwinLedgerEntryLedgerParameter,
+} from "../models";
 
 export interface TwinsApiAddTwinLedgerEntryRequest {
-    twin: string;
-    ledger: string | LedgerAlias;
-    postLedgerEntries: PostLedgerEntries;
+  twin: string;
+  ledger: GetTwinLedgerEntryLedgerParameter;
+  postLedgerEntries: PostLedgerEntries;
 }
 
 export interface TwinsApiAttachTwinDocRequest {
-    twin: string;
-    attachTwinDocument?: AttachTwinDocument;
+  twin: string;
+  attachTwinDocument?: AttachTwinDocument;
 }
 
 export interface TwinsApiCreateTwinRequest {
-    description?: Description;
+  description?: Description;
 }
 
 export interface TwinsApiCreateTwinIdentityRequest {
-    twin: string;
-    postTwinIdentities: PostTwinIdentities;
+  twin: string;
+  postTwinIdentities: PostTwinIdentities;
 }
 
 export interface TwinsApiDeleteTwinDocRequest {
-    twin: string;
-    docName: string;
+  twin: string;
+  docName: string;
 }
 
 export interface TwinsApiDeleteTwinDocsRequest {
-    twin: string;
+  twin: string;
 }
 
 export interface TwinsApiDeleteTwinIdentityRequest {
-    twin: string;
-    identity: string;
+  twin: string;
+  identity: string;
 }
 
 export interface TwinsApiDeleteTwinLedgerEntryRequest {
-    twin: string;
-    ledger: string | LedgerAlias;
-    entries?: Array<string>;
+  twin: string;
+  ledger: GetTwinLedgerEntryLedgerParameter;
+  entries?: Array<string>;
 }
 
 export interface TwinsApiGetTwinRequest {
-    twin: string;
-    showTerminated?: boolean;
+  twin: string;
+  showTerminated?: boolean;
 }
 
 export interface TwinsApiGetTwinDocRequest {
-    twin: string;
-    docName: string;
-    download?: boolean;
+  twin: string;
+  docName: string;
+  download?: boolean;
 }
 
 export interface TwinsApiGetTwinDocsRequest {
-    twin: string;
+  twin: string;
 }
 
 export interface TwinsApiGetTwinIdentitiesRequest {
-    twin: string;
-    showExpired?: boolean;
-    showValid?: boolean;
-    showForeign?: boolean;
-    showPublic?: boolean;
-    showPrivate?: boolean;
-    showPersonal?: boolean;
+  twin: string;
+  showExpired?: boolean;
+  showValid?: boolean;
+  showForeign?: boolean;
+  showPublic?: boolean;
+  showPrivate?: boolean;
+  showPersonal?: boolean;
 }
 
 export interface TwinsApiGetTwinIdentityRequest {
-    twin: string;
-    identity: string;
+  twin: string;
+  identity: string;
 }
 
 export interface TwinsApiGetTwinLedgerEntryRequest {
-    twin: string;
-    ledger: string | LedgerAlias;
-    showReferences?: boolean;
-    showPublic?: boolean;
-    showPrivate?: boolean;
-    entries?: Array<string>;
+  twin: string;
+  ledger: GetTwinLedgerEntryLedgerParameter;
+  showReferences?: boolean;
+  showPublic?: boolean;
+  showPrivate?: boolean;
+  entries?: Array<string>;
 }
 
 export interface TwinsApiGetTwinLedgerEntryHistoryRequest {
-    twin: string;
-    ledger: string | LedgerAlias;
-    le?: number;
-    ge?: number;
-    limit?: number;
-    entries?: Array<string>;
+  twin: string;
+  ledger: GetTwinLedgerEntryLedgerParameter;
+  le?: number;
+  ge?: number;
+  limit?: number;
+  entries?: Array<string>;
 }
 
 export interface TwinsApiResolveTwinIdentityRequest {
-    identity: string;
-    context?: string;
+  identity: string;
+  context?: string;
 }
 
 export interface TwinsApiTerminateTwinRequest {
-    twin: string;
+  twin: string;
 }
 
 export interface TwinsApiUpdateTwinRequest {
-    twin: string;
-    description: Description;
+  twin: string;
+  description: Description;
 }
 
 export interface TwinsApiUpdateTwinDocRequest {
-    twin: string;
-    docName: string;
-    updateTwinDoc?: UpdateTwinDoc;
+  twin: string;
+  docName: string;
+  updateTwinDoc?: UpdateTwinDoc;
 }
 
 export interface TwinsApiUpdateTwinIdentityRequest {
-    twin: string;
-    identity: string;
-    patchIdentityProperties: PatchIdentityProperties;
+  twin: string;
+  identity: string;
+  patchIdentityProperties: PatchIdentityProperties;
 }
 
 export interface TwinsApiUpdateTwinLedgerEntryRequest {
-    twin: string;
-    ledger: string | LedgerAlias;
-    patchUserLedger: PatchUserLedger;
+  twin: string;
+  ledger: GetTwinLedgerEntryLedgerParameter;
+  patchUserLedger: PatchUserLedger;
 }
 
 /**
- * 
+ *
  */
 export class TwinsApi extends runtime.BaseAPI {
-
-    /**
-     * Add one or more Entries to Ledger
-     */
-    async addTwinLedgerEntryRaw(requestParameters: TwinsApiAddTwinLedgerEntryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UserLedger>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling addTwinLedgerEntry.');
-        }
-
-        if (requestParameters.ledger === null || requestParameters.ledger === undefined) {
-            throw new runtime.RequiredError('ledger','Required parameter requestParameters.ledger was null or undefined when calling addTwinLedgerEntry.');
-        }
-
-        if (requestParameters.postLedgerEntries === null || requestParameters.postLedgerEntries === undefined) {
-            throw new runtime.RequiredError('postLedgerEntries','Required parameter requestParameters.postLedgerEntries was null or undefined when calling addTwinLedgerEntry.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/ledgers/{ledger}`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))).replace(`{${"ledger"}}`, encodeURIComponent(String(requestParameters.ledger))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PostLedgerEntriesToJSON(requestParameters.postLedgerEntries),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => UserLedgerFromJSON(jsonValue));
+  /**
+   * Add one or more Entries to Ledger
+   */
+  async addTwinLedgerEntryRaw(
+    requestParameters: TwinsApiAddTwinLedgerEntryRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<UserLedger>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling addTwinLedgerEntry."
+      );
     }
 
-    /**
-     * Add one or more Entries to Ledger
-     */
-    async addTwinLedgerEntry(requestParameters: TwinsApiAddTwinLedgerEntryRequest, initOverrides?: RequestInit): Promise<UserLedger> {
-        const response = await this.addTwinLedgerEntryRaw(requestParameters, initOverrides);
-        return await response.value();
+    if (
+      requestParameters.ledger === null ||
+      requestParameters.ledger === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "ledger",
+        "Required parameter requestParameters.ledger was null or undefined when calling addTwinLedgerEntry."
+      );
     }
 
-    /**
-     * Attach Doc to the Twin
-     */
-    async attachTwinDocRaw(requestParameters: TwinsApiAttachTwinDocRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<AttachTwinDocumentResponse>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling attachTwinDoc.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/docs`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: AttachTwinDocumentToJSON(requestParameters.attachTwinDocument),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AttachTwinDocumentResponseFromJSON(jsonValue));
+    if (
+      requestParameters.postLedgerEntries === null ||
+      requestParameters.postLedgerEntries === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "postLedgerEntries",
+        "Required parameter requestParameters.postLedgerEntries was null or undefined when calling addTwinLedgerEntry."
+      );
     }
 
-    /**
-     * Attach Doc to the Twin
-     */
-    async attachTwinDoc(requestParameters: TwinsApiAttachTwinDocRequest, initOverrides?: RequestInit): Promise<AttachTwinDocumentResponse> {
-        const response = await this.attachTwinDocRaw(requestParameters, initOverrides);
-        return await response.value();
+    const queryParameters: any = {};
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    headerParameters["Content-Type"] = "application/json";
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
     }
 
-    /**
-     * Create a Twin
-     */
-    async createTwinRaw(requestParameters: TwinsApiCreateTwinRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TwinAlive>> {
-        const queryParameters: any = {};
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/ledgers/{ledger}`
+          .replace(
+            `{${"twin"}}`,
+            encodeURIComponent(String(requestParameters.twin))
+          )
+          .replace(
+            `{${"ledger"}}`,
+            encodeURIComponent(String(requestParameters.ledger))
+          ),
+        method: "POST",
+        headers: headerParameters,
+        query: queryParameters,
+        body: PostLedgerEntriesToJSON(requestParameters.postLedgerEntries),
+      },
+      initOverrides
+    );
 
-        const headerParameters: runtime.HTTPHeaders = {};
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      UserLedgerFromJSON(jsonValue)
+    );
+  }
 
-        headerParameters['Content-Type'] = 'application/json';
+  /**
+   * Add one or more Entries to Ledger
+   */
+  async addTwinLedgerEntry(
+    requestParameters: TwinsApiAddTwinLedgerEntryRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<UserLedger> {
+    const response = await this.addTwinLedgerEntryRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: DescriptionToJSON(requestParameters.description),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TwinAliveFromJSON(jsonValue));
+  /**
+   * Attach Doc to the Twin
+   */
+  async attachTwinDocRaw(
+    requestParameters: TwinsApiAttachTwinDocRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<AttachTwinDocumentResponse>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling attachTwinDoc."
+      );
     }
 
-    /**
-     * Create a Twin
-     */
-    async createTwin(requestParameters: TwinsApiCreateTwinRequest = {}, initOverrides?: RequestInit): Promise<TwinAlive> {
-        const response = await this.createTwinRaw(requestParameters, initOverrides);
-        return await response.value();
+    const queryParameters: any = {};
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    headerParameters["Content-Type"] = "application/json";
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
     }
 
-    /**
-     * Create one or more Identities and attach them to the given Twin
-     */
-    async createTwinIdentityRaw(requestParameters: TwinsApiCreateTwinIdentityRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<string>>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling createTwinIdentity.');
-        }
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/docs`.replace(
+          `{${"twin"}}`,
+          encodeURIComponent(String(requestParameters.twin))
+        ),
+        method: "POST",
+        headers: headerParameters,
+        query: queryParameters,
+        body: AttachTwinDocumentToJSON(requestParameters.attachTwinDocument),
+      },
+      initOverrides
+    );
 
-        if (requestParameters.postTwinIdentities === null || requestParameters.postTwinIdentities === undefined) {
-            throw new runtime.RequiredError('postTwinIdentities','Required parameter requestParameters.postTwinIdentities was null or undefined when calling createTwinIdentity.');
-        }
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      AttachTwinDocumentResponseFromJSON(jsonValue)
+    );
+  }
 
-        const queryParameters: any = {};
+  /**
+   * Attach Doc to the Twin
+   */
+  async attachTwinDoc(
+    requestParameters: TwinsApiAttachTwinDocRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<AttachTwinDocumentResponse> {
+    const response = await this.attachTwinDocRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
 
-        const headerParameters: runtime.HTTPHeaders = {};
+  /**
+   * Create a Twin
+   */
+  async createTwinRaw(
+    requestParameters: TwinsApiCreateTwinRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<TwinAlive>> {
+    const queryParameters: any = {};
 
-        headerParameters['Content-Type'] = 'application/json';
+    const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
+    headerParameters["Content-Type"] = "application/json";
 
-        const response = await this.request({
-            path: `/twins/{twin}/identities`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PostTwinIdentitiesToJSON(requestParameters.postTwinIdentities),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse<any>(response);
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
     }
 
-    /**
-     * Create one or more Identities and attach them to the given Twin
-     */
-    async createTwinIdentity(requestParameters: TwinsApiCreateTwinIdentityRequest, initOverrides?: RequestInit): Promise<Array<string>> {
-        const response = await this.createTwinIdentityRaw(requestParameters, initOverrides);
-        return await response.value();
+    const response = await this.request(
+      {
+        path: `/twins`,
+        method: "POST",
+        headers: headerParameters,
+        query: queryParameters,
+        body: DescriptionToJSON(requestParameters.description),
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      TwinAliveFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Create a Twin
+   */
+  async createTwin(
+    requestParameters: TwinsApiCreateTwinRequest = {},
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<TwinAlive> {
+    const response = await this.createTwinRaw(requestParameters, initOverrides);
+    return await response.value();
+  }
+
+  /**
+   * Create one or more Identities and attach them to the given Twin
+   */
+  async createTwinIdentityRaw(
+    requestParameters: TwinsApiCreateTwinIdentityRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<Array<string>>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling createTwinIdentity."
+      );
     }
 
-    /**
-     * Delete Doc attached to given Twin
-     */
-    async deleteTwinDocRaw(requestParameters: TwinsApiDeleteTwinDocRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetDoc>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling deleteTwinDoc.');
-        }
-
-        if (requestParameters.docName === null || requestParameters.docName === undefined) {
-            throw new runtime.RequiredError('docName','Required parameter requestParameters.docName was null or undefined when calling deleteTwinDoc.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/docs/{doc_name}`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))).replace(`{${"doc_name"}}`, encodeURIComponent(String(requestParameters.docName))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetDocFromJSON(jsonValue));
+    if (
+      requestParameters.postTwinIdentities === null ||
+      requestParameters.postTwinIdentities === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "postTwinIdentities",
+        "Required parameter requestParameters.postTwinIdentities was null or undefined when calling createTwinIdentity."
+      );
     }
 
-    /**
-     * Delete Doc attached to given Twin
-     */
-    async deleteTwinDoc(requestParameters: TwinsApiDeleteTwinDocRequest, initOverrides?: RequestInit): Promise<GetDoc> {
-        const response = await this.deleteTwinDocRaw(requestParameters, initOverrides);
-        return await response.value();
+    const queryParameters: any = {};
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    headerParameters["Content-Type"] = "application/json";
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
     }
 
-    /**
-     * Delete Docs attached to given Twin
-     */
-    async deleteTwinDocsRaw(requestParameters: TwinsApiDeleteTwinDocsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetDoc>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling deleteTwinDocs.');
-        }
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/identities`.replace(
+          `{${"twin"}}`,
+          encodeURIComponent(String(requestParameters.twin))
+        ),
+        method: "POST",
+        headers: headerParameters,
+        query: queryParameters,
+        body: PostTwinIdentitiesToJSON(requestParameters.postTwinIdentities),
+      },
+      initOverrides
+    );
 
-        const queryParameters: any = {};
+    return new runtime.JSONApiResponse<any>(response);
+  }
 
-        const headerParameters: runtime.HTTPHeaders = {};
+  /**
+   * Create one or more Identities and attach them to the given Twin
+   */
+  async createTwinIdentity(
+    requestParameters: TwinsApiCreateTwinIdentityRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<Array<string>> {
+    const response = await this.createTwinIdentityRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/docs`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetDocFromJSON(jsonValue));
+  /**
+   * Delete Doc attached to given Twin
+   */
+  async deleteTwinDocRaw(
+    requestParameters: TwinsApiDeleteTwinDocRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<GetDoc>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling deleteTwinDoc."
+      );
     }
 
-    /**
-     * Delete Docs attached to given Twin
-     */
-    async deleteTwinDocs(requestParameters: TwinsApiDeleteTwinDocsRequest, initOverrides?: RequestInit): Promise<GetDoc> {
-        const response = await this.deleteTwinDocsRaw(requestParameters, initOverrides);
-        return await response.value();
+    if (
+      requestParameters.docName === null ||
+      requestParameters.docName === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "docName",
+        "Required parameter requestParameters.docName was null or undefined when calling deleteTwinDoc."
+      );
     }
 
-    /**
-     * Delete Twin\'s Identity
-     */
-    async deleteTwinIdentityRaw(requestParameters: TwinsApiDeleteTwinIdentityRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdentityRemovalProperties>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling deleteTwinIdentity.');
-        }
+    const queryParameters: any = {};
 
-        if (requestParameters.identity === null || requestParameters.identity === undefined) {
-            throw new runtime.RequiredError('identity','Required parameter requestParameters.identity was null or undefined when calling deleteTwinIdentity.');
-        }
+    const headerParameters: runtime.HTTPHeaders = {};
 
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/identities/{identity}`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))).replace(`{${"identity"}}`, encodeURIComponent(String(requestParameters.identity))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => IdentityRemovalPropertiesFromJSON(jsonValue));
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
     }
 
-    /**
-     * Delete Twin\'s Identity
-     */
-    async deleteTwinIdentity(requestParameters: TwinsApiDeleteTwinIdentityRequest, initOverrides?: RequestInit): Promise<IdentityRemovalProperties> {
-        const response = await this.deleteTwinIdentityRaw(requestParameters, initOverrides);
-        return await response.value();
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/docs/{doc_name}`
+          .replace(
+            `{${"twin"}}`,
+            encodeURIComponent(String(requestParameters.twin))
+          )
+          .replace(
+            `{${"doc_name"}}`,
+            encodeURIComponent(String(requestParameters.docName))
+          ),
+        method: "DELETE",
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      GetDocFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Delete Doc attached to given Twin
+   */
+  async deleteTwinDoc(
+    requestParameters: TwinsApiDeleteTwinDocRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<GetDoc> {
+    const response = await this.deleteTwinDocRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
+
+  /**
+   * Delete Docs attached to given Twin
+   */
+  async deleteTwinDocsRaw(
+    requestParameters: TwinsApiDeleteTwinDocsRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<GetDoc>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling deleteTwinDocs."
+      );
     }
 
-    /**
-     * Delete Entry from Ledger
-     */
-    async deleteTwinLedgerEntryRaw(requestParameters: TwinsApiDeleteTwinLedgerEntryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling deleteTwinLedgerEntry.');
-        }
+    const queryParameters: any = {};
 
-        if (requestParameters.ledger === null || requestParameters.ledger === undefined) {
-            throw new runtime.RequiredError('ledger','Required parameter requestParameters.ledger was null or undefined when calling deleteTwinLedgerEntry.');
-        }
+    const headerParameters: runtime.HTTPHeaders = {};
 
-        const queryParameters: any = {};
-
-        if (requestParameters.entries) {
-            queryParameters['entries'] = requestParameters.entries.join(runtime.COLLECTION_FORMATS["csv"]);
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/ledgers/{ledger}`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))).replace(`{${"ledger"}}`, encodeURIComponent(String(requestParameters.ledger))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
     }
 
-    /**
-     * Delete Entry from Ledger
-     */
-    async deleteTwinLedgerEntry(requestParameters: TwinsApiDeleteTwinLedgerEntryRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteTwinLedgerEntryRaw(requestParameters, initOverrides);
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/docs`.replace(
+          `{${"twin"}}`,
+          encodeURIComponent(String(requestParameters.twin))
+        ),
+        method: "DELETE",
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      GetDocFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Delete Docs attached to given Twin
+   */
+  async deleteTwinDocs(
+    requestParameters: TwinsApiDeleteTwinDocsRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<GetDoc> {
+    const response = await this.deleteTwinDocsRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
+
+  /**
+   * Delete Twin\'s Identity
+   */
+  async deleteTwinIdentityRaw(
+    requestParameters: TwinsApiDeleteTwinIdentityRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<IdentityRemovalProperties>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling deleteTwinIdentity."
+      );
     }
 
-    /**
-     * Get Twin
-     */
-    async getTwinRaw(requestParameters: TwinsApiGetTwinRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Twin>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwin.');
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters.showTerminated !== undefined) {
-            queryParameters['show_terminated'] = requestParameters.showTerminated;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TwinFromJSON(jsonValue));
+    if (
+      requestParameters.identity === null ||
+      requestParameters.identity === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "identity",
+        "Required parameter requestParameters.identity was null or undefined when calling deleteTwinIdentity."
+      );
     }
 
-    /**
-     * Get Twin
-     */
-    async getTwin(requestParameters: TwinsApiGetTwinRequest, initOverrides?: RequestInit): Promise<Twin> {
-        const response = await this.getTwinRaw(requestParameters, initOverrides);
-        return await response.value();
+    const queryParameters: any = {};
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
     }
 
-    /**
-     * Obtain URL to download attached Doc
-     */
-    async getTwinDocRaw(requestParameters: TwinsApiGetTwinDocRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetDoc>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinDoc.');
-        }
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/identities/{identity}`
+          .replace(
+            `{${"twin"}}`,
+            encodeURIComponent(String(requestParameters.twin))
+          )
+          .replace(
+            `{${"identity"}}`,
+            encodeURIComponent(String(requestParameters.identity))
+          ),
+        method: "DELETE",
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides
+    );
 
-        if (requestParameters.docName === null || requestParameters.docName === undefined) {
-            throw new runtime.RequiredError('docName','Required parameter requestParameters.docName was null or undefined when calling getTwinDoc.');
-        }
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      IdentityRemovalPropertiesFromJSON(jsonValue)
+    );
+  }
 
-        const queryParameters: any = {};
+  /**
+   * Delete Twin\'s Identity
+   */
+  async deleteTwinIdentity(
+    requestParameters: TwinsApiDeleteTwinIdentityRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<IdentityRemovalProperties> {
+    const response = await this.deleteTwinIdentityRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
 
-        if (requestParameters.download !== undefined) {
-            queryParameters['download'] = requestParameters.download;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/docs/{doc_name}`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))).replace(`{${"doc_name"}}`, encodeURIComponent(String(requestParameters.docName))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetDocFromJSON(jsonValue));
+  /**
+   * Delete Entry from Ledger
+   */
+  async deleteTwinLedgerEntryRaw(
+    requestParameters: TwinsApiDeleteTwinLedgerEntryRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<void>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling deleteTwinLedgerEntry."
+      );
     }
 
-    /**
-     * Obtain URL to download attached Doc
-     */
-    async getTwinDoc(requestParameters: TwinsApiGetTwinDocRequest, initOverrides?: RequestInit): Promise<GetDoc> {
-        const response = await this.getTwinDocRaw(requestParameters, initOverrides);
-        return await response.value();
+    if (
+      requestParameters.ledger === null ||
+      requestParameters.ledger === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "ledger",
+        "Required parameter requestParameters.ledger was null or undefined when calling deleteTwinLedgerEntry."
+      );
     }
 
-    /**
-     * Get Docs attached to given Twin
-     */
-    async getTwinDocsRaw(requestParameters: TwinsApiGetTwinDocsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TwinDocs>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinDocs.');
-        }
+    const queryParameters: any = {};
 
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/docs`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TwinDocsFromJSON(jsonValue));
+    if (requestParameters.entries) {
+      queryParameters["entries"] = requestParameters.entries.join(
+        runtime.COLLECTION_FORMATS["csv"]
+      );
     }
 
-    /**
-     * Get Docs attached to given Twin
-     */
-    async getTwinDocs(requestParameters: TwinsApiGetTwinDocsRequest, initOverrides?: RequestInit): Promise<TwinDocs> {
-        const response = await this.getTwinDocsRaw(requestParameters, initOverrides);
-        return await response.value();
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
     }
 
-    /**
-     * Get Identities of the given Twin
-     */
-    async getTwinIdentitiesRaw(requestParameters: TwinsApiGetTwinIdentitiesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<string>>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinIdentities.');
-        }
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/ledgers/{ledger}`
+          .replace(
+            `{${"twin"}}`,
+            encodeURIComponent(String(requestParameters.twin))
+          )
+          .replace(
+            `{${"ledger"}}`,
+            encodeURIComponent(String(requestParameters.ledger))
+          ),
+        method: "DELETE",
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides
+    );
 
-        const queryParameters: any = {};
+    return new runtime.VoidApiResponse(response);
+  }
 
-        if (requestParameters.showExpired !== undefined) {
-            queryParameters['show_expired'] = requestParameters.showExpired;
-        }
+  /**
+   * Delete Entry from Ledger
+   */
+  async deleteTwinLedgerEntry(
+    requestParameters: TwinsApiDeleteTwinLedgerEntryRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<void> {
+    await this.deleteTwinLedgerEntryRaw(requestParameters, initOverrides);
+  }
 
-        if (requestParameters.showValid !== undefined) {
-            queryParameters['show_valid'] = requestParameters.showValid;
-        }
-
-        if (requestParameters.showForeign !== undefined) {
-            queryParameters['show_foreign'] = requestParameters.showForeign;
-        }
-
-        if (requestParameters.showPublic !== undefined) {
-            queryParameters['show_public'] = requestParameters.showPublic;
-        }
-
-        if (requestParameters.showPrivate !== undefined) {
-            queryParameters['show_private'] = requestParameters.showPrivate;
-        }
-
-        if (requestParameters.showPersonal !== undefined) {
-            queryParameters['show_personal'] = requestParameters.showPersonal;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/identities`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse<any>(response);
+  /**
+   * Get Twin
+   */
+  async getTwinRaw(
+    requestParameters: TwinsApiGetTwinRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<Twin>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling getTwin."
+      );
     }
 
-    /**
-     * Get Identities of the given Twin
-     */
-    async getTwinIdentities(requestParameters: TwinsApiGetTwinIdentitiesRequest, initOverrides?: RequestInit): Promise<Array<string>> {
-        const response = await this.getTwinIdentitiesRaw(requestParameters, initOverrides);
-        return await response.value();
+    const queryParameters: any = {};
+
+    if (requestParameters.showTerminated !== undefined) {
+      queryParameters["show_terminated"] = requestParameters.showTerminated;
     }
 
-    /**
-     * Get Twin\'s Identity
-     */
-    async getTwinIdentityRaw(requestParameters: TwinsApiGetTwinIdentityRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdentityProperties>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinIdentity.');
-        }
+    const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters.identity === null || requestParameters.identity === undefined) {
-            throw new runtime.RequiredError('identity','Required parameter requestParameters.identity was null or undefined when calling getTwinIdentity.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/identities/{identity}`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))).replace(`{${"identity"}}`, encodeURIComponent(String(requestParameters.identity))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => IdentityPropertiesFromJSON(jsonValue));
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
     }
 
-    /**
-     * Get Twin\'s Identity
-     */
-    async getTwinIdentity(requestParameters: TwinsApiGetTwinIdentityRequest, initOverrides?: RequestInit): Promise<IdentityProperties> {
-        const response = await this.getTwinIdentityRaw(requestParameters, initOverrides);
-        return await response.value();
+    const response = await this.request(
+      {
+        path: `/twins/{twin}`.replace(
+          `{${"twin"}}`,
+          encodeURIComponent(String(requestParameters.twin))
+        ),
+        method: "GET",
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      TwinFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Get Twin
+   */
+  async getTwin(
+    requestParameters: TwinsApiGetTwinRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<Twin> {
+    const response = await this.getTwinRaw(requestParameters, initOverrides);
+    return await response.value();
+  }
+
+  /**
+   * Obtain URL to download attached Doc
+   */
+  async getTwinDocRaw(
+    requestParameters: TwinsApiGetTwinDocRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<GetDoc>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling getTwinDoc."
+      );
     }
 
-    /**
-     * Get Entry from Ledger
-     */
-    async getTwinLedgerEntryRaw(requestParameters: TwinsApiGetTwinLedgerEntryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UserLedger>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinLedgerEntry.');
-        }
-
-        if (requestParameters.ledger === null || requestParameters.ledger === undefined) {
-            throw new runtime.RequiredError('ledger','Required parameter requestParameters.ledger was null or undefined when calling getTwinLedgerEntry.');
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters.showReferences !== undefined) {
-            queryParameters['show_references'] = requestParameters.showReferences;
-        }
-
-        if (requestParameters.showPublic !== undefined) {
-            queryParameters['show_public'] = requestParameters.showPublic;
-        }
-
-        if (requestParameters.showPrivate !== undefined) {
-            queryParameters['show_private'] = requestParameters.showPrivate;
-        }
-
-        if (requestParameters.entries) {
-            queryParameters['entries'] = requestParameters.entries.join(runtime.COLLECTION_FORMATS["csv"]);
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/ledgers/{ledger}`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))).replace(`{${"ledger"}}`, encodeURIComponent(String(requestParameters.ledger))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => UserLedgerFromJSON(jsonValue));
+    if (
+      requestParameters.docName === null ||
+      requestParameters.docName === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "docName",
+        "Required parameter requestParameters.docName was null or undefined when calling getTwinDoc."
+      );
     }
 
-    /**
-     * Get Entry from Ledger
-     */
-    async getTwinLedgerEntry(requestParameters: TwinsApiGetTwinLedgerEntryRequest, initOverrides?: RequestInit): Promise<UserLedger> {
-        const response = await this.getTwinLedgerEntryRaw(requestParameters, initOverrides);
-        return await response.value();
+    const queryParameters: any = {};
+
+    if (requestParameters.download !== undefined) {
+      queryParameters["download"] = requestParameters.download;
     }
 
-    /**
-     * Get Ledger Entry History
-     */
-    async getTwinLedgerEntryHistoryRaw(requestParameters: TwinsApiGetTwinLedgerEntryHistoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LedgerEntriesHistory>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinLedgerEntryHistory.');
-        }
+    const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters.ledger === null || requestParameters.ledger === undefined) {
-            throw new runtime.RequiredError('ledger','Required parameter requestParameters.ledger was null or undefined when calling getTwinLedgerEntryHistory.');
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters.le !== undefined) {
-            queryParameters['le'] = requestParameters.le;
-        }
-
-        if (requestParameters.ge !== undefined) {
-            queryParameters['ge'] = requestParameters.ge;
-        }
-
-        if (requestParameters.limit !== undefined) {
-            queryParameters['limit'] = requestParameters.limit;
-        }
-
-        if (requestParameters.entries) {
-            queryParameters['entries'] = requestParameters.entries.join(runtime.COLLECTION_FORMATS["csv"]);
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/ledgers/{ledger}/history`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))).replace(`{${"ledger"}}`, encodeURIComponent(String(requestParameters.ledger))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => LedgerEntriesHistoryFromJSON(jsonValue));
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
     }
 
-    /**
-     * Get Ledger Entry History
-     */
-    async getTwinLedgerEntryHistory(requestParameters: TwinsApiGetTwinLedgerEntryHistoryRequest, initOverrides?: RequestInit): Promise<LedgerEntriesHistory> {
-        const response = await this.getTwinLedgerEntryHistoryRaw(requestParameters, initOverrides);
-        return await response.value();
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/docs/{doc_name}`
+          .replace(
+            `{${"twin"}}`,
+            encodeURIComponent(String(requestParameters.twin))
+          )
+          .replace(
+            `{${"doc_name"}}`,
+            encodeURIComponent(String(requestParameters.docName))
+          ),
+        method: "GET",
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      GetDocFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Obtain URL to download attached Doc
+   */
+  async getTwinDoc(
+    requestParameters: TwinsApiGetTwinDocRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<GetDoc> {
+    const response = await this.getTwinDocRaw(requestParameters, initOverrides);
+    return await response.value();
+  }
+
+  /**
+   * Get Docs attached to given Twin
+   */
+  async getTwinDocsRaw(
+    requestParameters: TwinsApiGetTwinDocsRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<TwinDocs>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling getTwinDocs."
+      );
     }
 
-    /**
-     * Resolve Twin\'s Identity to system UUID
-     */
-    async resolveTwinIdentityRaw(requestParameters: TwinsApiResolveTwinIdentityRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ResolvedIdentities>> {
-        if (requestParameters.identity === null || requestParameters.identity === undefined) {
-            throw new runtime.RequiredError('identity','Required parameter requestParameters.identity was null or undefined when calling resolveTwinIdentity.');
-        }
+    const queryParameters: any = {};
 
-        const queryParameters: any = {};
+    const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters.context !== undefined) {
-            queryParameters['context'] = requestParameters.context;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/resolve/{identity}`.replace(`{${"identity"}}`, encodeURIComponent(String(requestParameters.identity))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => ResolvedIdentitiesFromJSON(jsonValue));
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
     }
 
-    /**
-     * Resolve Twin\'s Identity to system UUID
-     */
-    async resolveTwinIdentity(requestParameters: TwinsApiResolveTwinIdentityRequest, initOverrides?: RequestInit): Promise<ResolvedIdentities> {
-        const response = await this.resolveTwinIdentityRaw(requestParameters, initOverrides);
-        return await response.value();
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/docs`.replace(
+          `{${"twin"}}`,
+          encodeURIComponent(String(requestParameters.twin))
+        ),
+        method: "GET",
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      TwinDocsFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Get Docs attached to given Twin
+   */
+  async getTwinDocs(
+    requestParameters: TwinsApiGetTwinDocsRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<TwinDocs> {
+    const response = await this.getTwinDocsRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
+
+  /**
+   * Get Identities of the given Twin
+   */
+  async getTwinIdentitiesRaw(
+    requestParameters: TwinsApiGetTwinIdentitiesRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<Array<string>>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling getTwinIdentities."
+      );
     }
 
-    /**
-     * Terminate given Twin
-     */
-    async terminateTwinRaw(requestParameters: TwinsApiTerminateTwinRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TerminationCertificate>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling terminateTwin.');
-        }
+    const queryParameters: any = {};
 
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TerminationCertificateFromJSON(jsonValue));
+    if (requestParameters.showExpired !== undefined) {
+      queryParameters["show_expired"] = requestParameters.showExpired;
     }
 
-    /**
-     * Terminate given Twin
-     */
-    async terminateTwin(requestParameters: TwinsApiTerminateTwinRequest, initOverrides?: RequestInit): Promise<TerminationCertificate> {
-        const response = await this.terminateTwinRaw(requestParameters, initOverrides);
-        return await response.value();
+    if (requestParameters.showValid !== undefined) {
+      queryParameters["show_valid"] = requestParameters.showValid;
     }
 
-    /**
-     * Update existing Twin
-     */
-    async updateTwinRaw(requestParameters: TwinsApiUpdateTwinRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TwinAlive>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling updateTwin.');
-        }
-
-        if (requestParameters.description === null || requestParameters.description === undefined) {
-            throw new runtime.RequiredError('description','Required parameter requestParameters.description was null or undefined when calling updateTwin.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: DescriptionToJSON(requestParameters.description),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TwinAliveFromJSON(jsonValue));
+    if (requestParameters.showForeign !== undefined) {
+      queryParameters["show_foreign"] = requestParameters.showForeign;
     }
 
-    /**
-     * Update existing Twin
-     */
-    async updateTwin(requestParameters: TwinsApiUpdateTwinRequest, initOverrides?: RequestInit): Promise<TwinAlive> {
-        const response = await this.updateTwinRaw(requestParameters, initOverrides);
-        return await response.value();
+    if (requestParameters.showPublic !== undefined) {
+      queryParameters["show_public"] = requestParameters.showPublic;
     }
 
-    /**
-     * Update Twin\'s Doc
-     */
-    async updateTwinDocRaw(requestParameters: TwinsApiUpdateTwinDocRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetDoc>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling updateTwinDoc.');
-        }
-
-        if (requestParameters.docName === null || requestParameters.docName === undefined) {
-            throw new runtime.RequiredError('docName','Required parameter requestParameters.docName was null or undefined when calling updateTwinDoc.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/docs/{doc_name}`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))).replace(`{${"doc_name"}}`, encodeURIComponent(String(requestParameters.docName))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: UpdateTwinDocToJSON(requestParameters.updateTwinDoc),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetDocFromJSON(jsonValue));
+    if (requestParameters.showPrivate !== undefined) {
+      queryParameters["show_private"] = requestParameters.showPrivate;
     }
 
-    /**
-     * Update Twin\'s Doc
-     */
-    async updateTwinDoc(requestParameters: TwinsApiUpdateTwinDocRequest, initOverrides?: RequestInit): Promise<GetDoc> {
-        const response = await this.updateTwinDocRaw(requestParameters, initOverrides);
-        return await response.value();
+    if (requestParameters.showPersonal !== undefined) {
+      queryParameters["show_personal"] = requestParameters.showPersonal;
     }
 
-    /**
-     * Update Twin Identity
-     */
-    async updateTwinIdentityRaw(requestParameters: TwinsApiUpdateTwinIdentityRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdentityProperties>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling updateTwinIdentity.');
-        }
+    const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters.identity === null || requestParameters.identity === undefined) {
-            throw new runtime.RequiredError('identity','Required parameter requestParameters.identity was null or undefined when calling updateTwinIdentity.');
-        }
-
-        if (requestParameters.patchIdentityProperties === null || requestParameters.patchIdentityProperties === undefined) {
-            throw new runtime.RequiredError('patchIdentityProperties','Required parameter requestParameters.patchIdentityProperties was null or undefined when calling updateTwinIdentity.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/identities/{identity}`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))).replace(`{${"identity"}}`, encodeURIComponent(String(requestParameters.identity))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PatchIdentityPropertiesToJSON(requestParameters.patchIdentityProperties),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => IdentityPropertiesFromJSON(jsonValue));
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
     }
 
-    /**
-     * Update Twin Identity
-     */
-    async updateTwinIdentity(requestParameters: TwinsApiUpdateTwinIdentityRequest, initOverrides?: RequestInit): Promise<IdentityProperties> {
-        const response = await this.updateTwinIdentityRaw(requestParameters, initOverrides);
-        return await response.value();
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/identities`.replace(
+          `{${"twin"}}`,
+          encodeURIComponent(String(requestParameters.twin))
+        ),
+        method: "GET",
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse<any>(response);
+  }
+
+  /**
+   * Get Identities of the given Twin
+   */
+  async getTwinIdentities(
+    requestParameters: TwinsApiGetTwinIdentitiesRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<Array<string>> {
+    const response = await this.getTwinIdentitiesRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
+
+  /**
+   * Get Twin\'s Identity
+   */
+  async getTwinIdentityRaw(
+    requestParameters: TwinsApiGetTwinIdentityRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<IdentityProperties>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling getTwinIdentity."
+      );
     }
 
-    /**
-     * PATCH one or more Entries in given Ledger
-     */
-    async updateTwinLedgerEntryRaw(requestParameters: TwinsApiUpdateTwinLedgerEntryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<PatchedUserLedger>> {
-        if (requestParameters.twin === null || requestParameters.twin === undefined) {
-            throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling updateTwinLedgerEntry.');
-        }
-
-        if (requestParameters.ledger === null || requestParameters.ledger === undefined) {
-            throw new runtime.RequiredError('ledger','Required parameter requestParameters.ledger was null or undefined when calling updateTwinLedgerEntry.');
-        }
-
-        if (requestParameters.patchUserLedger === null || requestParameters.patchUserLedger === undefined) {
-            throw new runtime.RequiredError('patchUserLedger','Required parameter requestParameters.patchUserLedger was null or undefined when calling updateTwinLedgerEntry.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
-        }
-
-        const response = await this.request({
-            path: `/twins/{twin}/ledgers/{ledger}`.replace(`{${"twin"}}`, encodeURIComponent(String(requestParameters.twin))).replace(`{${"ledger"}}`, encodeURIComponent(String(requestParameters.ledger))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PatchUserLedgerToJSON(requestParameters.patchUserLedger),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => PatchedUserLedgerFromJSON(jsonValue));
+    if (
+      requestParameters.identity === null ||
+      requestParameters.identity === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "identity",
+        "Required parameter requestParameters.identity was null or undefined when calling getTwinIdentity."
+      );
     }
 
-    /**
-     * PATCH one or more Entries in given Ledger
-     */
-    async updateTwinLedgerEntry(requestParameters: TwinsApiUpdateTwinLedgerEntryRequest, initOverrides?: RequestInit): Promise<PatchedUserLedger> {
-        const response = await this.updateTwinLedgerEntryRaw(requestParameters, initOverrides);
-        return await response.value();
+    const queryParameters: any = {};
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
     }
 
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/identities/{identity}`
+          .replace(
+            `{${"twin"}}`,
+            encodeURIComponent(String(requestParameters.twin))
+          )
+          .replace(
+            `{${"identity"}}`,
+            encodeURIComponent(String(requestParameters.identity))
+          ),
+        method: "GET",
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      IdentityPropertiesFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Get Twin\'s Identity
+   */
+  async getTwinIdentity(
+    requestParameters: TwinsApiGetTwinIdentityRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<IdentityProperties> {
+    const response = await this.getTwinIdentityRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
+
+  /**
+   * Get Entry from Ledger
+   */
+  async getTwinLedgerEntryRaw(
+    requestParameters: TwinsApiGetTwinLedgerEntryRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<UserLedger>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling getTwinLedgerEntry."
+      );
+    }
+
+    if (
+      requestParameters.ledger === null ||
+      requestParameters.ledger === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "ledger",
+        "Required parameter requestParameters.ledger was null or undefined when calling getTwinLedgerEntry."
+      );
+    }
+
+    const queryParameters: any = {};
+
+    if (requestParameters.showReferences !== undefined) {
+      queryParameters["show_references"] = requestParameters.showReferences;
+    }
+
+    if (requestParameters.showPublic !== undefined) {
+      queryParameters["show_public"] = requestParameters.showPublic;
+    }
+
+    if (requestParameters.showPrivate !== undefined) {
+      queryParameters["show_private"] = requestParameters.showPrivate;
+    }
+
+    if (requestParameters.entries) {
+      queryParameters["entries"] = requestParameters.entries.join(
+        runtime.COLLECTION_FORMATS["csv"]
+      );
+    }
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
+    }
+
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/ledgers/{ledger}`
+          .replace(
+            `{${"twin"}}`,
+            encodeURIComponent(String(requestParameters.twin))
+          )
+          .replace(
+            `{${"ledger"}}`,
+            encodeURIComponent(String(requestParameters.ledger))
+          ),
+        method: "GET",
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      UserLedgerFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Get Entry from Ledger
+   */
+  async getTwinLedgerEntry(
+    requestParameters: TwinsApiGetTwinLedgerEntryRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<UserLedger> {
+    const response = await this.getTwinLedgerEntryRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
+
+  /**
+   * Get Ledger Entry History
+   */
+  async getTwinLedgerEntryHistoryRaw(
+    requestParameters: TwinsApiGetTwinLedgerEntryHistoryRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<LedgerEntriesHistory>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling getTwinLedgerEntryHistory."
+      );
+    }
+
+    if (
+      requestParameters.ledger === null ||
+      requestParameters.ledger === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "ledger",
+        "Required parameter requestParameters.ledger was null or undefined when calling getTwinLedgerEntryHistory."
+      );
+    }
+
+    const queryParameters: any = {};
+
+    if (requestParameters.le !== undefined) {
+      queryParameters["le"] = requestParameters.le;
+    }
+
+    if (requestParameters.ge !== undefined) {
+      queryParameters["ge"] = requestParameters.ge;
+    }
+
+    if (requestParameters.limit !== undefined) {
+      queryParameters["limit"] = requestParameters.limit;
+    }
+
+    if (requestParameters.entries) {
+      queryParameters["entries"] = requestParameters.entries.join(
+        runtime.COLLECTION_FORMATS["csv"]
+      );
+    }
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
+    }
+
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/ledgers/{ledger}/history`
+          .replace(
+            `{${"twin"}}`,
+            encodeURIComponent(String(requestParameters.twin))
+          )
+          .replace(
+            `{${"ledger"}}`,
+            encodeURIComponent(String(requestParameters.ledger))
+          ),
+        method: "GET",
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      LedgerEntriesHistoryFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Get Ledger Entry History
+   */
+  async getTwinLedgerEntryHistory(
+    requestParameters: TwinsApiGetTwinLedgerEntryHistoryRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<LedgerEntriesHistory> {
+    const response = await this.getTwinLedgerEntryHistoryRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
+
+  /**
+   * Resolve Twin\'s Identity to system UUID
+   */
+  async resolveTwinIdentityRaw(
+    requestParameters: TwinsApiResolveTwinIdentityRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<ResolvedIdentities>> {
+    if (
+      requestParameters.identity === null ||
+      requestParameters.identity === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "identity",
+        "Required parameter requestParameters.identity was null or undefined when calling resolveTwinIdentity."
+      );
+    }
+
+    const queryParameters: any = {};
+
+    if (requestParameters.context !== undefined) {
+      queryParameters["context"] = requestParameters.context;
+    }
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
+    }
+
+    const response = await this.request(
+      {
+        path: `/resolve/{identity}`.replace(
+          `{${"identity"}}`,
+          encodeURIComponent(String(requestParameters.identity))
+        ),
+        method: "GET",
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      ResolvedIdentitiesFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Resolve Twin\'s Identity to system UUID
+   */
+  async resolveTwinIdentity(
+    requestParameters: TwinsApiResolveTwinIdentityRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<ResolvedIdentities> {
+    const response = await this.resolveTwinIdentityRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
+
+  /**
+   * Terminate given Twin
+   */
+  async terminateTwinRaw(
+    requestParameters: TwinsApiTerminateTwinRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<TerminationCertificate>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling terminateTwin."
+      );
+    }
+
+    const queryParameters: any = {};
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
+    }
+
+    const response = await this.request(
+      {
+        path: `/twins/{twin}`.replace(
+          `{${"twin"}}`,
+          encodeURIComponent(String(requestParameters.twin))
+        ),
+        method: "DELETE",
+        headers: headerParameters,
+        query: queryParameters,
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      TerminationCertificateFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Terminate given Twin
+   */
+  async terminateTwin(
+    requestParameters: TwinsApiTerminateTwinRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<TerminationCertificate> {
+    const response = await this.terminateTwinRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
+
+  /**
+   * Update existing Twin
+   */
+  async updateTwinRaw(
+    requestParameters: TwinsApiUpdateTwinRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<TwinAlive>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling updateTwin."
+      );
+    }
+
+    if (
+      requestParameters.description === null ||
+      requestParameters.description === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "description",
+        "Required parameter requestParameters.description was null or undefined when calling updateTwin."
+      );
+    }
+
+    const queryParameters: any = {};
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    headerParameters["Content-Type"] = "application/json";
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
+    }
+
+    const response = await this.request(
+      {
+        path: `/twins/{twin}`.replace(
+          `{${"twin"}}`,
+          encodeURIComponent(String(requestParameters.twin))
+        ),
+        method: "PATCH",
+        headers: headerParameters,
+        query: queryParameters,
+        body: DescriptionToJSON(requestParameters.description),
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      TwinAliveFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Update existing Twin
+   */
+  async updateTwin(
+    requestParameters: TwinsApiUpdateTwinRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<TwinAlive> {
+    const response = await this.updateTwinRaw(requestParameters, initOverrides);
+    return await response.value();
+  }
+
+  /**
+   * Update Twin\'s Doc
+   */
+  async updateTwinDocRaw(
+    requestParameters: TwinsApiUpdateTwinDocRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<GetDoc>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling updateTwinDoc."
+      );
+    }
+
+    if (
+      requestParameters.docName === null ||
+      requestParameters.docName === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "docName",
+        "Required parameter requestParameters.docName was null or undefined when calling updateTwinDoc."
+      );
+    }
+
+    const queryParameters: any = {};
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    headerParameters["Content-Type"] = "application/json";
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
+    }
+
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/docs/{doc_name}`
+          .replace(
+            `{${"twin"}}`,
+            encodeURIComponent(String(requestParameters.twin))
+          )
+          .replace(
+            `{${"doc_name"}}`,
+            encodeURIComponent(String(requestParameters.docName))
+          ),
+        method: "PATCH",
+        headers: headerParameters,
+        query: queryParameters,
+        body: UpdateTwinDocToJSON(requestParameters.updateTwinDoc),
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      GetDocFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Update Twin\'s Doc
+   */
+  async updateTwinDoc(
+    requestParameters: TwinsApiUpdateTwinDocRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<GetDoc> {
+    const response = await this.updateTwinDocRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
+
+  /**
+   * Update Twin Identity
+   */
+  async updateTwinIdentityRaw(
+    requestParameters: TwinsApiUpdateTwinIdentityRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<IdentityProperties>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling updateTwinIdentity."
+      );
+    }
+
+    if (
+      requestParameters.identity === null ||
+      requestParameters.identity === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "identity",
+        "Required parameter requestParameters.identity was null or undefined when calling updateTwinIdentity."
+      );
+    }
+
+    if (
+      requestParameters.patchIdentityProperties === null ||
+      requestParameters.patchIdentityProperties === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "patchIdentityProperties",
+        "Required parameter requestParameters.patchIdentityProperties was null or undefined when calling updateTwinIdentity."
+      );
+    }
+
+    const queryParameters: any = {};
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    headerParameters["Content-Type"] = "application/json";
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
+    }
+
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/identities/{identity}`
+          .replace(
+            `{${"twin"}}`,
+            encodeURIComponent(String(requestParameters.twin))
+          )
+          .replace(
+            `{${"identity"}}`,
+            encodeURIComponent(String(requestParameters.identity))
+          ),
+        method: "PATCH",
+        headers: headerParameters,
+        query: queryParameters,
+        body: PatchIdentityPropertiesToJSON(
+          requestParameters.patchIdentityProperties
+        ),
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      IdentityPropertiesFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * Update Twin Identity
+   */
+  async updateTwinIdentity(
+    requestParameters: TwinsApiUpdateTwinIdentityRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<IdentityProperties> {
+    const response = await this.updateTwinIdentityRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
+
+  /**
+   * PATCH one or more Entries in given Ledger
+   */
+  async updateTwinLedgerEntryRaw(
+    requestParameters: TwinsApiUpdateTwinLedgerEntryRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<runtime.ApiResponse<PatchedUserLedger>> {
+    if (
+      requestParameters.twin === null ||
+      requestParameters.twin === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "twin",
+        "Required parameter requestParameters.twin was null or undefined when calling updateTwinLedgerEntry."
+      );
+    }
+
+    if (
+      requestParameters.ledger === null ||
+      requestParameters.ledger === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "ledger",
+        "Required parameter requestParameters.ledger was null or undefined when calling updateTwinLedgerEntry."
+      );
+    }
+
+    if (
+      requestParameters.patchUserLedger === null ||
+      requestParameters.patchUserLedger === undefined
+    ) {
+      throw new runtime.RequiredError(
+        "patchUserLedger",
+        "Required parameter requestParameters.patchUserLedger was null or undefined when calling updateTwinLedgerEntry."
+      );
+    }
+
+    const queryParameters: any = {};
+
+    const headerParameters: runtime.HTTPHeaders = {};
+
+    headerParameters["Content-Type"] = "application/json";
+
+    if (this.configuration && this.configuration.apiKey) {
+      headerParameters["Authorization"] =
+        this.configuration.apiKey("Authorization"); // RequestAuthorizer authentication
+    }
+
+    const response = await this.request(
+      {
+        path: `/twins/{twin}/ledgers/{ledger}`
+          .replace(
+            `{${"twin"}}`,
+            encodeURIComponent(String(requestParameters.twin))
+          )
+          .replace(
+            `{${"ledger"}}`,
+            encodeURIComponent(String(requestParameters.ledger))
+          ),
+        method: "PATCH",
+        headers: headerParameters,
+        query: queryParameters,
+        body: PatchUserLedgerToJSON(requestParameters.patchUserLedger),
+      },
+      initOverrides
+    );
+
+    return new runtime.JSONApiResponse(response, (jsonValue) =>
+      PatchedUserLedgerFromJSON(jsonValue)
+    );
+  }
+
+  /**
+   * PATCH one or more Entries in given Ledger
+   */
+  async updateTwinLedgerEntry(
+    requestParameters: TwinsApiUpdateTwinLedgerEntryRequest,
+    initOverrides?: RequestInit | runtime.InitOverideFunction
+  ): Promise<PatchedUserLedger> {
+    const response = await this.updateTwinLedgerEntryRaw(
+      requestParameters,
+      initOverrides
+    );
+    return await response.value();
+  }
 }

@@ -35,7 +35,7 @@ export class LogApi extends runtime.BaseAPI {
     /**
      * Gets User\'s logs
      */
-    async getLogRaw(requestParameters: LogApiGetLogRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetLogResponse>> {
+    async getLogRaw(requestParameters: LogApiGetLogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetLogResponse>> {
         const queryParameters: any = {};
 
         if (requestParameters.fragment !== undefined) {
@@ -61,7 +61,7 @@ export class LogApi extends runtime.BaseAPI {
     /**
      * Gets User\'s logs
      */
-    async getLog(requestParameters: LogApiGetLogRequest = {}, initOverrides?: RequestInit): Promise<GetLogResponse> {
+    async getLog(requestParameters: LogApiGetLogRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetLogResponse> {
         const response = await this.getLogRaw(requestParameters, initOverrides);
         return await response.value();
     }

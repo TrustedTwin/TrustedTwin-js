@@ -58,14 +58,16 @@ export interface TwinAlive {
     creationCertificate?: TwinCreationCertificate;
 }
 
+
 /**
-* @export
-* @enum {string}
-*/
-export enum TwinAliveStatusEnum {
-    Alive = 'alive',
-    Terminated = 'terminated'
-}
+ * @export
+ */
+export const TwinAliveStatusEnum = {
+    Alive: 'alive',
+    Terminated: 'terminated'
+} as const;
+export type TwinAliveStatusEnum = typeof TwinAliveStatusEnum[keyof typeof TwinAliveStatusEnum];
+
 
 export function TwinAliveFromJSON(json: any): TwinAlive {
     return TwinAliveFromJSONTyped(json, false);

@@ -1,8 +1,12 @@
 {
   "name": "@trustedtwin/js-client",
-  "version": "2.02.00",
+  "version": "2.02.00.1",
   "description": "OpenAPI client for @trustedtwin/js-client",
   "author": "OpenAPI-Generator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+  },
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
@@ -10,6 +14,6 @@
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "typescript": "^3.9.5"
+    "typescript": "^4.0"
   }
 }

@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    LedgerEntriesHistoryEntriesValue,
+    LedgerEntriesHistoryEntriesValueFromJSON,
+    LedgerEntriesHistoryEntriesValueFromJSONTyped,
+    LedgerEntriesHistoryEntriesValueToJSON,
+} from './LedgerEntriesHistoryEntriesValue';
+
 /**
  * 
  * @export
@@ -21,10 +28,10 @@ import { exists, mapValues } from '../runtime';
 export interface LedgerEntriesHistory {
     /**
      * 
-     * @type {{ [key: string]: any; }}
+     * @type {{ [key: string]: LedgerEntriesHistoryEntriesValue; }}
      * @memberof LedgerEntriesHistory
      */
-    entries?: { [key: string]: any; };
+    entries?: { [key: string]: LedgerEntriesHistoryEntriesValue; };
 }
 
 export function LedgerEntriesHistoryFromJSON(json: any): LedgerEntriesHistory {
@@ -37,7 +44,7 @@ export function LedgerEntriesHistoryFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
-        'entries': !exists(json, 'entries') ? undefined : json['entries'],
+        'entries': !exists(json, 'entries') ? undefined : (mapValues(json['entries'], LedgerEntriesHistoryEntriesValueFromJSON)),
     };
 }
 
@@ -50,7 +57,7 @@ export function LedgerEntriesHistoryToJSON(value?: LedgerEntriesHistory | null):
     }
     return {
         
-        'entries': value.entries,
+        'entries': value.entries === undefined ? undefined : (mapValues(value.entries, LedgerEntriesHistoryEntriesValueToJSON)),
     };
 }
 

@@ -12,71 +12,62 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import {
-    TwinCreationCertificateAllOf,
-    TwinCreationCertificateAllOfFromJSON,
-    TwinCreationCertificateAllOfFromJSONTyped,
-    TwinCreationCertificateAllOfToJSON,
-} from './TwinCreationCertificateAllOf';
-import {
-    UUID,
-    UUIDFromJSON,
-    UUIDFromJSONTyped,
-    UUIDToJSON,
-} from './UUID';
+import { exists, mapValues } from "../runtime";
 
 /**
- * 
+ *
  * @export
  * @interface TwinCreationCertificate
  */
 export interface TwinCreationCertificate {
-    /**
-     * UUID
-     * @type {string}
-     * @memberof TwinCreationCertificate
-     */
-    readonly uuid?: string;
-    /**
-     * UTC timestamp denoting when Twin was created
-     * @type {number}
-     * @memberof TwinCreationCertificate
-     */
-    readonly createdTs?: number;
-    /**
-     * Account UUID of Account creating the Twin
-     * @type {string}
-     * @memberof TwinCreationCertificate
-     */
-    readonly creator?: string;
+  /**
+   * UUID
+   * @type {string}
+   * @memberof TwinCreationCertificate
+   */
+  readonly uuid?: string;
+  /**
+   * UTC timestamp denoting when Twin was created
+   * @type {number}
+   * @memberof TwinCreationCertificate
+   */
+  readonly createdTs?: number;
+  /**
+   * Account UUID of Account creating the Twin
+   * @type {string}
+   * @memberof TwinCreationCertificate
+   */
+  readonly creator?: string;
 }
 
-export function TwinCreationCertificateFromJSON(json: any): TwinCreationCertificate {
-    return TwinCreationCertificateFromJSONTyped(json, false);
+export function TwinCreationCertificateFromJSON(
+  json: any
+): TwinCreationCertificate {
+  return TwinCreationCertificateFromJSONTyped(json, false);
 }
 
-export function TwinCreationCertificateFromJSONTyped(json: any, ignoreDiscriminator: boolean): TwinCreationCertificate {
-    if ((json === undefined) || (json === null)) {
-        return json;
-    }
-    return {
-        
-        'uuid': !exists(json, 'uuid') ? undefined : json['uuid'],
-        'createdTs': !exists(json, 'created_ts') ? undefined : json['created_ts'],
-        'creator': !exists(json, 'creator') ? undefined : json['creator'],
-    };
+export function TwinCreationCertificateFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): TwinCreationCertificate {
+  if (json === undefined || json === null) {
+    return json;
+  }
+  return {
+    uuid: !exists(json, "uuid") ? undefined : json["uuid"],
+    createdTs: !exists(json, "created_ts") ? undefined : json["created_ts"],
+    creator: !exists(json, "creator") ? undefined : json["creator"],
+  };
 }
 
-export function TwinCreationCertificateToJSON(value?: TwinCreationCertificate | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
-    }
-    return {
-        
-    };
+export function TwinCreationCertificateToJSON(
+  value?: TwinCreationCertificate | null
+): any {
+  if (value === undefined) {
+    return undefined;
+  }
+  if (value === null) {
+    return null;
+  }
+  return {};
 }
-

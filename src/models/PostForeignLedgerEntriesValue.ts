@@ -13,46 +13,53 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    ValueEntry,
+    ValueEntryFromJSON,
+    ValueEntryFromJSONTyped,
+    ValueEntryToJSON,
+} from './ValueEntry';
+
 /**
- * Ledger's value key
+ * 
  * @export
- * @interface ValueEntry
+ * @interface PostForeignLedgerEntriesValue
  */
-export interface ValueEntry {
+export interface PostForeignLedgerEntriesValue {
     /**
      * value for corresponding Key
      * @type {string}
-     * @memberof ValueEntry
+     * @memberof PostForeignLedgerEntriesValue
      */
     value?: string;
     /**
      * type of value
      * @type {string}
-     * @memberof ValueEntry
+     * @memberof PostForeignLedgerEntriesValue
      */
-    type?: ValueEntryTypeEnum;
+    type?: PostForeignLedgerEntriesValueTypeEnum;
     /**
      * Visibility of the Entry
      * @type {string}
-     * @memberof ValueEntry
+     * @memberof PostForeignLedgerEntriesValue
      */
     visibility?: string;
     /**
      * UTC timestamp denoting when the Entry was created
      * @type {number}
-     * @memberof ValueEntry
+     * @memberof PostForeignLedgerEntriesValue
      */
     readonly entryCreatedTs?: number;
     /**
      * UTC timestamp denoting when the Entry was last updated
      * @type {number}
-     * @memberof ValueEntry
+     * @memberof PostForeignLedgerEntriesValue
      */
     readonly entryUpdatedTs?: number;
     /**
      * UTC timestamp denoting when the Entry's value was last changed
      * @type {number}
-     * @memberof ValueEntry
+     * @memberof PostForeignLedgerEntriesValue
      */
     readonly valueChangedTs?: number;
 }
@@ -61,19 +68,19 @@ export interface ValueEntry {
 /**
  * @export
  */
-export const ValueEntryTypeEnum = {
+export const PostForeignLedgerEntriesValueTypeEnum = {
     String: 'string',
     Integer: 'integer',
     Datetime: 'datetime'
 } as const;
-export type ValueEntryTypeEnum = typeof ValueEntryTypeEnum[keyof typeof ValueEntryTypeEnum];
+export type PostForeignLedgerEntriesValueTypeEnum = typeof PostForeignLedgerEntriesValueTypeEnum[keyof typeof PostForeignLedgerEntriesValueTypeEnum];
 
 
-export function ValueEntryFromJSON(json: any): ValueEntry {
-    return ValueEntryFromJSONTyped(json, false);
+export function PostForeignLedgerEntriesValueFromJSON(json: any): PostForeignLedgerEntriesValue {
+    return PostForeignLedgerEntriesValueFromJSONTyped(json, false);
 }
 
-export function ValueEntryFromJSONTyped(json: any, ignoreDiscriminator: boolean): ValueEntry {
+export function PostForeignLedgerEntriesValueFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostForeignLedgerEntriesValue {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -88,7 +95,7 @@ export function ValueEntryFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-export function ValueEntryToJSON(value?: ValueEntry | null): any {
+export function PostForeignLedgerEntriesValueToJSON(value?: PostForeignLedgerEntriesValue | null): any {
     if (value === undefined) {
         return undefined;
     }

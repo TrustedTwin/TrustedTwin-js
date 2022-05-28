@@ -20,17 +20,17 @@ import {
     DescriptionToJSON,
 } from './Description';
 import {
-    TerminationCertificate,
-    TerminationCertificateFromJSON,
-    TerminationCertificateFromJSONTyped,
-    TerminationCertificateToJSON,
-} from './TerminationCertificate';
-import {
     TwinCreationCertificate,
     TwinCreationCertificateFromJSON,
     TwinCreationCertificateFromJSONTyped,
     TwinCreationCertificateToJSON,
 } from './TwinCreationCertificate';
+import {
+    TwinTerminationCertificate,
+    TwinTerminationCertificateFromJSON,
+    TwinTerminationCertificateFromJSONTyped,
+    TwinTerminationCertificateToJSON,
+} from './TwinTerminationCertificate';
 
 /**
  * 
@@ -67,23 +67,25 @@ export interface Twin {
      * @type {TwinCreationCertificate}
      * @memberof Twin
      */
-    readonly creationCertificate?: TwinCreationCertificate | null;
+    creationCertificate?: TwinCreationCertificate;
     /**
      * 
-     * @type {TerminationCertificate}
+     * @type {TwinTerminationCertificate}
      * @memberof Twin
      */
-    readonly terminationCertificate?: TerminationCertificate | null;
+    terminationCertificate?: TwinTerminationCertificate;
 }
 
+
 /**
-* @export
-* @enum {string}
-*/
-export enum TwinStatusEnum {
-    Alive = 'alive',
-    Terminated = 'terminated'
-}
+ * @export
+ */
+export const TwinStatusEnum = {
+    Alive: 'alive',
+    Terminated: 'terminated'
+} as const;
+export type TwinStatusEnum = typeof TwinStatusEnum[keyof typeof TwinStatusEnum];
+
 
 export function TwinFromJSON(json: any): Twin {
     return TwinFromJSONTyped(json, false);
@@ -100,7 +102,7 @@ export function TwinFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twin
         'updatedTs': !exists(json, 'updated_ts') ? undefined : json['updated_ts'],
         'description': !exists(json, 'description') ? undefined : DescriptionFromJSON(json['description']),
         'creationCertificate': !exists(json, 'creation_certificate') ? undefined : TwinCreationCertificateFromJSON(json['creation_certificate']),
-        'terminationCertificate': !exists(json, 'termination_certificate') ? undefined : TerminationCertificateFromJSON(json['termination_certificate']),
+        'terminationCertificate': !exists(json, 'termination_certificate') ? undefined : TwinTerminationCertificateFromJSON(json['termination_certificate']),
     };
 }
 
@@ -115,6 +117,8 @@ export function TwinToJSON(value?: Twin | null): any {
         
         'updated_ts': value.updatedTs,
         'description': DescriptionToJSON(value.description),
+        'creation_certificate': TwinCreationCertificateToJSON(value.creationCertificate),
+        'termination_certificate': TwinTerminationCertificateToJSON(value.terminationCertificate),
     };
 }
 

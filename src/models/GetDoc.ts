@@ -70,23 +70,27 @@ export interface GetDoc {
     download?: GetDocDownload;
 }
 
+
 /**
-* @export
-* @enum {string}
-*/
-export enum GetDocStorageClassEnum {
-    AccessOptimized = 'access_optimized',
-    CostOptimized = 'cost_optimized'
-}/**
-* @export
-* @enum {string}
-*/
-export enum GetDocStatusEnum {
-    Copying = 'copying',
-    Error = 'error',
-    Ok = 'ok',
-    HashMismatch = 'hash_mismatch'
-}
+ * @export
+ */
+export const GetDocStorageClassEnum = {
+    AccessOptimized: 'access_optimized',
+    CostOptimized: 'cost_optimized'
+} as const;
+export type GetDocStorageClassEnum = typeof GetDocStorageClassEnum[keyof typeof GetDocStorageClassEnum];
+
+/**
+ * @export
+ */
+export const GetDocStatusEnum = {
+    Copying: 'copying',
+    Error: 'error',
+    Ok: 'ok',
+    HashMismatch: 'hash_mismatch'
+} as const;
+export type GetDocStatusEnum = typeof GetDocStatusEnum[keyof typeof GetDocStatusEnum];
+
 
 export function GetDocFromJSON(json: any): GetDoc {
     return GetDocFromJSONTyped(json, false);

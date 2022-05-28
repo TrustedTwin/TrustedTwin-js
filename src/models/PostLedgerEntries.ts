@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    ReferenceEntry | ValueEntry,
-    ReferenceEntry | ValueEntryFromJSON,
-    ReferenceEntry | ValueEntryFromJSONTyped,
-    ReferenceEntry | ValueEntryToJSON,
-} from './ReferenceEntry | ValueEntry';
+    PostLedgerEntriesEntriesValue,
+    PostLedgerEntriesEntriesValueFromJSON,
+    PostLedgerEntriesEntriesValueFromJSONTyped,
+    PostLedgerEntriesEntriesValueToJSON,
+} from './PostLedgerEntriesEntriesValue';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface PostLedgerEntries {
     /**
      * 
-     * @type {{ [key: string]: ReferenceEntry | ValueEntry; }}
+     * @type {{ [key: string]: PostLedgerEntriesEntriesValue; }}
      * @memberof PostLedgerEntries
      */
-    entries?: { [key: string]: ReferenceEntry | ValueEntry; };
+    entries?: { [key: string]: PostLedgerEntriesEntriesValue; };
 }
 
 export function PostLedgerEntriesFromJSON(json: any): PostLedgerEntries {
@@ -44,7 +44,7 @@ export function PostLedgerEntriesFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'entries': !exists(json, 'entries') ? undefined : (mapValues(json['entries'], ReferenceEntry | ValueEntryFromJSON)),
+        'entries': !exists(json, 'entries') ? undefined : (mapValues(json['entries'], PostLedgerEntriesEntriesValueFromJSON)),
     };
 }
 
@@ -57,7 +57,7 @@ export function PostLedgerEntriesToJSON(value?: PostLedgerEntries | null): any {
     }
     return {
         
-        'entries': value.entries === undefined ? undefined : (mapValues(value.entries, ReferenceEntry | ValueEntryToJSON)),
+        'entries': value.entries === undefined ? undefined : (mapValues(value.entries, PostLedgerEntriesEntriesValueToJSON)),
     };
 }
 

@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    ReferenceEntry | ValueEntry,
-    ReferenceEntry | ValueEntryFromJSON,
-    ReferenceEntry | ValueEntryFromJSONTyped,
-    ReferenceEntry | ValueEntryToJSON,
-} from './ReferenceEntry | ValueEntry';
+    PostLedgerEntriesEntriesValue,
+    PostLedgerEntriesEntriesValueFromJSON,
+    PostLedgerEntriesEntriesValueFromJSONTyped,
+    PostLedgerEntriesEntriesValueToJSON,
+} from './PostLedgerEntriesEntriesValue';
 
 /**
  * 
@@ -46,10 +46,10 @@ export interface UserLedger {
     readonly valueChangedTs?: number;
     /**
      * 
-     * @type {{ [key: string]: ReferenceEntry | ValueEntry; }}
+     * @type {{ [key: string]: PostLedgerEntriesEntriesValue; }}
      * @memberof UserLedger
      */
-    entries?: { [key: string]: ReferenceEntry | ValueEntry; };
+    entries?: { [key: string]: PostLedgerEntriesEntriesValue; };
 }
 
 export function UserLedgerFromJSON(json: any): UserLedger {
@@ -65,7 +65,7 @@ export function UserLedgerFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'entryCreatedTs': !exists(json, 'entry_created_ts') ? undefined : json['entry_created_ts'],
         'entryUpdatedTs': !exists(json, 'entry_updated_ts') ? undefined : json['entry_updated_ts'],
         'valueChangedTs': !exists(json, 'value_changed_ts') ? undefined : json['value_changed_ts'],
-        'entries': !exists(json, 'entries') ? undefined : (mapValues(json['entries'], ReferenceEntry | ValueEntryFromJSON)),
+        'entries': !exists(json, 'entries') ? undefined : (mapValues(json['entries'], PostLedgerEntriesEntriesValueFromJSON)),
     };
 }
 
@@ -78,7 +78,7 @@ export function UserLedgerToJSON(value?: UserLedger | null): any {
     }
     return {
         
-        'entries': value.entries === undefined ? undefined : (mapValues(value.entries, ReferenceEntry | ValueEntryToJSON)),
+        'entries': value.entries === undefined ? undefined : (mapValues(value.entries, PostLedgerEntriesEntriesValueToJSON)),
     };
 }
 

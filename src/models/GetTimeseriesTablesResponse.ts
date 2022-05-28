@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    TimeseriesDatabaseDetails,
-    TimeseriesDatabaseDetailsFromJSON,
-    TimeseriesDatabaseDetailsFromJSONTyped,
-    TimeseriesDatabaseDetailsToJSON,
-} from './TimeseriesDatabaseDetails';
+    GetTimeseriesTablesResponseStats,
+    GetTimeseriesTablesResponseStatsFromJSON,
+    GetTimeseriesTablesResponseStatsFromJSONTyped,
+    GetTimeseriesTablesResponseStatsToJSON,
+} from './GetTimeseriesTablesResponseStats';
 import {
     TimeseriesUserAccessCommand,
     TimeseriesUserAccessCommandFromJSON,
@@ -34,10 +34,10 @@ import {
 export interface GetTimeseriesTablesResponse {
     /**
      * 
-     * @type {TimeseriesDatabaseDetails}
+     * @type {GetTimeseriesTablesResponseStats}
      * @memberof GetTimeseriesTablesResponse
      */
-    stats: TimeseriesDatabaseDetails | null;
+    stats: GetTimeseriesTablesResponseStats;
     /**
      * Users and their Timeseries access type
      * @type {{ [key: string]: TimeseriesUserAccessCommand; }}
@@ -62,7 +62,7 @@ export function GetTimeseriesTablesResponseFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-        'stats': TimeseriesDatabaseDetailsFromJSON(json['stats']),
+        'stats': GetTimeseriesTablesResponseStatsFromJSON(json['stats']),
         'users': !exists(json, 'users') ? undefined : (mapValues(json['users'], TimeseriesUserAccessCommandFromJSON)),
         'timeseries': json['timeseries'],
     };
@@ -77,7 +77,7 @@ export function GetTimeseriesTablesResponseToJSON(value?: GetTimeseriesTablesRes
     }
     return {
         
-        'stats': TimeseriesDatabaseDetailsToJSON(value.stats),
+        'stats': GetTimeseriesTablesResponseStatsToJSON(value.stats),
         'users': value.users === undefined ? undefined : (mapValues(value.users, TimeseriesUserAccessCommandToJSON)),
         'timeseries': value.timeseries,
     };

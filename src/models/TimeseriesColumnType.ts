@@ -12,33 +12,35 @@
  * Do not edit the class manually.
  */
 
+
 /**
  * Timeseries database column type
  * @export
- * @enum {string}
  */
-export enum TimeseriesColumnType {
-    Int = 'int',
-    Bigint = 'bigint',
-    Smallint = 'smallint',
-    Integer = 'integer',
-    Numeric = 'numeric',
-    Real = 'real',
-    DoublePrecision = 'double precision',
-    Json = 'json',
-    Jsonb = 'jsonb',
-    Bool = 'bool',
-    Boolean = 'boolean',
-    CharacterVarying = 'character varying',
-    Varchar = 'varchar',
-    Text = 'text',
-    Date = 'date',
-    Time = 'time',
-    Interval = 'interval',
-    Timestamp = 'timestamp',
-    Timestamptz = 'timestamptz',
-    Uuid = 'uuid'
-}
+export const TimeseriesColumnType = {
+    Int: 'int',
+    Bigint: 'bigint',
+    Smallint: 'smallint',
+    Integer: 'integer',
+    Numeric: 'numeric',
+    Real: 'real',
+    DoublePrecision: 'double precision',
+    Json: 'json',
+    Jsonb: 'jsonb',
+    Bool: 'bool',
+    Boolean: 'boolean',
+    CharacterVarying: 'character varying',
+    Varchar: 'varchar',
+    Text: 'text',
+    Date: 'date',
+    Time: 'time',
+    Interval: 'interval',
+    Timestamp: 'timestamp',
+    Timestamptz: 'timestamptz',
+    Uuid: 'uuid'
+} as const;
+export type TimeseriesColumnType = typeof TimeseriesColumnType[keyof typeof TimeseriesColumnType];
+
 
 export function TimeseriesColumnTypeFromJSON(json: any): TimeseriesColumnType {
     return TimeseriesColumnTypeFromJSONTyped(json, false);

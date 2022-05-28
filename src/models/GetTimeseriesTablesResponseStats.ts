@@ -13,22 +13,29 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    TimeseriesDatabaseDetails,
+    TimeseriesDatabaseDetailsFromJSON,
+    TimeseriesDatabaseDetailsFromJSONTyped,
+    TimeseriesDatabaseDetailsToJSON,
+} from './TimeseriesDatabaseDetails';
+
 /**
- * Database statistics and information
+ * 
  * @export
- * @interface TimeseriesDatabaseDetails
+ * @interface GetTimeseriesTablesResponseStats
  */
-export interface TimeseriesDatabaseDetails {
+export interface GetTimeseriesTablesResponseStats {
     /**
      * Timeseries service status
      * @type {string}
-     * @memberof TimeseriesDatabaseDetails
+     * @memberof GetTimeseriesTablesResponseStats
      */
-    status?: TimeseriesDatabaseDetailsStatusEnum;
+    status?: GetTimeseriesTablesResponseStatsStatusEnum;
     /**
      * Database size in bytes
      * @type {number}
-     * @memberof TimeseriesDatabaseDetails
+     * @memberof GetTimeseriesTablesResponseStats
      */
     databaseSize?: number;
 }
@@ -37,19 +44,19 @@ export interface TimeseriesDatabaseDetails {
 /**
  * @export
  */
-export const TimeseriesDatabaseDetailsStatusEnum = {
+export const GetTimeseriesTablesResponseStatsStatusEnum = {
     Running: 'running',
     Pending: 'pending',
     Service: 'service'
 } as const;
-export type TimeseriesDatabaseDetailsStatusEnum = typeof TimeseriesDatabaseDetailsStatusEnum[keyof typeof TimeseriesDatabaseDetailsStatusEnum];
+export type GetTimeseriesTablesResponseStatsStatusEnum = typeof GetTimeseriesTablesResponseStatsStatusEnum[keyof typeof GetTimeseriesTablesResponseStatsStatusEnum];
 
 
-export function TimeseriesDatabaseDetailsFromJSON(json: any): TimeseriesDatabaseDetails {
-    return TimeseriesDatabaseDetailsFromJSONTyped(json, false);
+export function GetTimeseriesTablesResponseStatsFromJSON(json: any): GetTimeseriesTablesResponseStats {
+    return GetTimeseriesTablesResponseStatsFromJSONTyped(json, false);
 }
 
-export function TimeseriesDatabaseDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimeseriesDatabaseDetails {
+export function GetTimeseriesTablesResponseStatsFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetTimeseriesTablesResponseStats {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -60,7 +67,7 @@ export function TimeseriesDatabaseDetailsFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-export function TimeseriesDatabaseDetailsToJSON(value?: TimeseriesDatabaseDetails | null): any {
+export function GetTimeseriesTablesResponseStatsToJSON(value?: GetTimeseriesTablesResponseStats | null): any {
     if (value === undefined) {
         return undefined;
     }

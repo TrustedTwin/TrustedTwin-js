@@ -15,6 +15,12 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateTimeseriesTable200Response,
+    CreateTimeseriesTable200ResponseFromJSON,
+    CreateTimeseriesTable200ResponseToJSON,
+    DeleteTimeseriesTable200Response,
+    DeleteTimeseriesTable200ResponseFromJSON,
+    DeleteTimeseriesTable200ResponseToJSON,
     ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
@@ -30,12 +36,15 @@ import {
     TimeseriesTables,
     TimeseriesTablesFromJSON,
     TimeseriesTablesToJSON,
-    TimeseriesTablesResponse,
-    TimeseriesTablesResponseFromJSON,
-    TimeseriesTablesResponseToJSON,
     TimeseriesUsersAccess,
     TimeseriesUsersAccessFromJSON,
     TimeseriesUsersAccessToJSON,
+    TruncateTimeseriesTable200Response,
+    TruncateTimeseriesTable200ResponseFromJSON,
+    TruncateTimeseriesTable200ResponseToJSON,
+    UpdateTimeseriesTable200Response,
+    UpdateTimeseriesTable200ResponseFromJSON,
+    UpdateTimeseriesTable200ResponseToJSON,
 } from '../models';
 
 export interface TimeseriesApiCreateTimeseriesTableRequest {
@@ -71,7 +80,7 @@ export class TimeseriesApi extends runtime.BaseAPI {
     /**
      * Create Timeseries tables
      */
-    async createTimeseriesTableRaw(requestParameters: TimeseriesApiCreateTimeseriesTableRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TimeseriesTablesResponse>> {
+    async createTimeseriesTableRaw(requestParameters: TimeseriesApiCreateTimeseriesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<CreateTimeseriesTable200Response>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -90,13 +99,13 @@ export class TimeseriesApi extends runtime.BaseAPI {
             body: TimeseriesTablesToJSON(requestParameters.timeseriesTables),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => TimeseriesTablesResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateTimeseriesTable200ResponseFromJSON(jsonValue));
     }
 
     /**
      * Create Timeseries tables
      */
-    async createTimeseriesTable(requestParameters: TimeseriesApiCreateTimeseriesTableRequest = {}, initOverrides?: RequestInit): Promise<TimeseriesTablesResponse> {
+    async createTimeseriesTable(requestParameters: TimeseriesApiCreateTimeseriesTableRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<CreateTimeseriesTable200Response> {
         const response = await this.createTimeseriesTableRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -104,7 +113,7 @@ export class TimeseriesApi extends runtime.BaseAPI {
     /**
      * Delete timeseries table
      */
-    async deleteTimeseriesTableRaw(requestParameters: TimeseriesApiDeleteTimeseriesTableRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TimeseriesTableResponse>> {
+    async deleteTimeseriesTableRaw(requestParameters: TimeseriesApiDeleteTimeseriesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<DeleteTimeseriesTable200Response>> {
         if (requestParameters.timeseries === null || requestParameters.timeseries === undefined) {
             throw new runtime.RequiredError('timeseries','Required parameter requestParameters.timeseries was null or undefined when calling deleteTimeseriesTable.');
         }
@@ -124,13 +133,13 @@ export class TimeseriesApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => TimeseriesTableResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteTimeseriesTable200ResponseFromJSON(jsonValue));
     }
 
     /**
      * Delete timeseries table
      */
-    async deleteTimeseriesTable(requestParameters: TimeseriesApiDeleteTimeseriesTableRequest, initOverrides?: RequestInit): Promise<TimeseriesTableResponse> {
+    async deleteTimeseriesTable(requestParameters: TimeseriesApiDeleteTimeseriesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<DeleteTimeseriesTable200Response> {
         const response = await this.deleteTimeseriesTableRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -138,7 +147,7 @@ export class TimeseriesApi extends runtime.BaseAPI {
     /**
      * Gets details of a given Timeseries table
      */
-    async getTimeseriesTableRaw(requestParameters: TimeseriesApiGetTimeseriesTableRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TimeseriesTableResponse>> {
+    async getTimeseriesTableRaw(requestParameters: TimeseriesApiGetTimeseriesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<TimeseriesTableResponse>> {
         if (requestParameters.timeseries === null || requestParameters.timeseries === undefined) {
             throw new runtime.RequiredError('timeseries','Required parameter requestParameters.timeseries was null or undefined when calling getTimeseriesTable.');
         }
@@ -164,7 +173,7 @@ export class TimeseriesApi extends runtime.BaseAPI {
     /**
      * Gets details of a given Timeseries table
      */
-    async getTimeseriesTable(requestParameters: TimeseriesApiGetTimeseriesTableRequest, initOverrides?: RequestInit): Promise<TimeseriesTableResponse> {
+    async getTimeseriesTable(requestParameters: TimeseriesApiGetTimeseriesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<TimeseriesTableResponse> {
         const response = await this.getTimeseriesTableRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -172,7 +181,7 @@ export class TimeseriesApi extends runtime.BaseAPI {
     /**
      * Gets list of existing Timeseries tables + database information
      */
-    async getTimeseriesTablesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetTimeseriesTablesResponse>> {
+    async getTimeseriesTablesRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetTimeseriesTablesResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -194,7 +203,7 @@ export class TimeseriesApi extends runtime.BaseAPI {
     /**
      * Gets list of existing Timeseries tables + database information
      */
-    async getTimeseriesTables(initOverrides?: RequestInit): Promise<GetTimeseriesTablesResponse> {
+    async getTimeseriesTables(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetTimeseriesTablesResponse> {
         const response = await this.getTimeseriesTablesRaw(initOverrides);
         return await response.value();
     }
@@ -202,7 +211,7 @@ export class TimeseriesApi extends runtime.BaseAPI {
     /**
      * Delete Timeseries table data
      */
-    async truncateTimeseriesTableRaw(requestParameters: TimeseriesApiTruncateTimeseriesTableRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TimeseriesTableResponse>> {
+    async truncateTimeseriesTableRaw(requestParameters: TimeseriesApiTruncateTimeseriesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<TruncateTimeseriesTable200Response>> {
         if (requestParameters.timeseries === null || requestParameters.timeseries === undefined) {
             throw new runtime.RequiredError('timeseries','Required parameter requestParameters.timeseries was null or undefined when calling truncateTimeseriesTable.');
         }
@@ -222,13 +231,13 @@ export class TimeseriesApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => TimeseriesTableResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TruncateTimeseriesTable200ResponseFromJSON(jsonValue));
     }
 
     /**
      * Delete Timeseries table data
      */
-    async truncateTimeseriesTable(requestParameters: TimeseriesApiTruncateTimeseriesTableRequest, initOverrides?: RequestInit): Promise<TimeseriesTableResponse> {
+    async truncateTimeseriesTable(requestParameters: TimeseriesApiTruncateTimeseriesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<TruncateTimeseriesTable200Response> {
         const response = await this.truncateTimeseriesTableRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -236,7 +245,7 @@ export class TimeseriesApi extends runtime.BaseAPI {
     /**
      * Update Timeseries serivice access
      */
-    async updateTimeseriesAccessRaw(requestParameters: TimeseriesApiUpdateTimeseriesAccessRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TimeseriesUsersAccess>> {
+    async updateTimeseriesAccessRaw(requestParameters: TimeseriesApiUpdateTimeseriesAccessRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<TimeseriesUsersAccess>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -261,7 +270,7 @@ export class TimeseriesApi extends runtime.BaseAPI {
     /**
      * Update Timeseries serivice access
      */
-    async updateTimeseriesAccess(requestParameters: TimeseriesApiUpdateTimeseriesAccessRequest = {}, initOverrides?: RequestInit): Promise<TimeseriesUsersAccess> {
+    async updateTimeseriesAccess(requestParameters: TimeseriesApiUpdateTimeseriesAccessRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<TimeseriesUsersAccess> {
         const response = await this.updateTimeseriesAccessRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -269,7 +278,7 @@ export class TimeseriesApi extends runtime.BaseAPI {
     /**
      * Updates timeseries table
      */
-    async updateTimeseriesTableRaw(requestParameters: TimeseriesApiUpdateTimeseriesTableRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TimeseriesTableResponse>> {
+    async updateTimeseriesTableRaw(requestParameters: TimeseriesApiUpdateTimeseriesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<UpdateTimeseriesTable200Response>> {
         if (requestParameters.timeseries === null || requestParameters.timeseries === undefined) {
             throw new runtime.RequiredError('timeseries','Required parameter requestParameters.timeseries was null or undefined when calling updateTimeseriesTable.');
         }
@@ -292,13 +301,13 @@ export class TimeseriesApi extends runtime.BaseAPI {
             body: TimeseriesTableUpdateToJSON(requestParameters.timeseriesTableUpdate),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => TimeseriesTableResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateTimeseriesTable200ResponseFromJSON(jsonValue));
     }
 
     /**
      * Updates timeseries table
      */
-    async updateTimeseriesTable(requestParameters: TimeseriesApiUpdateTimeseriesTableRequest, initOverrides?: RequestInit): Promise<TimeseriesTableResponse> {
+    async updateTimeseriesTable(requestParameters: TimeseriesApiUpdateTimeseriesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<UpdateTimeseriesTable200Response> {
         const response = await this.updateTimeseriesTableRaw(requestParameters, initOverrides);
         return await response.value();
     }

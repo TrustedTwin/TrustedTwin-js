@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    TimeseriesTablesResponse,
+    TimeseriesTablesResponseFromJSON,
+    TimeseriesTablesResponseFromJSONTyped,
+    TimeseriesTablesResponseToJSON,
+} from './TimeseriesTablesResponse';
+import {
     TimeseriesTablesResponseTimeseriesValue,
     TimeseriesTablesResponseTimeseriesValueFromJSON,
     TimeseriesTablesResponseTimeseriesValueFromJSONTyped,
@@ -23,22 +29,22 @@ import {
 /**
  * 
  * @export
- * @interface TimeseriesTablesResponse
+ * @interface CreateTimeseriesTable200Response
  */
-export interface TimeseriesTablesResponse {
+export interface CreateTimeseriesTable200Response {
     /**
      * 
      * @type {{ [key: string]: TimeseriesTablesResponseTimeseriesValue; }}
-     * @memberof TimeseriesTablesResponse
+     * @memberof CreateTimeseriesTable200Response
      */
     timeseries?: { [key: string]: TimeseriesTablesResponseTimeseriesValue; };
 }
 
-export function TimeseriesTablesResponseFromJSON(json: any): TimeseriesTablesResponse {
-    return TimeseriesTablesResponseFromJSONTyped(json, false);
+export function CreateTimeseriesTable200ResponseFromJSON(json: any): CreateTimeseriesTable200Response {
+    return CreateTimeseriesTable200ResponseFromJSONTyped(json, false);
 }
 
-export function TimeseriesTablesResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimeseriesTablesResponse {
+export function CreateTimeseriesTable200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateTimeseriesTable200Response {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -48,7 +54,7 @@ export function TimeseriesTablesResponseFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-export function TimeseriesTablesResponseToJSON(value?: TimeseriesTablesResponse | null): any {
+export function CreateTimeseriesTable200ResponseToJSON(value?: CreateTimeseriesTable200Response | null): any {
     if (value === undefined) {
         return undefined;
     }

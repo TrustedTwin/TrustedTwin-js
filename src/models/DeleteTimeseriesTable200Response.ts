@@ -26,6 +26,12 @@ import {
     TimeseriesColumnsToJSON,
 } from './TimeseriesColumns';
 import {
+    TimeseriesTableResponse,
+    TimeseriesTableResponseFromJSON,
+    TimeseriesTableResponseFromJSONTyped,
+    TimeseriesTableResponseToJSON,
+} from './TimeseriesTableResponse';
+import {
     TimeseriesTableResponseStats,
     TimeseriesTableResponseStatsFromJSON,
     TimeseriesTableResponseStatsFromJSONTyped,
@@ -35,52 +41,52 @@ import {
 /**
  * 
  * @export
- * @interface TimeseriesTableResponse
+ * @interface DeleteTimeseriesTable200Response
  */
-export interface TimeseriesTableResponse {
+export interface DeleteTimeseriesTable200Response {
     /**
      * 
      * @type {TimeseriesTableResponseStats}
-     * @memberof TimeseriesTableResponse
+     * @memberof DeleteTimeseriesTable200Response
      */
     stats: TimeseriesTableResponseStats;
     /**
      * 
      * @type {TimeseriesColumns}
-     * @memberof TimeseriesTableResponse
+     * @memberof DeleteTimeseriesTable200Response
      */
     dimensions: TimeseriesColumns;
     /**
      * 
      * @type {TimeseriesColumns}
-     * @memberof TimeseriesTableResponse
+     * @memberof DeleteTimeseriesTable200Response
      */
     measurements: TimeseriesColumns;
     /**
      * 
      * @type {LedgerTimeseries}
-     * @memberof TimeseriesTableResponse
+     * @memberof DeleteTimeseriesTable200Response
      */
     defaults?: LedgerTimeseries;
     /**
      * 
      * @type {string}
-     * @memberof TimeseriesTableResponse
+     * @memberof DeleteTimeseriesTable200Response
      */
     retention?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof TimeseriesTableResponse
+     * @memberof DeleteTimeseriesTable200Response
      */
     chunk?: string | null;
 }
 
-export function TimeseriesTableResponseFromJSON(json: any): TimeseriesTableResponse {
-    return TimeseriesTableResponseFromJSONTyped(json, false);
+export function DeleteTimeseriesTable200ResponseFromJSON(json: any): DeleteTimeseriesTable200Response {
+    return DeleteTimeseriesTable200ResponseFromJSONTyped(json, false);
 }
 
-export function TimeseriesTableResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimeseriesTableResponse {
+export function DeleteTimeseriesTable200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): DeleteTimeseriesTable200Response {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -95,7 +101,7 @@ export function TimeseriesTableResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-export function TimeseriesTableResponseToJSON(value?: TimeseriesTableResponse | null): any {
+export function DeleteTimeseriesTable200ResponseToJSON(value?: DeleteTimeseriesTable200Response | null): any {
     if (value === undefined) {
         return undefined;
     }

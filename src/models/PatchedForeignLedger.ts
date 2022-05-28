@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    ValueEntry,
-    ValueEntryFromJSON,
-    ValueEntryFromJSONTyped,
-    ValueEntryToJSON,
-} from './ValueEntry';
+    PostForeignLedgerEntriesValue,
+    PostForeignLedgerEntriesValueFromJSON,
+    PostForeignLedgerEntriesValueFromJSONTyped,
+    PostForeignLedgerEntriesValueToJSON,
+} from './PostForeignLedgerEntriesValue';
 
 /**
  * 
@@ -46,10 +46,10 @@ export interface PatchedForeignLedger {
     readonly valueChangedTs?: number;
     /**
      * 
-     * @type {{ [key: string]: ValueEntry; }}
+     * @type {{ [key: string]: PostForeignLedgerEntriesValue; }}
      * @memberof PatchedForeignLedger
      */
-    entries?: { [key: string]: ValueEntry; };
+    entries?: { [key: string]: PostForeignLedgerEntriesValue; };
 }
 
 export function PatchedForeignLedgerFromJSON(json: any): PatchedForeignLedger {
@@ -65,7 +65,7 @@ export function PatchedForeignLedgerFromJSONTyped(json: any, ignoreDiscriminator
         'entryCreatedTs': !exists(json, 'entry_created_ts') ? undefined : json['entry_created_ts'],
         'entryUpdatedTs': !exists(json, 'entry_updated_ts') ? undefined : json['entry_updated_ts'],
         'valueChangedTs': !exists(json, 'value_changed_ts') ? undefined : json['value_changed_ts'],
-        'entries': !exists(json, 'entries') ? undefined : (mapValues(json['entries'], ValueEntryFromJSON)),
+        'entries': !exists(json, 'entries') ? undefined : (mapValues(json['entries'], PostForeignLedgerEntriesValueFromJSON)),
     };
 }
 
@@ -78,7 +78,7 @@ export function PatchedForeignLedgerToJSON(value?: PatchedForeignLedger | null):
     }
     return {
         
-        'entries': value.entries === undefined ? undefined : (mapValues(value.entries, ValueEntryToJSON)),
+        'entries': value.entries === undefined ? undefined : (mapValues(value.entries, PostForeignLedgerEntriesValueToJSON)),
     };
 }
 

@@ -12,16 +12,18 @@
  * Do not edit the class manually.
  */
 
+
 /**
  * 
  * @export
- * @enum {string}
  */
-export enum TimeseriesUserAccessCommand {
-    Read = 'read',
-    Write = 'write',
-    Disable = 'disable'
-}
+export const TimeseriesUserAccessCommand = {
+    Read: 'read',
+    Write: 'write',
+    Disable: 'disable'
+} as const;
+export type TimeseriesUserAccessCommand = typeof TimeseriesUserAccessCommand[keyof typeof TimeseriesUserAccessCommand];
+
 
 export function TimeseriesUserAccessCommandFromJSON(json: any): TimeseriesUserAccessCommand {
     return TimeseriesUserAccessCommandFromJSONTyped(json, false);
