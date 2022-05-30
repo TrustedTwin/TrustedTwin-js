@@ -3,6 +3,7 @@
 export * from './AccountApi';
 export * from './DocsApi';
 export * from './IdentitiesApi';
+export * from './IndexesApi';
 export * from './LedgerApi';
 export * from './LogApi';
 export * from './RolesApi';
