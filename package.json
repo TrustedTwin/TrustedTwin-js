@@ -1,6 +1,6 @@
 {
   "name": "@trustedtwin/js-client",
-  "version": "2.03.01",
+  "version": "2.5.2",
   "description": "OpenAPI client for @trustedtwin/js-client",
   "author": "OpenAPI-Generator",
   "repository": {

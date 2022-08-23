@@ -1,5 +1,6 @@
 .gitignore
 .npmignore
+.openapi-generator-ignore
 README.md
 package.json
 src/apis/AccountApi.ts
@@ -8,11 +9,14 @@ src/apis/IdentitiesApi.ts
 src/apis/IndexesApi.ts
 src/apis/LedgerApi.ts
 src/apis/LogApi.ts
+src/apis/NotificationsApi.ts
 src/apis/RolesApi.ts
 src/apis/SecretsApi.ts
 src/apis/TimeseriesApi.ts
 src/apis/TwinsApi.ts
+src/apis/UsageApi.ts
 src/apis/UsersApi.ts
+src/apis/WebhooksApi.ts
 src/apis/index.ts
 src/index.ts
 src/models/AttachTwinDocument.ts
@@ -106,6 +110,7 @@ src/models/UpdateTwinDoc.ts
 src/models/UpdateUserSecret.ts
 src/models/UpdatedRole.ts
 src/models/UpdatedRoleRules.ts
+src/models/Usage.ts
 src/models/UserDefinition.ts
 src/models/UserDefinitionAllOf.ts
 src/models/UserDefinitionAllOf1.ts
@@ -113,6 +118,13 @@ src/models/UserLedger.ts
 src/models/UserRoleEntry.ts
 src/models/UserSecretResponse.ts
 src/models/ValueEntry.ts
+src/models/WebhookRefreshSubscription.ts
+src/models/WebhookRefreshSubscriptionResponse.ts
+src/models/WebhookSubscribe.ts
+src/models/WebhookSubscribeResponse.ts
+src/models/WebhookSubscription.ts
+src/models/WebhookUnsubscribeResponse.ts
+src/models/WhoAmIResponse.ts
 src/models/index.ts
 src/runtime.ts
 tsconfig.json
