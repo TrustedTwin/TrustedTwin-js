@@ -23,22 +23,22 @@ import {
 /**
  * 
  * @export
- * @interface PatchUserLedgerEntryValue
+ * @interface GetUserLedgerEntryValue
  */
-export interface PatchUserLedgerEntryValue {
+export interface GetUserLedgerEntryValue {
     /**
      * 
      * @type {{ [key: string]: ValueEntry; }}
-     * @memberof PatchUserLedgerEntryValue
+     * @memberof GetUserLedgerEntryValue
      */
     entries?: { [key: string]: ValueEntry; };
 }
 
-export function PatchUserLedgerEntryValueFromJSON(json: any): PatchUserLedgerEntryValue {
-    return PatchUserLedgerEntryValueFromJSONTyped(json, false);
+export function GetUserLedgerEntryValueFromJSON(json: any): GetUserLedgerEntryValue {
+    return GetUserLedgerEntryValueFromJSONTyped(json, false);
 }
 
-export function PatchUserLedgerEntryValueFromJSONTyped(json: any, ignoreDiscriminator: boolean): PatchUserLedgerEntryValue {
+export function GetUserLedgerEntryValueFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetUserLedgerEntryValue {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -48,7 +48,7 @@ export function PatchUserLedgerEntryValueFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-export function PatchUserLedgerEntryValueToJSON(value?: PatchUserLedgerEntryValue | null): any {
+export function GetUserLedgerEntryValueToJSON(value?: GetUserLedgerEntryValue | null): any {
     if (value === undefined) {
         return undefined;
     }

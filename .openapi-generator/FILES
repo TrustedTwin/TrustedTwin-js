@@ -1,8 +1,10 @@
 .gitignore
 .npmignore
+.openapi-generator-ignore
 README.md
 package.json
 src/apis/AccountApi.ts
+src/apis/CORSApi.ts
 src/apis/DocsApi.ts
 src/apis/IdentitiesApi.ts
 src/apis/IndexesApi.ts
@@ -54,6 +56,7 @@ src/models/GetRoles.ts
 src/models/GetTimeseriesTablesResponse.ts
 src/models/GetTimeseriesTablesResponseStats.ts
 src/models/GetTwinLedgerEntryLedgerParameter.ts
+src/models/GetUserLedgerEntryValue.ts
 src/models/IdentityCreationCertificate.ts
 src/models/IdentityProperties.ts
 src/models/IdentityRemovalProperties.ts
