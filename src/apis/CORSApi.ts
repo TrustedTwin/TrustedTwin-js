@@ -29,7 +29,7 @@ export class CORSApi extends runtime.BaseAPI {
      * Enable CORS by returning correct headers 
      * CORS support
      */
-    async secretsAccountPinOptionsRaw(requestParameters: CORSApiSecretsAccountPinOptionsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async secretsAccountPinOptionsRaw(requestParameters: CORSApiSecretsAccountPinOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.account === null || requestParameters.account === undefined) {
             throw new runtime.RequiredError('account','Required parameter requestParameters.account was null or undefined when calling secretsAccountPinOptions.');
         }
@@ -56,7 +56,7 @@ export class CORSApi extends runtime.BaseAPI {
      * Enable CORS by returning correct headers 
      * CORS support
      */
-    async secretsAccountPinOptions(requestParameters: CORSApiSecretsAccountPinOptionsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async secretsAccountPinOptions(requestParameters: CORSApiSecretsAccountPinOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.secretsAccountPinOptionsRaw(requestParameters, initOverrides);
     }
 
