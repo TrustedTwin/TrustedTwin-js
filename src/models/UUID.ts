@@ -27,6 +27,15 @@ export interface UUID {
     readonly uuid?: string;
 }
 
+/**
+ * Check if a given object implements the UUID interface.
+ */
+export function instanceOfUUID(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function UUIDFromJSON(json: any): UUID {
     return UUIDFromJSONTyped(json, false);
 }

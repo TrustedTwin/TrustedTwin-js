@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { DocCreationCertificate } from './DocCreationCertificate';
 import {
-    DocCreationCertificate,
     DocCreationCertificateFromJSON,
     DocCreationCertificateFromJSONTyped,
     DocCreationCertificateToJSON,
@@ -32,6 +32,15 @@ export interface AttachTwinDocumentResponse {
      * @memberof AttachTwinDocumentResponse
      */
     creationCertificate?: DocCreationCertificate;
+}
+
+/**
+ * Check if a given object implements the AttachTwinDocumentResponse interface.
+ */
+export function instanceOfAttachTwinDocumentResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function AttachTwinDocumentResponseFromJSON(json: any): AttachTwinDocumentResponse {

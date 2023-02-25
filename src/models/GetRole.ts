@@ -13,14 +13,14 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { NewRoleStatement } from './NewRoleStatement';
 import {
-    NewRoleStatement,
     NewRoleStatementFromJSON,
     NewRoleStatementFromJSONTyped,
     NewRoleStatementToJSON,
 } from './NewRoleStatement';
+import type { PostNewRoleRules } from './PostNewRoleRules';
 import {
-    PostNewRoleRules,
     PostNewRoleRulesFromJSON,
     PostNewRoleRulesFromJSONTyped,
     PostNewRoleRulesToJSON,
@@ -74,6 +74,15 @@ export interface GetRole {
      * @memberof GetRole
      */
     updatedTs?: number;
+}
+
+/**
+ * Check if a given object implements the GetRole interface.
+ */
+export function instanceOfGetRole(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function GetRoleFromJSON(json: any): GetRole {

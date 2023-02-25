@@ -13,26 +13,38 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { IncludeEntry } from './IncludeEntry';
 import {
-    LedgerEntryTimeseries,
-    LedgerEntryTimeseriesFromJSON,
-    LedgerEntryTimeseriesFromJSONTyped,
-    LedgerEntryTimeseriesToJSON,
-} from './LedgerEntryTimeseries';
+    IncludeEntryFromJSON,
+    IncludeEntryFromJSONTyped,
+    IncludeEntryToJSON,
+} from './IncludeEntry';
+import type { LedgerInclude } from './LedgerInclude';
 import {
-    LedgerReference,
+    LedgerIncludeFromJSON,
+    LedgerIncludeFromJSONTyped,
+    LedgerIncludeToJSON,
+} from './LedgerInclude';
+import type { LedgerReference } from './LedgerReference';
+import {
     LedgerReferenceFromJSON,
     LedgerReferenceFromJSONTyped,
     LedgerReferenceToJSON,
 } from './LedgerReference';
+import type { ReferenceEntry } from './ReferenceEntry';
 import {
-    ReferenceEntry,
     ReferenceEntryFromJSON,
     ReferenceEntryFromJSONTyped,
     ReferenceEntryToJSON,
 } from './ReferenceEntry';
+import type { ReferenceEntryTimeseries } from './ReferenceEntryTimeseries';
 import {
-    ValueEntry,
+    ReferenceEntryTimeseriesFromJSON,
+    ReferenceEntryTimeseriesFromJSONTyped,
+    ReferenceEntryTimeseriesToJSON,
+} from './ReferenceEntryTimeseries';
+import type { ValueEntry } from './ValueEntry';
+import {
     ValueEntryFromJSON,
     ValueEntryFromJSONTyped,
     ValueEntryToJSON,
@@ -51,7 +63,7 @@ export interface PostLedgerEntriesEntriesValue {
      */
     ref?: LedgerReference;
     /**
-     * value for corresponding Key
+     * value from include source
      * @type {string}
      * @memberof PostLedgerEntriesEntriesValue
      */
@@ -81,36 +93,39 @@ export interface PostLedgerEntriesEntriesValue {
      */
     readonly valueChangedTs?: number;
     /**
-     * type of value
-     * @type {string}
-     * @memberof PostLedgerEntriesEntriesValue
-     */
-    type?: PostLedgerEntriesEntriesValueTypeEnum;
-    /**
      * 
      * @type {string}
      * @memberof PostLedgerEntriesEntriesValue
      */
-    history?: string | null;
+    history?: string;
     /**
      * 
-     * @type {LedgerEntryTimeseries}
+     * @type {ReferenceEntryTimeseries}
      * @memberof PostLedgerEntriesEntriesValue
      */
-    timeseries?: LedgerEntryTimeseries;
+    timeseries?: ReferenceEntryTimeseries;
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof PostLedgerEntriesEntriesValue
+     */
+    publish?: { [key: string]: string; };
+    /**
+     * 
+     * @type {LedgerInclude}
+     * @memberof PostLedgerEntriesEntriesValue
+     */
+    include?: LedgerInclude;
 }
 
-
 /**
- * @export
+ * Check if a given object implements the PostLedgerEntriesEntriesValue interface.
  */
-export const PostLedgerEntriesEntriesValueTypeEnum = {
-    String: 'string',
-    Integer: 'integer',
-    Datetime: 'datetime'
-} as const;
-export type PostLedgerEntriesEntriesValueTypeEnum = typeof PostLedgerEntriesEntriesValueTypeEnum[keyof typeof PostLedgerEntriesEntriesValueTypeEnum];
+export function instanceOfPostLedgerEntriesEntriesValue(value: object): boolean {
+    let isInstance = true;
 
+    return isInstance;
+}
 
 export function PostLedgerEntriesEntriesValueFromJSON(json: any): PostLedgerEntriesEntriesValue {
     return PostLedgerEntriesEntriesValueFromJSONTyped(json, false);
@@ -128,9 +143,10 @@ export function PostLedgerEntriesEntriesValueFromJSONTyped(json: any, ignoreDisc
         'entryCreatedTs': !exists(json, 'entry_created_ts') ? undefined : json['entry_created_ts'],
         'entryUpdatedTs': !exists(json, 'entry_updated_ts') ? undefined : json['entry_updated_ts'],
         'valueChangedTs': !exists(json, 'value_changed_ts') ? undefined : json['value_changed_ts'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
         'history': !exists(json, 'history') ? undefined : json['history'],
-        'timeseries': !exists(json, 'timeseries') ? undefined : LedgerEntryTimeseriesFromJSON(json['timeseries']),
+        'timeseries': !exists(json, 'timeseries') ? undefined : ReferenceEntryTimeseriesFromJSON(json['timeseries']),
+        'publish': !exists(json, 'publish') ? undefined : json['publish'],
+        'include': !exists(json, 'include') ? undefined : LedgerIncludeFromJSON(json['include']),
     };
 }
 
@@ -146,9 +162,10 @@ export function PostLedgerEntriesEntriesValueToJSON(value?: PostLedgerEntriesEnt
         'ref': LedgerReferenceToJSON(value.ref),
         'value': value.value,
         'visibility': value.visibility,
-        'type': value.type,
         'history': value.history,
-        'timeseries': LedgerEntryTimeseriesToJSON(value.timeseries),
+        'timeseries': ReferenceEntryTimeseriesToJSON(value.timeseries),
+        'publish': value.publish,
+        'include': LedgerIncludeToJSON(value.include),
     };
 }
 

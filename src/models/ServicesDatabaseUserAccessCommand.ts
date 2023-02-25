@@ -12,28 +12,61 @@
  * Do not edit the class manually.
  */
 
+import { exists, mapValues } from '../runtime';
+import type { ServicesDatabaseUserAccessRights } from './ServicesDatabaseUserAccessRights';
+import {
+    ServicesDatabaseUserAccessRightsFromJSON,
+    ServicesDatabaseUserAccessRightsFromJSONTyped,
+    ServicesDatabaseUserAccessRightsToJSON,
+} from './ServicesDatabaseUserAccessRights';
 
 /**
  * 
  * @export
+ * @interface ServicesDatabaseUserAccessCommand
  */
-export const ServicesDatabaseUserAccessCommand = {
-    Read: 'read',
-    Write: 'write',
-    Disable: 'disable'
-} as const;
-export type ServicesDatabaseUserAccessCommand = typeof ServicesDatabaseUserAccessCommand[keyof typeof ServicesDatabaseUserAccessCommand];
+export interface ServicesDatabaseUserAccessCommand {
+    /**
+     * 
+     * @type {{ [key: string]: ServicesDatabaseUserAccessRights; }}
+     * @memberof ServicesDatabaseUserAccessCommand
+     */
+    users?: { [key: string]: ServicesDatabaseUserAccessRights; };
+}
 
+/**
+ * Check if a given object implements the ServicesDatabaseUserAccessCommand interface.
+ */
+export function instanceOfServicesDatabaseUserAccessCommand(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
 
 export function ServicesDatabaseUserAccessCommandFromJSON(json: any): ServicesDatabaseUserAccessCommand {
     return ServicesDatabaseUserAccessCommandFromJSONTyped(json, false);
 }
 
 export function ServicesDatabaseUserAccessCommandFromJSONTyped(json: any, ignoreDiscriminator: boolean): ServicesDatabaseUserAccessCommand {
-    return json as ServicesDatabaseUserAccessCommand;
+    if ((json === undefined) || (json === null)) {
+        return json;
+    }
+    return {
+        
+        'users': !exists(json, 'users') ? undefined : (mapValues(json['users'], ServicesDatabaseUserAccessRightsFromJSON)),
+    };
 }
 
 export function ServicesDatabaseUserAccessCommandToJSON(value?: ServicesDatabaseUserAccessCommand | null): any {
-    return value as any;
+    if (value === undefined) {
+        return undefined;
+    }
+    if (value === null) {
+        return null;
+    }
+    return {
+        
+        'users': value.users === undefined ? undefined : (mapValues(value.users, ServicesDatabaseUserAccessRightsToJSON)),
+    };
 }
 

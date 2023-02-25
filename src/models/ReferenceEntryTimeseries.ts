@@ -14,39 +14,39 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * Represents Timeseries details
+ * 
  * @export
- * @interface LedgerEntryTimeseries
+ * @interface ReferenceEntryTimeseries
  */
-export interface LedgerEntryTimeseries {
+export interface ReferenceEntryTimeseries {
     /**
      * 
      * @type {string}
-     * @memberof LedgerEntryTimeseries
+     * @memberof ReferenceEntryTimeseries
      */
     measurement?: string;
     /**
      * 
      * @type {{ [key: string]: string; }}
-     * @memberof LedgerEntryTimeseries
+     * @memberof ReferenceEntryTimeseries
      */
     dimensions?: { [key: string]: string; };
 }
 
 /**
- * Check if a given object implements the LedgerEntryTimeseries interface.
+ * Check if a given object implements the ReferenceEntryTimeseries interface.
  */
-export function instanceOfLedgerEntryTimeseries(value: object): boolean {
+export function instanceOfReferenceEntryTimeseries(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function LedgerEntryTimeseriesFromJSON(json: any): LedgerEntryTimeseries {
-    return LedgerEntryTimeseriesFromJSONTyped(json, false);
+export function ReferenceEntryTimeseriesFromJSON(json: any): ReferenceEntryTimeseries {
+    return ReferenceEntryTimeseriesFromJSONTyped(json, false);
 }
 
-export function LedgerEntryTimeseriesFromJSONTyped(json: any, ignoreDiscriminator: boolean): LedgerEntryTimeseries {
+export function ReferenceEntryTimeseriesFromJSONTyped(json: any, ignoreDiscriminator: boolean): ReferenceEntryTimeseries {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -57,7 +57,7 @@ export function LedgerEntryTimeseriesFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function LedgerEntryTimeseriesToJSON(value?: LedgerEntryTimeseries | null): any {
+export function ReferenceEntryTimeseriesToJSON(value?: ReferenceEntryTimeseries | null): any {
     if (value === undefined) {
         return undefined;
     }

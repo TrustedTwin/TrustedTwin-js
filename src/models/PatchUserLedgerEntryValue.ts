@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { ValueEntry } from './ValueEntry';
 import {
-    ValueEntry,
     ValueEntryFromJSON,
     ValueEntryFromJSONTyped,
     ValueEntryToJSON,
@@ -32,6 +32,15 @@ export interface PatchUserLedgerEntryValue {
      * @memberof PatchUserLedgerEntryValue
      */
     entries?: { [key: string]: ValueEntry; };
+}
+
+/**
+ * Check if a given object implements the PatchUserLedgerEntryValue interface.
+ */
+export function instanceOfPatchUserLedgerEntryValue(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function PatchUserLedgerEntryValueFromJSON(json: any): PatchUserLedgerEntryValue {

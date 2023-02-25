@@ -33,6 +33,15 @@ export interface WebhookRefreshSubscription {
     subscription?: string;
 }
 
+/**
+ * Check if a given object implements the WebhookRefreshSubscription interface.
+ */
+export function instanceOfWebhookRefreshSubscription(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function WebhookRefreshSubscriptionFromJSON(json: any): WebhookRefreshSubscription {
     return WebhookRefreshSubscriptionFromJSONTyped(json, false);
 }

@@ -27,6 +27,15 @@ export interface TwinDocs {
     docs?: object;
 }
 
+/**
+ * Check if a given object implements the TwinDocs interface.
+ */
+export function instanceOfTwinDocs(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function TwinDocsFromJSON(json: any): TwinDocs {
     return TwinDocsFromJSONTyped(json, false);
 }

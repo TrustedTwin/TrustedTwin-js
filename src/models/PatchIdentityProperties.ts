@@ -33,6 +33,15 @@ export interface PatchIdentityProperties {
     visibility?: string;
 }
 
+/**
+ * Check if a given object implements the PatchIdentityProperties interface.
+ */
+export function instanceOfPatchIdentityProperties(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function PatchIdentityPropertiesFromJSON(json: any): PatchIdentityProperties {
     return PatchIdentityPropertiesFromJSONTyped(json, false);
 }

@@ -13,26 +13,20 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { IndexColumns } from './IndexColumns';
 import {
-    IndexColumns,
     IndexColumnsFromJSON,
     IndexColumnsFromJSONTyped,
     IndexColumnsToJSON,
 } from './IndexColumns';
+import type { IndexTableResponseStats } from './IndexTableResponseStats';
 import {
-    IndexTableResponse,
-    IndexTableResponseFromJSON,
-    IndexTableResponseFromJSONTyped,
-    IndexTableResponseToJSON,
-} from './IndexTableResponse';
-import {
-    IndexTableResponseStats,
     IndexTableResponseStatsFromJSON,
     IndexTableResponseStatsFromJSONTyped,
     IndexTableResponseStatsToJSON,
 } from './IndexTableResponseStats';
+import type { IndexTemplates } from './IndexTemplates';
 import {
-    IndexTemplates,
     IndexTemplatesFromJSON,
     IndexTemplatesFromJSONTyped,
     IndexTemplatesToJSON,
@@ -68,6 +62,19 @@ export interface TruncateIndexesTable200Response {
      * @memberof TruncateIndexesTable200Response
      */
     templates: IndexTemplates;
+}
+
+/**
+ * Check if a given object implements the TruncateIndexesTable200Response interface.
+ */
+export function instanceOfTruncateIndexesTable200Response(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "stats" in value;
+    isInstance = isInstance && "rule" in value;
+    isInstance = isInstance && "properties" in value;
+    isInstance = isInstance && "templates" in value;
+
+    return isInstance;
 }
 
 export function TruncateIndexesTable200ResponseFromJSON(json: any): TruncateIndexesTable200Response {

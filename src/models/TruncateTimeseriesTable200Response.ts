@@ -13,26 +13,20 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { LedgerEntryTimeseries } from './LedgerEntryTimeseries';
 import {
-    LedgerEntryTimeseries,
     LedgerEntryTimeseriesFromJSON,
     LedgerEntryTimeseriesFromJSONTyped,
     LedgerEntryTimeseriesToJSON,
 } from './LedgerEntryTimeseries';
+import type { TimeseriesColumns } from './TimeseriesColumns';
 import {
-    TimeseriesColumns,
     TimeseriesColumnsFromJSON,
     TimeseriesColumnsFromJSONTyped,
     TimeseriesColumnsToJSON,
 } from './TimeseriesColumns';
+import type { TimeseriesTableResponseStats } from './TimeseriesTableResponseStats';
 import {
-    TimeseriesTableResponse,
-    TimeseriesTableResponseFromJSON,
-    TimeseriesTableResponseFromJSONTyped,
-    TimeseriesTableResponseToJSON,
-} from './TimeseriesTableResponse';
-import {
-    TimeseriesTableResponseStats,
     TimeseriesTableResponseStatsFromJSON,
     TimeseriesTableResponseStatsFromJSONTyped,
     TimeseriesTableResponseStatsToJSON,
@@ -73,13 +67,25 @@ export interface TruncateTimeseriesTable200Response {
      * @type {string}
      * @memberof TruncateTimeseriesTable200Response
      */
-    retention?: string | null;
+    retention?: string;
     /**
      * 
      * @type {string}
      * @memberof TruncateTimeseriesTable200Response
      */
-    chunk?: string | null;
+    chunk?: string;
+}
+
+/**
+ * Check if a given object implements the TruncateTimeseriesTable200Response interface.
+ */
+export function instanceOfTruncateTimeseriesTable200Response(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "stats" in value;
+    isInstance = isInstance && "dimensions" in value;
+    isInstance = isInstance && "measurements" in value;
+
+    return isInstance;
 }
 
 export function TruncateTimeseriesTable200ResponseFromJSON(json: any): TruncateTimeseriesTable200Response {

@@ -27,6 +27,15 @@ export interface InvalidateHandlerResponse {
     handler?: string;
 }
 
+/**
+ * Check if a given object implements the InvalidateHandlerResponse interface.
+ */
+export function instanceOfInvalidateHandlerResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function InvalidateHandlerResponseFromJSON(json: any): InvalidateHandlerResponse {
     return InvalidateHandlerResponseFromJSONTyped(json, false);
 }

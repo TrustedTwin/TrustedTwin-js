@@ -27,6 +27,15 @@ export interface UpdateTwinDoc {
     description?: { [key: string]: string; };
 }
 
+/**
+ * Check if a given object implements the UpdateTwinDoc interface.
+ */
+export function instanceOfUpdateTwinDoc(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function UpdateTwinDocFromJSON(json: any): UpdateTwinDoc {
     return UpdateTwinDocFromJSONTyped(json, false);
 }

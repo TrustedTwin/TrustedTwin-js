@@ -14,23 +14,25 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  ErrorObject,
+  WebhookRefreshSubscription,
+  WebhookRefreshSubscriptionResponse,
+  WebhookSubscribe,
+  WebhookSubscribeResponse,
+  WebhookUnsubscribeResponse,
+} from '../models';
 import {
-    ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
-    WebhookRefreshSubscription,
     WebhookRefreshSubscriptionFromJSON,
     WebhookRefreshSubscriptionToJSON,
-    WebhookRefreshSubscriptionResponse,
     WebhookRefreshSubscriptionResponseFromJSON,
     WebhookRefreshSubscriptionResponseToJSON,
-    WebhookSubscribe,
     WebhookSubscribeFromJSON,
     WebhookSubscribeToJSON,
-    WebhookSubscribeResponse,
     WebhookSubscribeResponseFromJSON,
     WebhookSubscribeResponseToJSON,
-    WebhookUnsubscribeResponse,
     WebhookUnsubscribeResponseFromJSON,
     WebhookUnsubscribeResponseToJSON,
 } from '../models';
@@ -63,7 +65,7 @@ export class WebhooksApi extends runtime.BaseAPI {
     /**
      * Confirm notification subscription
      */
-    async webhookConfirmSubscriptionRaw(requestParameters: WebhooksApiWebhookConfirmSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async webhookConfirmSubscriptionRaw(requestParameters: WebhooksApiWebhookConfirmSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.account === null || requestParameters.account === undefined) {
             throw new runtime.RequiredError('account','Required parameter requestParameters.account was null or undefined when calling webhookConfirmSubscription.');
         }
@@ -93,14 +95,14 @@ export class WebhooksApi extends runtime.BaseAPI {
     /**
      * Confirm notification subscription
      */
-    async webhookConfirmSubscription(requestParameters: WebhooksApiWebhookConfirmSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async webhookConfirmSubscription(requestParameters: WebhooksApiWebhookConfirmSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.webhookConfirmSubscriptionRaw(requestParameters, initOverrides);
     }
 
     /**
      * Refresh notification subscription
      */
-    async webhookRefreshSubscriptionRaw(requestParameters: WebhooksApiWebhookRefreshSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<WebhookRefreshSubscriptionResponse>> {
+    async webhookRefreshSubscriptionRaw(requestParameters: WebhooksApiWebhookRefreshSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WebhookRefreshSubscriptionResponse>> {
         if (requestParameters.account === null || requestParameters.account === undefined) {
             throw new runtime.RequiredError('account','Required parameter requestParameters.account was null or undefined when calling webhookRefreshSubscription.');
         }
@@ -133,7 +135,7 @@ export class WebhooksApi extends runtime.BaseAPI {
     /**
      * Refresh notification subscription
      */
-    async webhookRefreshSubscription(requestParameters: WebhooksApiWebhookRefreshSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<WebhookRefreshSubscriptionResponse> {
+    async webhookRefreshSubscription(requestParameters: WebhooksApiWebhookRefreshSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WebhookRefreshSubscriptionResponse> {
         const response = await this.webhookRefreshSubscriptionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -141,7 +143,7 @@ export class WebhooksApi extends runtime.BaseAPI {
     /**
      * Create subscription to webhook notifications
      */
-    async webhookSubscribeRaw(requestParameters: WebhooksApiWebhookSubscribeRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<WebhookSubscribeResponse>> {
+    async webhookSubscribeRaw(requestParameters: WebhooksApiWebhookSubscribeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WebhookSubscribeResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -166,7 +168,7 @@ export class WebhooksApi extends runtime.BaseAPI {
     /**
      * Create subscription to webhook notifications
      */
-    async webhookSubscribe(requestParameters: WebhooksApiWebhookSubscribeRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<WebhookSubscribeResponse> {
+    async webhookSubscribe(requestParameters: WebhooksApiWebhookSubscribeRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WebhookSubscribeResponse> {
         const response = await this.webhookSubscribeRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -174,7 +176,7 @@ export class WebhooksApi extends runtime.BaseAPI {
     /**
      * Unsubscribe from webhooks notification system
      */
-    async webhookUnsubscribeRaw(requestParameters: WebhooksApiWebhookUnsubscribeRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<WebhookUnsubscribeResponse>> {
+    async webhookUnsubscribeRaw(requestParameters: WebhooksApiWebhookUnsubscribeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WebhookUnsubscribeResponse>> {
         if (requestParameters.account === null || requestParameters.account === undefined) {
             throw new runtime.RequiredError('account','Required parameter requestParameters.account was null or undefined when calling webhookUnsubscribe.');
         }
@@ -204,7 +206,7 @@ export class WebhooksApi extends runtime.BaseAPI {
     /**
      * Unsubscribe from webhooks notification system
      */
-    async webhookUnsubscribe(requestParameters: WebhooksApiWebhookUnsubscribeRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<WebhookUnsubscribeResponse> {
+    async webhookUnsubscribe(requestParameters: WebhooksApiWebhookUnsubscribeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WebhookUnsubscribeResponse> {
         const response = await this.webhookUnsubscribeRaw(requestParameters, initOverrides);
         return await response.value();
     }

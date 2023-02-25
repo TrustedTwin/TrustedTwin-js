@@ -13,14 +13,14 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { UpdateRoleStatement } from './UpdateRoleStatement';
 import {
-    UpdateRoleStatement,
     UpdateRoleStatementFromJSON,
     UpdateRoleStatementFromJSONTyped,
     UpdateRoleStatementToJSON,
 } from './UpdateRoleStatement';
+import type { UpdatedRoleRules } from './UpdatedRoleRules';
 import {
-    UpdatedRoleRules,
     UpdatedRoleRulesFromJSON,
     UpdatedRoleRulesFromJSONTyped,
     UpdatedRoleRulesToJSON,
@@ -44,6 +44,12 @@ export interface UpdatedRole {
      * @memberof UpdatedRole
      */
     name?: string;
+    /**
+     * Account UUID
+     * @type {string}
+     * @memberof UpdatedRole
+     */
+    account?: string;
     /**
      * 
      * @type {UpdateRoleStatement}
@@ -70,6 +76,15 @@ export interface UpdatedRole {
     updatedTs?: number;
 }
 
+/**
+ * Check if a given object implements the UpdatedRole interface.
+ */
+export function instanceOfUpdatedRole(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function UpdatedRoleFromJSON(json: any): UpdatedRole {
     return UpdatedRoleFromJSONTyped(json, false);
 }
@@ -82,6 +97,7 @@ export function UpdatedRoleFromJSONTyped(json: any, ignoreDiscriminator: boolean
         
         'uuid': !exists(json, 'uuid') ? undefined : json['uuid'],
         'name': !exists(json, 'name') ? undefined : json['name'],
+        'account': !exists(json, 'account') ? undefined : json['account'],
         'statement': !exists(json, 'statement') ? undefined : UpdateRoleStatementFromJSON(json['statement']),
         'rules': !exists(json, 'rules') ? undefined : UpdatedRoleRulesFromJSON(json['rules']),
         'createdTs': !exists(json, 'created_ts') ? undefined : json['created_ts'],
@@ -100,6 +116,7 @@ export function UpdatedRoleToJSON(value?: UpdatedRole | null): any {
         
         'uuid': value.uuid,
         'name': value.name,
+        'account': value.account,
         'statement': UpdateRoleStatementToJSON(value.statement),
         'rules': UpdatedRoleRulesToJSON(value.rules),
         'created_ts': value.createdTs,

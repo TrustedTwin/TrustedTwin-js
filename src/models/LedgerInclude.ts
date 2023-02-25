@@ -16,41 +16,41 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Usage
+ * @interface LedgerInclude
  */
-export interface Usage {
+export interface LedgerInclude {
     /**
-     * 
-     * @type {{ [key: string]: { [key: string]: number; }; }}
-     * @memberof Usage
+     * Source path to the value that the Entry includes
+     * @type {string}
+     * @memberof LedgerInclude
      */
-    usage?: { [key: string]: { [key: string]: number; }; };
+    source?: string;
 }
 
 /**
- * Check if a given object implements the Usage interface.
+ * Check if a given object implements the LedgerInclude interface.
  */
-export function instanceOfUsage(value: object): boolean {
+export function instanceOfLedgerInclude(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function UsageFromJSON(json: any): Usage {
-    return UsageFromJSONTyped(json, false);
+export function LedgerIncludeFromJSON(json: any): LedgerInclude {
+    return LedgerIncludeFromJSONTyped(json, false);
 }
 
-export function UsageFromJSONTyped(json: any, ignoreDiscriminator: boolean): Usage {
+export function LedgerIncludeFromJSONTyped(json: any, ignoreDiscriminator: boolean): LedgerInclude {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'usage': !exists(json, 'usage') ? undefined : json['usage'],
+        'source': !exists(json, 'source') ? undefined : json['source'],
     };
 }
 
-export function UsageToJSON(value?: Usage | null): any {
+export function LedgerIncludeToJSON(value?: LedgerInclude | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -59,7 +59,7 @@ export function UsageToJSON(value?: Usage | null): any {
     }
     return {
         
-        'usage': value.usage,
+        'source': value.source,
     };
 }
 

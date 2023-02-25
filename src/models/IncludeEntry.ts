@@ -13,72 +13,79 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { PostLedgerEntriesEntriesValue } from './PostLedgerEntriesEntriesValue';
+import type { LedgerInclude } from './LedgerInclude';
 import {
-    PostLedgerEntriesEntriesValueFromJSON,
-    PostLedgerEntriesEntriesValueFromJSONTyped,
-    PostLedgerEntriesEntriesValueToJSON,
-} from './PostLedgerEntriesEntriesValue';
+    LedgerIncludeFromJSON,
+    LedgerIncludeFromJSONTyped,
+    LedgerIncludeToJSON,
+} from './LedgerInclude';
 
 /**
- * 
+ * Ledger's reference key
  * @export
- * @interface UserLedger
+ * @interface IncludeEntry
  */
-export interface UserLedger {
+export interface IncludeEntry {
+    /**
+     * 
+     * @type {LedgerInclude}
+     * @memberof IncludeEntry
+     */
+    include?: LedgerInclude;
+    /**
+     * value from include source
+     * @type {string}
+     * @memberof IncludeEntry
+     */
+    value?: string;
     /**
      * UTC timestamp denoting when the Entry was created
      * @type {number}
-     * @memberof UserLedger
+     * @memberof IncludeEntry
      */
     readonly entryCreatedTs?: number;
     /**
-     * UTC timestamp denoting when the Entry was updated
+     * UTC timestamp denoting when the Entry was last updated
      * @type {number}
-     * @memberof UserLedger
+     * @memberof IncludeEntry
      */
     readonly entryUpdatedTs?: number;
     /**
      * UTC timestamp denoting when the Entry's value was last changed
      * @type {number}
-     * @memberof UserLedger
+     * @memberof IncludeEntry
      */
     readonly valueChangedTs?: number;
-    /**
-     * 
-     * @type {{ [key: string]: PostLedgerEntriesEntriesValue; }}
-     * @memberof UserLedger
-     */
-    entries?: { [key: string]: PostLedgerEntriesEntriesValue; };
 }
 
 /**
- * Check if a given object implements the UserLedger interface.
+ * Check if a given object implements the IncludeEntry interface.
  */
-export function instanceOfUserLedger(value: object): boolean {
+export function instanceOfIncludeEntry(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function UserLedgerFromJSON(json: any): UserLedger {
-    return UserLedgerFromJSONTyped(json, false);
+export function IncludeEntryFromJSON(json: any): IncludeEntry {
+    return IncludeEntryFromJSONTyped(json, false);
 }
 
-export function UserLedgerFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserLedger {
+export function IncludeEntryFromJSONTyped(json: any, ignoreDiscriminator: boolean): IncludeEntry {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
+        'include': !exists(json, 'include') ? undefined : LedgerIncludeFromJSON(json['include']),
+        'value': !exists(json, 'value') ? undefined : json['value'],
         'entryCreatedTs': !exists(json, 'entry_created_ts') ? undefined : json['entry_created_ts'],
         'entryUpdatedTs': !exists(json, 'entry_updated_ts') ? undefined : json['entry_updated_ts'],
         'valueChangedTs': !exists(json, 'value_changed_ts') ? undefined : json['value_changed_ts'],
-        'entries': !exists(json, 'entries') ? undefined : (mapValues(json['entries'], PostLedgerEntriesEntriesValueFromJSON)),
     };
 }
 
-export function UserLedgerToJSON(value?: UserLedger | null): any {
+export function IncludeEntryToJSON(value?: IncludeEntry | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -87,7 +94,8 @@ export function UserLedgerToJSON(value?: UserLedger | null): any {
     }
     return {
         
-        'entries': value.entries === undefined ? undefined : (mapValues(value.entries, PostLedgerEntriesEntriesValueToJSON)),
+        'include': LedgerIncludeToJSON(value.include),
+        'value': value.value,
     };
 }
 

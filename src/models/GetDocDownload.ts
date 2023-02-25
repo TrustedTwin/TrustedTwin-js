@@ -26,11 +26,20 @@ export interface GetDocDownload {
      */
     url?: string;
     /**
-     * UTC timestamp denoting validity of the provided download URL
+     * UTC timestamp denoting validity of the provided download URL (60 minutes from when it was generated)
      * @type {number}
      * @memberof GetDocDownload
      */
     validityTs?: number;
+}
+
+/**
+ * Check if a given object implements the GetDocDownload interface.
+ */
+export function instanceOfGetDocDownload(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function GetDocDownloadFromJSON(json: any): GetDocDownload {

@@ -14,29 +14,31 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  CreateUserSecretPIN,
+  ErrorObject,
+  GetRole,
+  NewRole,
+  PostNewRole,
+  UpdateRole,
+  UpdatedRole,
+  UserSecretResponse,
+} from '../models';
 import {
-    CreateUserSecretPIN,
     CreateUserSecretPINFromJSON,
     CreateUserSecretPINToJSON,
-    ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
-    GetRole,
     GetRoleFromJSON,
     GetRoleToJSON,
-    NewRole,
     NewRoleFromJSON,
     NewRoleToJSON,
-    PostNewRole,
     PostNewRoleFromJSON,
     PostNewRoleToJSON,
-    UpdateRole,
     UpdateRoleFromJSON,
     UpdateRoleToJSON,
-    UpdatedRole,
     UpdatedRoleFromJSON,
     UpdatedRoleToJSON,
-    UserSecretResponse,
     UserSecretResponseFromJSON,
     UserSecretResponseToJSON,
 } from '../models';
@@ -72,7 +74,7 @@ export class AccountApi extends runtime.BaseAPI {
     /**
      * Create a new Role
      */
-    async createUserRoleRaw(requestParameters: AccountApiCreateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<NewRole>> {
+    async createUserRoleRaw(requestParameters: AccountApiCreateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NewRole>> {
         if (requestParameters.postNewRole === null || requestParameters.postNewRole === undefined) {
             throw new runtime.RequiredError('postNewRole','Required parameter requestParameters.postNewRole was null or undefined when calling createUserRole.');
         }
@@ -101,7 +103,7 @@ export class AccountApi extends runtime.BaseAPI {
     /**
      * Create a new Role
      */
-    async createUserRole(requestParameters: AccountApiCreateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<NewRole> {
+    async createUserRole(requestParameters: AccountApiCreateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NewRole> {
         const response = await this.createUserRoleRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -109,7 +111,7 @@ export class AccountApi extends runtime.BaseAPI {
     /**
      * Create User Secret
      */
-    async createUserSecretRaw(requestParameters: AccountApiCreateUserSecretRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<UserSecretResponse>> {
+    async createUserSecretRaw(requestParameters: AccountApiCreateUserSecretRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserSecretResponse>> {
         if (requestParameters.account === null || requestParameters.account === undefined) {
             throw new runtime.RequiredError('account','Required parameter requestParameters.account was null or undefined when calling createUserSecret.');
         }
@@ -138,7 +140,7 @@ export class AccountApi extends runtime.BaseAPI {
     /**
      * Create User Secret
      */
-    async createUserSecret(requestParameters: AccountApiCreateUserSecretRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<UserSecretResponse> {
+    async createUserSecret(requestParameters: AccountApiCreateUserSecretRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserSecretResponse> {
         const response = await this.createUserSecretRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -146,7 +148,7 @@ export class AccountApi extends runtime.BaseAPI {
     /**
      * Delete given Role
      */
-    async deleteUserRoleRaw(requestParameters: AccountApiDeleteUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async deleteUserRoleRaw(requestParameters: AccountApiDeleteUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.role === null || requestParameters.role === undefined) {
             throw new runtime.RequiredError('role','Required parameter requestParameters.role was null or undefined when calling deleteUserRole.');
         }
@@ -172,14 +174,14 @@ export class AccountApi extends runtime.BaseAPI {
     /**
      * Delete given Role
      */
-    async deleteUserRole(requestParameters: AccountApiDeleteUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async deleteUserRole(requestParameters: AccountApiDeleteUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteUserRoleRaw(requestParameters, initOverrides);
     }
 
     /**
      * Get given Role
      */
-    async getUserRoleRaw(requestParameters: AccountApiGetUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetRole>> {
+    async getUserRoleRaw(requestParameters: AccountApiGetUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetRole>> {
         if (requestParameters.role === null || requestParameters.role === undefined) {
             throw new runtime.RequiredError('role','Required parameter requestParameters.role was null or undefined when calling getUserRole.');
         }
@@ -205,7 +207,7 @@ export class AccountApi extends runtime.BaseAPI {
     /**
      * Get given Role
      */
-    async getUserRole(requestParameters: AccountApiGetUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetRole> {
+    async getUserRole(requestParameters: AccountApiGetUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetRole> {
         const response = await this.getUserRoleRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -213,7 +215,7 @@ export class AccountApi extends runtime.BaseAPI {
     /**
      * Update requested Role
      */
-    async updateUserRoleRaw(requestParameters: AccountApiUpdateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<UpdatedRole>> {
+    async updateUserRoleRaw(requestParameters: AccountApiUpdateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdatedRole>> {
         if (requestParameters.role === null || requestParameters.role === undefined) {
             throw new runtime.RequiredError('role','Required parameter requestParameters.role was null or undefined when calling updateUserRole.');
         }
@@ -246,7 +248,7 @@ export class AccountApi extends runtime.BaseAPI {
     /**
      * Update requested Role
      */
-    async updateUserRole(requestParameters: AccountApiUpdateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<UpdatedRole> {
+    async updateUserRole(requestParameters: AccountApiUpdateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdatedRole> {
         const response = await this.updateUserRoleRaw(requestParameters, initOverrides);
         return await response.value();
     }

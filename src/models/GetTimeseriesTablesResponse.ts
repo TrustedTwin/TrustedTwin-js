@@ -13,14 +13,14 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { GetTimeseriesTablesResponseStats } from './GetTimeseriesTablesResponseStats';
 import {
-    GetTimeseriesTablesResponseStats,
     GetTimeseriesTablesResponseStatsFromJSON,
     GetTimeseriesTablesResponseStatsFromJSONTyped,
     GetTimeseriesTablesResponseStatsToJSON,
 } from './GetTimeseriesTablesResponseStats';
+import type { ServicesDatabaseUserAccessCommand } from './ServicesDatabaseUserAccessCommand';
 import {
-    ServicesDatabaseUserAccessCommand,
     ServicesDatabaseUserAccessCommandFromJSON,
     ServicesDatabaseUserAccessCommandFromJSONTyped,
     ServicesDatabaseUserAccessCommandToJSON,
@@ -50,6 +50,16 @@ export interface GetTimeseriesTablesResponse {
      * @memberof GetTimeseriesTablesResponse
      */
     timeseries?: Array<string>;
+}
+
+/**
+ * Check if a given object implements the GetTimeseriesTablesResponse interface.
+ */
+export function instanceOfGetTimeseriesTablesResponse(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "stats" in value;
+
+    return isInstance;
 }
 
 export function GetTimeseriesTablesResponseFromJSON(json: any): GetTimeseriesTablesResponse {

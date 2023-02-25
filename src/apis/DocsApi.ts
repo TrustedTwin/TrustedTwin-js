@@ -14,29 +14,31 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  AttachTwinDocument,
+  AttachTwinDocumentResponse,
+  ErrorObject,
+  FileAddResponse,
+  GetDoc,
+  InvalidateHandlerResponse,
+  TwinDocs,
+  UpdateTwinDoc,
+} from '../models';
 import {
-    AttachTwinDocument,
     AttachTwinDocumentFromJSON,
     AttachTwinDocumentToJSON,
-    AttachTwinDocumentResponse,
     AttachTwinDocumentResponseFromJSON,
     AttachTwinDocumentResponseToJSON,
-    ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
-    FileAddResponse,
     FileAddResponseFromJSON,
     FileAddResponseToJSON,
-    GetDoc,
     GetDocFromJSON,
     GetDocToJSON,
-    InvalidateHandlerResponse,
     InvalidateHandlerResponseFromJSON,
     InvalidateHandlerResponseToJSON,
-    TwinDocs,
     TwinDocsFromJSON,
     TwinDocsToJSON,
-    UpdateTwinDoc,
     UpdateTwinDocFromJSON,
     UpdateTwinDocToJSON,
 } from '../models';
@@ -88,7 +90,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Attach Doc to the Twin
      */
-    async attachTwinDocRaw(requestParameters: DocsApiAttachTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<AttachTwinDocumentResponse>> {
+    async attachTwinDocRaw(requestParameters: DocsApiAttachTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AttachTwinDocumentResponse>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling attachTwinDoc.');
         }
@@ -117,7 +119,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Attach Doc to the Twin
      */
-    async attachTwinDoc(requestParameters: DocsApiAttachTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<AttachTwinDocumentResponse> {
+    async attachTwinDoc(requestParameters: DocsApiAttachTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachTwinDocumentResponse> {
         const response = await this.attachTwinDocRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -125,7 +127,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Create Doc handler used to attach Doc to a Twin
      */
-    async createUploadUrlRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<FileAddResponse>> {
+    async createUploadUrlRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FileAddResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -147,7 +149,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Create Doc handler used to attach Doc to a Twin
      */
-    async createUploadUrl(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<FileAddResponse> {
+    async createUploadUrl(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FileAddResponse> {
         const response = await this.createUploadUrlRaw(initOverrides);
         return await response.value();
     }
@@ -155,7 +157,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Delete Doc attached to given Twin
      */
-    async deleteTwinDocRaw(requestParameters: DocsApiDeleteTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetDoc>> {
+    async deleteTwinDocRaw(requestParameters: DocsApiDeleteTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetDoc>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling deleteTwinDoc.');
         }
@@ -185,7 +187,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Delete Doc attached to given Twin
      */
-    async deleteTwinDoc(requestParameters: DocsApiDeleteTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetDoc> {
+    async deleteTwinDoc(requestParameters: DocsApiDeleteTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetDoc> {
         const response = await this.deleteTwinDocRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -193,7 +195,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Delete Docs attached to given Twin
      */
-    async deleteTwinDocsRaw(requestParameters: DocsApiDeleteTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetDoc>> {
+    async deleteTwinDocsRaw(requestParameters: DocsApiDeleteTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetDoc>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling deleteTwinDocs.');
         }
@@ -219,7 +221,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Delete Docs attached to given Twin
      */
-    async deleteTwinDocs(requestParameters: DocsApiDeleteTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetDoc> {
+    async deleteTwinDocs(requestParameters: DocsApiDeleteTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetDoc> {
         const response = await this.deleteTwinDocsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -227,7 +229,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Download requested file
      */
-    async downloadDocRaw(requestParameters: DocsApiDownloadDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async downloadDocRaw(requestParameters: DocsApiDownloadDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.account === null || requestParameters.account === undefined) {
             throw new runtime.RequiredError('account','Required parameter requestParameters.account was null or undefined when calling downloadDoc.');
         }
@@ -253,14 +255,14 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Download requested file
      */
-    async downloadDoc(requestParameters: DocsApiDownloadDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async downloadDoc(requestParameters: DocsApiDownloadDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.downloadDocRaw(requestParameters, initOverrides);
     }
 
     /**
      * Obtain URL to download attached Doc
      */
-    async getTwinDocRaw(requestParameters: DocsApiGetTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetDoc>> {
+    async getTwinDocRaw(requestParameters: DocsApiGetTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetDoc>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinDoc.');
         }
@@ -294,7 +296,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Obtain URL to download attached Doc
      */
-    async getTwinDoc(requestParameters: DocsApiGetTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetDoc> {
+    async getTwinDoc(requestParameters: DocsApiGetTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetDoc> {
         const response = await this.getTwinDocRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -302,7 +304,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Get Docs attached to given Twin
      */
-    async getTwinDocsRaw(requestParameters: DocsApiGetTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<TwinDocs>> {
+    async getTwinDocsRaw(requestParameters: DocsApiGetTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TwinDocs>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinDocs.');
         }
@@ -328,7 +330,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Get Docs attached to given Twin
      */
-    async getTwinDocs(requestParameters: DocsApiGetTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<TwinDocs> {
+    async getTwinDocs(requestParameters: DocsApiGetTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TwinDocs> {
         const response = await this.getTwinDocsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -336,7 +338,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Invalidate Doc handler used to attach Doc to a Twin and remove uploaded Doc from temporary storage
      */
-    async invalidateUploadUrlRaw(requestParameters: DocsApiInvalidateUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<InvalidateHandlerResponse>> {
+    async invalidateUploadUrlRaw(requestParameters: DocsApiInvalidateUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InvalidateHandlerResponse>> {
         if (requestParameters.handler === null || requestParameters.handler === undefined) {
             throw new runtime.RequiredError('handler','Required parameter requestParameters.handler was null or undefined when calling invalidateUploadUrl.');
         }
@@ -362,7 +364,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Invalidate Doc handler used to attach Doc to a Twin and remove uploaded Doc from temporary storage
      */
-    async invalidateUploadUrl(requestParameters: DocsApiInvalidateUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<InvalidateHandlerResponse> {
+    async invalidateUploadUrl(requestParameters: DocsApiInvalidateUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InvalidateHandlerResponse> {
         const response = await this.invalidateUploadUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -370,7 +372,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Update Twin\'s Doc
      */
-    async updateTwinDocRaw(requestParameters: DocsApiUpdateTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetDoc>> {
+    async updateTwinDocRaw(requestParameters: DocsApiUpdateTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetDoc>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling updateTwinDoc.');
         }
@@ -403,7 +405,7 @@ export class DocsApi extends runtime.BaseAPI {
     /**
      * Update Twin\'s Doc
      */
-    async updateTwinDoc(requestParameters: DocsApiUpdateTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetDoc> {
+    async updateTwinDoc(requestParameters: DocsApiUpdateTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetDoc> {
         const response = await this.updateTwinDocRaw(requestParameters, initOverrides);
         return await response.value();
     }

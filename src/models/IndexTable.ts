@@ -13,14 +13,14 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { IndexColumns } from './IndexColumns';
 import {
-    IndexColumns,
     IndexColumnsFromJSON,
     IndexColumnsFromJSONTyped,
     IndexColumnsToJSON,
 } from './IndexColumns';
+import type { IndexTemplates } from './IndexTemplates';
 import {
-    IndexTemplates,
     IndexTemplatesFromJSON,
     IndexTemplatesFromJSONTyped,
     IndexTemplatesToJSON,
@@ -50,6 +50,18 @@ export interface IndexTable {
      * @memberof IndexTable
      */
     templates: IndexTemplates;
+}
+
+/**
+ * Check if a given object implements the IndexTable interface.
+ */
+export function instanceOfIndexTable(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "rule" in value;
+    isInstance = isInstance && "properties" in value;
+    isInstance = isInstance && "templates" in value;
+
+    return isInstance;
 }
 
 export function IndexTableFromJSON(json: any): IndexTable {

@@ -20,7 +20,7 @@ import { exists, mapValues } from '../runtime';
  */
 export interface PostNewUser {
     /**
-     * Optional User name (doesn't have to be unique), must conform to '^[0-9A-Za-z][0-9A-Za-z_ \-]{0,30}[0-9A-Za-z]*$'
+     * Optional User name (doesn't have to be unique), must conform to '^[0-9A-Za-z][0-9A-Za-z_ \-]{0,30}[0-9A-Za-z]$'
      * @type {string}
      * @memberof PostNewUser
      */
@@ -37,6 +37,16 @@ export interface PostNewUser {
      * @memberof PostNewUser
      */
     description?: { [key: string]: string; };
+}
+
+/**
+ * Check if a given object implements the PostNewUser interface.
+ */
+export function instanceOfPostNewUser(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "role" in value;
+
+    return isInstance;
 }
 
 export function PostNewUserFromJSON(json: any): PostNewUser {

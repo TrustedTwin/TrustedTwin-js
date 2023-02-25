@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { ServicesDatabaseColumnType } from './ServicesDatabaseColumnType';
 import {
-    ServicesDatabaseColumnType,
     ServicesDatabaseColumnTypeFromJSON,
     ServicesDatabaseColumnTypeFromJSONTyped,
     ServicesDatabaseColumnTypeToJSON,
@@ -38,6 +38,15 @@ export interface TimeseriesColumns {
      * @memberof TimeseriesColumns
      */
     types?: Array<ServicesDatabaseColumnType>;
+}
+
+/**
+ * Check if a given object implements the TimeseriesColumns interface.
+ */
+export function instanceOfTimeseriesColumns(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function TimeseriesColumnsFromJSON(json: any): TimeseriesColumns {

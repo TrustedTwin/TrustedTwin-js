@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { PostLedgerEntriesEntriesValue } from './PostLedgerEntriesEntriesValue';
 import {
-    PostLedgerEntriesEntriesValue,
     PostLedgerEntriesEntriesValueFromJSON,
     PostLedgerEntriesEntriesValueFromJSONTyped,
     PostLedgerEntriesEntriesValueToJSON,
@@ -32,6 +32,15 @@ export interface PostLedgerEntries {
      * @memberof PostLedgerEntries
      */
     entries?: { [key: string]: PostLedgerEntriesEntriesValue; };
+}
+
+/**
+ * Check if a given object implements the PostLedgerEntries interface.
+ */
+export function instanceOfPostLedgerEntries(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function PostLedgerEntriesFromJSON(json: any): PostLedgerEntries {

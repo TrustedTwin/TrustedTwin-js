@@ -14,35 +14,36 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  ErrorObject,
+  GetTwinLedgerEntryLedgerParameter,
+  GetUserLedgerEntryValue,
+  LedgerEntriesHistory,
+  PatchUserLedger,
+  PatchUserLedgerEntryValue,
+  PatchedUserLedger,
+  PostLedgerEntries,
+  UserLedger,
+} from '../models';
 import {
-    ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
-    GetUserLedgerEntryValue,
+    GetTwinLedgerEntryLedgerParameterFromJSON,
+    GetTwinLedgerEntryLedgerParameterToJSON,
     GetUserLedgerEntryValueFromJSON,
     GetUserLedgerEntryValueToJSON,
-    LedgerAlias,
-    LedgerAliasFromJSON,
-    LedgerAliasToJSON,
-    LedgerEntriesHistory,
     LedgerEntriesHistoryFromJSON,
     LedgerEntriesHistoryToJSON,
-    PatchUserLedger,
     PatchUserLedgerFromJSON,
     PatchUserLedgerToJSON,
-    PatchUserLedgerEntryValue,
     PatchUserLedgerEntryValueFromJSON,
     PatchUserLedgerEntryValueToJSON,
-    PatchedUserLedger,
     PatchedUserLedgerFromJSON,
     PatchedUserLedgerToJSON,
-    PostLedgerEntries,
     PostLedgerEntriesFromJSON,
     PostLedgerEntriesToJSON,
-    UserLedger,
     UserLedgerFromJSON,
     UserLedgerToJSON,
-    GetTwinLedgerEntryLedgerParameter,
 } from '../models';
 
 export interface LedgerApiAddTwinLedgerEntryRequest {
@@ -101,7 +102,7 @@ export class LedgerApi extends runtime.BaseAPI {
     /**
      * Add one or more Entries to Ledger
      */
-    async addTwinLedgerEntryRaw(requestParameters: LedgerApiAddTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<UserLedger>> {
+    async addTwinLedgerEntryRaw(requestParameters: LedgerApiAddTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserLedger>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling addTwinLedgerEntry.');
         }
@@ -138,7 +139,7 @@ export class LedgerApi extends runtime.BaseAPI {
     /**
      * Add one or more Entries to Ledger
      */
-    async addTwinLedgerEntry(requestParameters: LedgerApiAddTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<UserLedger> {
+    async addTwinLedgerEntry(requestParameters: LedgerApiAddTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserLedger> {
         const response = await this.addTwinLedgerEntryRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -146,7 +147,7 @@ export class LedgerApi extends runtime.BaseAPI {
     /**
      * Delete Entry from Ledger
      */
-    async deleteTwinLedgerEntryRaw(requestParameters: LedgerApiDeleteTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async deleteTwinLedgerEntryRaw(requestParameters: LedgerApiDeleteTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling deleteTwinLedgerEntry.');
         }
@@ -180,14 +181,14 @@ export class LedgerApi extends runtime.BaseAPI {
     /**
      * Delete Entry from Ledger
      */
-    async deleteTwinLedgerEntry(requestParameters: LedgerApiDeleteTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async deleteTwinLedgerEntry(requestParameters: LedgerApiDeleteTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteTwinLedgerEntryRaw(requestParameters, initOverrides);
     }
 
     /**
      * Get Entry from Ledger
      */
-    async getTwinLedgerEntryRaw(requestParameters: LedgerApiGetTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<UserLedger>> {
+    async getTwinLedgerEntryRaw(requestParameters: LedgerApiGetTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserLedger>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinLedgerEntry.');
         }
@@ -233,7 +234,7 @@ export class LedgerApi extends runtime.BaseAPI {
     /**
      * Get Entry from Ledger
      */
-    async getTwinLedgerEntry(requestParameters: LedgerApiGetTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<UserLedger> {
+    async getTwinLedgerEntry(requestParameters: LedgerApiGetTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserLedger> {
         const response = await this.getTwinLedgerEntryRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -241,7 +242,7 @@ export class LedgerApi extends runtime.BaseAPI {
     /**
      * Get Ledger Entry History
      */
-    async getTwinLedgerEntryHistoryRaw(requestParameters: LedgerApiGetTwinLedgerEntryHistoryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<LedgerEntriesHistory>> {
+    async getTwinLedgerEntryHistoryRaw(requestParameters: LedgerApiGetTwinLedgerEntryHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LedgerEntriesHistory>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinLedgerEntryHistory.');
         }
@@ -287,7 +288,7 @@ export class LedgerApi extends runtime.BaseAPI {
     /**
      * Get Ledger Entry History
      */
-    async getTwinLedgerEntryHistory(requestParameters: LedgerApiGetTwinLedgerEntryHistoryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<LedgerEntriesHistory> {
+    async getTwinLedgerEntryHistory(requestParameters: LedgerApiGetTwinLedgerEntryHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LedgerEntriesHistory> {
         const response = await this.getTwinLedgerEntryHistoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -295,7 +296,7 @@ export class LedgerApi extends runtime.BaseAPI {
     /**
      * Get Entry Value from Ledger
      */
-    async getTwinLedgerEntryValueRaw(requestParameters: LedgerApiGetTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetUserLedgerEntryValue>> {
+    async getTwinLedgerEntryValueRaw(requestParameters: LedgerApiGetTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUserLedgerEntryValue>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinLedgerEntryValue.');
         }
@@ -329,7 +330,7 @@ export class LedgerApi extends runtime.BaseAPI {
     /**
      * Get Entry Value from Ledger
      */
-    async getTwinLedgerEntryValue(requestParameters: LedgerApiGetTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetUserLedgerEntryValue> {
+    async getTwinLedgerEntryValue(requestParameters: LedgerApiGetTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUserLedgerEntryValue> {
         const response = await this.getTwinLedgerEntryValueRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -337,7 +338,7 @@ export class LedgerApi extends runtime.BaseAPI {
     /**
      * PATCH one or more Entries in given Ledger
      */
-    async updateTwinLedgerEntryRaw(requestParameters: LedgerApiUpdateTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<PatchedUserLedger>> {
+    async updateTwinLedgerEntryRaw(requestParameters: LedgerApiUpdateTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchedUserLedger>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling updateTwinLedgerEntry.');
         }
@@ -374,7 +375,7 @@ export class LedgerApi extends runtime.BaseAPI {
     /**
      * PATCH one or more Entries in given Ledger
      */
-    async updateTwinLedgerEntry(requestParameters: LedgerApiUpdateTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<PatchedUserLedger> {
+    async updateTwinLedgerEntry(requestParameters: LedgerApiUpdateTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchedUserLedger> {
         const response = await this.updateTwinLedgerEntryRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -382,7 +383,7 @@ export class LedgerApi extends runtime.BaseAPI {
     /**
      * PATCH one or more Entries values in given Ledger
      */
-    async updateTwinLedgerEntryValueRaw(requestParameters: LedgerApiUpdateTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<PatchedUserLedger>> {
+    async updateTwinLedgerEntryValueRaw(requestParameters: LedgerApiUpdateTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchedUserLedger>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling updateTwinLedgerEntryValue.');
         }
@@ -419,7 +420,7 @@ export class LedgerApi extends runtime.BaseAPI {
     /**
      * PATCH one or more Entries values in given Ledger
      */
-    async updateTwinLedgerEntryValue(requestParameters: LedgerApiUpdateTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<PatchedUserLedger> {
+    async updateTwinLedgerEntryValue(requestParameters: LedgerApiUpdateTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchedUserLedger> {
         const response = await this.updateTwinLedgerEntryValueRaw(requestParameters, initOverrides);
         return await response.value();
     }

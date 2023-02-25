@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { LedgerEntriesHistoryEntriesValue } from './LedgerEntriesHistoryEntriesValue';
 import {
-    LedgerEntriesHistoryEntriesValue,
     LedgerEntriesHistoryEntriesValueFromJSON,
     LedgerEntriesHistoryEntriesValueFromJSONTyped,
     LedgerEntriesHistoryEntriesValueToJSON,
@@ -32,6 +32,15 @@ export interface LedgerEntriesHistory {
      * @memberof LedgerEntriesHistory
      */
     entries?: { [key: string]: LedgerEntriesHistoryEntriesValue; };
+}
+
+/**
+ * Check if a given object implements the LedgerEntriesHistory interface.
+ */
+export function instanceOfLedgerEntriesHistory(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function LedgerEntriesHistoryFromJSON(json: any): LedgerEntriesHistory {

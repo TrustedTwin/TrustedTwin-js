@@ -13,7 +13,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-
 /**
  * 
  * @export
@@ -38,6 +37,15 @@ export interface TwinCreationCertificate {
      * @memberof TwinCreationCertificate
      */
     readonly creator?: string;
+}
+
+/**
+ * Check if a given object implements the TwinCreationCertificate interface.
+ */
+export function instanceOfTwinCreationCertificate(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function TwinCreationCertificateFromJSON(json: any): TwinCreationCertificate {

@@ -33,6 +33,15 @@ export interface WebhookUnsubscribeResponse {
     subscription?: string;
 }
 
+/**
+ * Check if a given object implements the WebhookUnsubscribeResponse interface.
+ */
+export function instanceOfWebhookUnsubscribeResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function WebhookUnsubscribeResponseFromJSON(json: any): WebhookUnsubscribeResponse {
     return WebhookUnsubscribeResponseFromJSONTyped(json, false);
 }

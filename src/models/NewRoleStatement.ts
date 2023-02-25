@@ -20,17 +20,37 @@ import { exists, mapValues } from '../runtime';
  */
 export interface NewRoleStatement {
     /**
-     * allow
+     * allows or denies to perform an API operation
      * @type {string}
      * @memberof NewRoleStatement
      */
-    effect?: string;
+    effect?: NewRoleStatementEffectEnum;
     /**
      * 
      * @type {Array<string>}
      * @memberof NewRoleStatement
      */
     actions?: Array<string>;
+}
+
+
+/**
+ * @export
+ */
+export const NewRoleStatementEffectEnum = {
+    Allow: 'allow',
+    Deny: 'deny'
+} as const;
+export type NewRoleStatementEffectEnum = typeof NewRoleStatementEffectEnum[keyof typeof NewRoleStatementEffectEnum];
+
+
+/**
+ * Check if a given object implements the NewRoleStatement interface.
+ */
+export function instanceOfNewRoleStatement(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function NewRoleStatementFromJSON(json: any): NewRoleStatement {

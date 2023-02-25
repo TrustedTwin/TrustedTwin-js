@@ -24,7 +24,7 @@ export interface PostNewToken {
      * @type {{ [key: string]: string; }}
      * @memberof PostNewToken
      */
-    ttDict?: { [key: string]: string; };
+    secretDict?: { [key: string]: string; };
     /**
      * Token refresh/creation rules
      * @type {string}
@@ -44,11 +44,20 @@ export interface PostNewToken {
  * @export
  */
 export const PostNewTokenOptionsEnum = {
-    Refresh: 'REFRESH',
-    Create: 'CREATE'
+    Refresh: 'refresh',
+    Create: 'create'
 } as const;
 export type PostNewTokenOptionsEnum = typeof PostNewTokenOptionsEnum[keyof typeof PostNewTokenOptionsEnum];
 
+
+/**
+ * Check if a given object implements the PostNewToken interface.
+ */
+export function instanceOfPostNewToken(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
 
 export function PostNewTokenFromJSON(json: any): PostNewToken {
     return PostNewTokenFromJSONTyped(json, false);
@@ -60,7 +69,7 @@ export function PostNewTokenFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
-        'ttDict': !exists(json, 'tt_dict') ? undefined : json['tt_dict'],
+        'secretDict': !exists(json, 'secret_dict') ? undefined : json['secret_dict'],
         'options': !exists(json, 'options') ? undefined : json['options'],
         'validityTs': !exists(json, 'validity_ts') ? undefined : json['validity_ts'],
     };
@@ -75,7 +84,7 @@ export function PostNewTokenToJSON(value?: PostNewToken | null): any {
     }
     return {
         
-        'tt_dict': value.ttDict,
+        'secret_dict': value.secretDict,
         'options': value.options,
         'validity_ts': value.validityTs,
     };

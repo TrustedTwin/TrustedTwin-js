@@ -14,26 +14,28 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  CreateStickersBody,
+  CreateStickersResponse,
+  DeletedSticker,
+  ErrorObject,
+  Sticker,
+  StickersList,
+  StickersResponse,
+} from '../models';
 import {
-    CreateStickersBody,
     CreateStickersBodyFromJSON,
     CreateStickersBodyToJSON,
-    CreateStickersResponse,
     CreateStickersResponseFromJSON,
     CreateStickersResponseToJSON,
-    DeletedSticker,
     DeletedStickerFromJSON,
     DeletedStickerToJSON,
-    ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
-    Sticker,
     StickerFromJSON,
     StickerToJSON,
-    StickersList,
     StickersListFromJSON,
     StickersListToJSON,
-    StickersResponse,
     StickersResponseFromJSON,
     StickersResponseToJSON,
 } from '../models';
@@ -74,7 +76,7 @@ export class StickersApi extends runtime.BaseAPI {
     /**
      * Get sticker created by own Account
      */
-    async getStickerRaw(requestParameters: StickersApiGetStickerRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Sticker>> {
+    async getStickerRaw(requestParameters: StickersApiGetStickerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Sticker>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getSticker.');
         }
@@ -104,7 +106,7 @@ export class StickersApi extends runtime.BaseAPI {
     /**
      * Get sticker created by own Account
      */
-    async getSticker(requestParameters: StickersApiGetStickerRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Sticker> {
+    async getSticker(requestParameters: StickersApiGetStickerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Sticker> {
         const response = await this.getStickerRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -112,7 +114,7 @@ export class StickersApi extends runtime.BaseAPI {
     /**
      * Gets all stickers attached to the given Twin visible for the caller
      */
-    async getStickersRaw(requestParameters: StickersApiGetStickersRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<StickersResponse>> {
+    async getStickersRaw(requestParameters: StickersApiGetStickersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StickersResponse>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getStickers.');
         }
@@ -138,7 +140,7 @@ export class StickersApi extends runtime.BaseAPI {
     /**
      * Gets all stickers attached to the given Twin visible for the caller
      */
-    async getStickers(requestParameters: StickersApiGetStickersRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<StickersResponse> {
+    async getStickers(requestParameters: StickersApiGetStickersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StickersResponse> {
         const response = await this.getStickersRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -146,7 +148,7 @@ export class StickersApi extends runtime.BaseAPI {
     /**
      * Gets all stickers visible for the caller
      */
-    async listStickersRaw(requestParameters: StickersApiListStickersRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<StickersList>> {
+    async listStickersRaw(requestParameters: StickersApiListStickersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StickersList>> {
         const queryParameters: any = {};
 
         if (requestParameters.color !== undefined) {
@@ -192,7 +194,7 @@ export class StickersApi extends runtime.BaseAPI {
     /**
      * Gets all stickers visible for the caller
      */
-    async listStickers(requestParameters: StickersApiListStickersRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<StickersList> {
+    async listStickers(requestParameters: StickersApiListStickersRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StickersList> {
         const response = await this.listStickersRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -200,7 +202,7 @@ export class StickersApi extends runtime.BaseAPI {
     /**
      * Puts a sticker on a twin
      */
-    async putStickerRaw(requestParameters: StickersApiPutStickerRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<CreateStickersResponse>> {
+    async putStickerRaw(requestParameters: StickersApiPutStickerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateStickersResponse>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling putSticker.');
         }
@@ -229,7 +231,7 @@ export class StickersApi extends runtime.BaseAPI {
     /**
      * Puts a sticker on a twin
      */
-    async putSticker(requestParameters: StickersApiPutStickerRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<CreateStickersResponse> {
+    async putSticker(requestParameters: StickersApiPutStickerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateStickersResponse> {
         const response = await this.putStickerRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -237,7 +239,7 @@ export class StickersApi extends runtime.BaseAPI {
     /**
      * deletes a given sticker
      */
-    async removeStickerRaw(requestParameters: StickersApiRemoveStickerRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<DeletedSticker>> {
+    async removeStickerRaw(requestParameters: StickersApiRemoveStickerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeletedSticker>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling removeSticker.');
         }
@@ -267,7 +269,7 @@ export class StickersApi extends runtime.BaseAPI {
     /**
      * deletes a given sticker
      */
-    async removeSticker(requestParameters: StickersApiRemoveStickerRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<DeletedSticker> {
+    async removeSticker(requestParameters: StickersApiRemoveStickerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeletedSticker> {
         const response = await this.removeStickerRaw(requestParameters, initOverrides);
         return await response.value();
     }

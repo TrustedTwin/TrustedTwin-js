@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { ServicesDatabaseUserAccessCommand } from './ServicesDatabaseUserAccessCommand';
 import {
-    ServicesDatabaseUserAccessCommand,
     ServicesDatabaseUserAccessCommandFromJSON,
     ServicesDatabaseUserAccessCommandFromJSONTyped,
     ServicesDatabaseUserAccessCommandToJSON,
@@ -32,6 +32,15 @@ export interface ServicesDatabaseUsersAccess {
      * @memberof ServicesDatabaseUsersAccess
      */
     users?: { [key: string]: ServicesDatabaseUserAccessCommand; };
+}
+
+/**
+ * Check if a given object implements the ServicesDatabaseUsersAccess interface.
+ */
+export function instanceOfServicesDatabaseUsersAccess(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function ServicesDatabaseUsersAccessFromJSON(json: any): ServicesDatabaseUsersAccess {

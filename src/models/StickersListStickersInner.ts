@@ -55,12 +55,15 @@ export interface StickersListStickersInner {
      * @memberof StickersListStickersInner
      */
     createdTs?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StickersListStickersInner
-     */
-    updatedTs?: number;
+}
+
+/**
+ * Check if a given object implements the StickersListStickersInner interface.
+ */
+export function instanceOfStickersListStickersInner(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function StickersListStickersInnerFromJSON(json: any): StickersListStickersInner {
@@ -79,7 +82,6 @@ export function StickersListStickersInnerFromJSONTyped(json: any, ignoreDiscrimi
         'message': !exists(json, 'message') ? undefined : json['message'],
         'validityTs': !exists(json, 'validity_ts') ? undefined : json['validity_ts'],
         'createdTs': !exists(json, 'created_ts') ? undefined : json['created_ts'],
-        'updatedTs': !exists(json, 'updated_ts') ? undefined : json['updated_ts'],
     };
 }
 
@@ -98,7 +100,6 @@ export function StickersListStickersInnerToJSON(value?: StickersListStickersInne
         'message': value.message,
         'validity_ts': value.validityTs,
         'created_ts': value.createdTs,
-        'updated_ts': value.updatedTs,
     };
 }
 

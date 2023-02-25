@@ -37,6 +37,33 @@ export interface CreateStickersBodyStickersValue {
      * @memberof CreateStickersBodyStickersValue
      */
     validityTs?: number;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CreateStickersBodyStickersValue
+     */
+    publish?: Array<CreateStickersBodyStickersValuePublishEnum>;
+}
+
+
+/**
+ * @export
+ */
+export const CreateStickersBodyStickersValuePublishEnum = {
+    Put: 'on_put',
+    Remove: 'on_remove',
+    Expire: 'on_expire'
+} as const;
+export type CreateStickersBodyStickersValuePublishEnum = typeof CreateStickersBodyStickersValuePublishEnum[keyof typeof CreateStickersBodyStickersValuePublishEnum];
+
+
+/**
+ * Check if a given object implements the CreateStickersBodyStickersValue interface.
+ */
+export function instanceOfCreateStickersBodyStickersValue(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function CreateStickersBodyStickersValueFromJSON(json: any): CreateStickersBodyStickersValue {
@@ -52,6 +79,7 @@ export function CreateStickersBodyStickersValueFromJSONTyped(json: any, ignoreDi
         'message': !exists(json, 'message') ? undefined : json['message'],
         'recipients': !exists(json, 'recipients') ? undefined : json['recipients'],
         'validityTs': !exists(json, 'validity_ts') ? undefined : json['validity_ts'],
+        'publish': !exists(json, 'publish') ? undefined : json['publish'],
     };
 }
 
@@ -67,6 +95,7 @@ export function CreateStickersBodyStickersValueToJSON(value?: CreateStickersBody
         'message': value.message,
         'recipients': value.recipients,
         'validity_ts': value.validityTs,
+        'publish': value.publish,
     };
 }
 

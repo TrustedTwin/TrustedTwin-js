@@ -14,26 +14,28 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  ErrorObject,
+  GetRole,
+  GetRoles,
+  NewRole,
+  PostNewRole,
+  UpdateRole,
+  UpdatedRole,
+} from '../models';
 import {
-    ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
-    GetRole,
     GetRoleFromJSON,
     GetRoleToJSON,
-    GetRoles,
     GetRolesFromJSON,
     GetRolesToJSON,
-    NewRole,
     NewRoleFromJSON,
     NewRoleToJSON,
-    PostNewRole,
     PostNewRoleFromJSON,
     PostNewRoleToJSON,
-    UpdateRole,
     UpdateRoleFromJSON,
     UpdateRoleToJSON,
-    UpdatedRole,
     UpdatedRoleFromJSON,
     UpdatedRoleToJSON,
 } from '../models';
@@ -63,7 +65,7 @@ export class RolesApi extends runtime.BaseAPI {
     /**
      * Create a new Role
      */
-    async createUserRoleRaw(requestParameters: RolesApiCreateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<NewRole>> {
+    async createUserRoleRaw(requestParameters: RolesApiCreateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NewRole>> {
         if (requestParameters.postNewRole === null || requestParameters.postNewRole === undefined) {
             throw new runtime.RequiredError('postNewRole','Required parameter requestParameters.postNewRole was null or undefined when calling createUserRole.');
         }
@@ -92,7 +94,7 @@ export class RolesApi extends runtime.BaseAPI {
     /**
      * Create a new Role
      */
-    async createUserRole(requestParameters: RolesApiCreateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<NewRole> {
+    async createUserRole(requestParameters: RolesApiCreateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NewRole> {
         const response = await this.createUserRoleRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -100,7 +102,7 @@ export class RolesApi extends runtime.BaseAPI {
     /**
      * Delete given Role
      */
-    async deleteUserRoleRaw(requestParameters: RolesApiDeleteUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async deleteUserRoleRaw(requestParameters: RolesApiDeleteUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.role === null || requestParameters.role === undefined) {
             throw new runtime.RequiredError('role','Required parameter requestParameters.role was null or undefined when calling deleteUserRole.');
         }
@@ -126,14 +128,14 @@ export class RolesApi extends runtime.BaseAPI {
     /**
      * Delete given Role
      */
-    async deleteUserRole(requestParameters: RolesApiDeleteUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async deleteUserRole(requestParameters: RolesApiDeleteUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteUserRoleRaw(requestParameters, initOverrides);
     }
 
     /**
      * Get given Role
      */
-    async getUserRoleRaw(requestParameters: RolesApiGetUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetRole>> {
+    async getUserRoleRaw(requestParameters: RolesApiGetUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetRole>> {
         if (requestParameters.role === null || requestParameters.role === undefined) {
             throw new runtime.RequiredError('role','Required parameter requestParameters.role was null or undefined when calling getUserRole.');
         }
@@ -159,7 +161,7 @@ export class RolesApi extends runtime.BaseAPI {
     /**
      * Get given Role
      */
-    async getUserRole(requestParameters: RolesApiGetUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetRole> {
+    async getUserRole(requestParameters: RolesApiGetUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetRole> {
         const response = await this.getUserRoleRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -167,7 +169,7 @@ export class RolesApi extends runtime.BaseAPI {
     /**
      * Get Roles
      */
-    async getUserRolesRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetRoles>> {
+    async getUserRolesRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetRoles>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -189,7 +191,7 @@ export class RolesApi extends runtime.BaseAPI {
     /**
      * Get Roles
      */
-    async getUserRoles(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetRoles> {
+    async getUserRoles(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetRoles> {
         const response = await this.getUserRolesRaw(initOverrides);
         return await response.value();
     }
@@ -197,7 +199,7 @@ export class RolesApi extends runtime.BaseAPI {
     /**
      * Update requested Role
      */
-    async updateUserRoleRaw(requestParameters: RolesApiUpdateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<UpdatedRole>> {
+    async updateUserRoleRaw(requestParameters: RolesApiUpdateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdatedRole>> {
         if (requestParameters.role === null || requestParameters.role === undefined) {
             throw new runtime.RequiredError('role','Required parameter requestParameters.role was null or undefined when calling updateUserRole.');
         }
@@ -230,7 +232,7 @@ export class RolesApi extends runtime.BaseAPI {
     /**
      * Update requested Role
      */
-    async updateUserRole(requestParameters: RolesApiUpdateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<UpdatedRole> {
+    async updateUserRole(requestParameters: RolesApiUpdateUserRoleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdatedRole> {
         const response = await this.updateUserRoleRaw(requestParameters, initOverrides);
         return await response.value();
     }

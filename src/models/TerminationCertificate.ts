@@ -13,13 +13,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    TerminationCertificateAllOf,
-    TerminationCertificateAllOfFromJSON,
-    TerminationCertificateAllOfFromJSONTyped,
-    TerminationCertificateAllOfToJSON,
-} from './TerminationCertificateAllOf';
-
 /**
  * 
  * @export
@@ -38,6 +31,15 @@ export interface TerminationCertificate {
      * @memberof TerminationCertificate
      */
     readonly terminatedTs?: number;
+}
+
+/**
+ * Check if a given object implements the TerminationCertificate interface.
+ */
+export function instanceOfTerminationCertificate(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function TerminationCertificateFromJSON(json: any): TerminationCertificate {

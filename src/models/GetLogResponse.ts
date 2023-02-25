@@ -33,6 +33,15 @@ export interface GetLogResponse {
     messages?: Array<string>;
 }
 
+/**
+ * Check if a given object implements the GetLogResponse interface.
+ */
+export function instanceOfGetLogResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function GetLogResponseFromJSON(json: any): GetLogResponse {
     return GetLogResponseFromJSONTyped(json, false);
 }

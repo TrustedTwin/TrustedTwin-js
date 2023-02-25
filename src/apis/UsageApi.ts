@@ -14,11 +14,13 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  ErrorObject,
+  Usage,
+} from '../models';
 import {
-    ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
-    Usage,
     UsageFromJSON,
     UsageToJSON,
 } from '../models';
@@ -35,7 +37,7 @@ export class UsageApi extends runtime.BaseAPI {
     /**
      * Get usage for Account
      */
-    async getAccountUsageRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Usage>> {
+    async getAccountUsageRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Usage>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -57,7 +59,7 @@ export class UsageApi extends runtime.BaseAPI {
     /**
      * Get usage for Account
      */
-    async getAccountUsage(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Usage> {
+    async getAccountUsage(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Usage> {
         const response = await this.getAccountUsageRaw(initOverrides);
         return await response.value();
     }
@@ -65,7 +67,7 @@ export class UsageApi extends runtime.BaseAPI {
     /**
      * Get usage for given User
      */
-    async getUserUsageRaw(requestParameters: UsageApiGetUserUsageRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Usage>> {
+    async getUserUsageRaw(requestParameters: UsageApiGetUserUsageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Usage>> {
         if (requestParameters.user === null || requestParameters.user === undefined) {
             throw new runtime.RequiredError('user','Required parameter requestParameters.user was null or undefined when calling getUserUsage.');
         }
@@ -91,7 +93,7 @@ export class UsageApi extends runtime.BaseAPI {
     /**
      * Get usage for given User
      */
-    async getUserUsage(requestParameters: UsageApiGetUserUsageRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Usage> {
+    async getUserUsage(requestParameters: UsageApiGetUserUsageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Usage> {
         const response = await this.getUserUsageRaw(requestParameters, initOverrides);
         return await response.value();
     }

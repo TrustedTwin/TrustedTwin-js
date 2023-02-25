@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { TimeseriesTable } from './TimeseriesTable';
 import {
-    TimeseriesTable,
     TimeseriesTableFromJSON,
     TimeseriesTableFromJSONTyped,
     TimeseriesTableToJSON,
@@ -32,6 +32,15 @@ export interface TimeseriesTables {
      * @memberof TimeseriesTables
      */
     timeseries?: { [key: string]: TimeseriesTable; };
+}
+
+/**
+ * Check if a given object implements the TimeseriesTables interface.
+ */
+export function instanceOfTimeseriesTables(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function TimeseriesTablesFromJSON(json: any): TimeseriesTables {

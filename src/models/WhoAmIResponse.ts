@@ -39,6 +39,15 @@ export interface WhoAmIResponse {
     role?: string;
 }
 
+/**
+ * Check if a given object implements the WhoAmIResponse interface.
+ */
+export function instanceOfWhoAmIResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function WhoAmIResponseFromJSON(json: any): WhoAmIResponse {
     return WhoAmIResponseFromJSONTyped(json, false);
 }

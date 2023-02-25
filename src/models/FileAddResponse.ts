@@ -39,6 +39,15 @@ export interface FileAddResponse {
     validityTs?: number;
 }
 
+/**
+ * Check if a given object implements the FileAddResponse interface.
+ */
+export function instanceOfFileAddResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function FileAddResponseFromJSON(json: any): FileAddResponse {
     return FileAddResponseFromJSONTyped(json, false);
 }

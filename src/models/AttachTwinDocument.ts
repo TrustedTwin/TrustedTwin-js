@@ -62,6 +62,15 @@ export const AttachTwinDocumentStorageClassEnum = {
 export type AttachTwinDocumentStorageClassEnum = typeof AttachTwinDocumentStorageClassEnum[keyof typeof AttachTwinDocumentStorageClassEnum];
 
 
+/**
+ * Check if a given object implements the AttachTwinDocument interface.
+ */
+export function instanceOfAttachTwinDocument(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function AttachTwinDocumentFromJSON(json: any): AttachTwinDocument {
     return AttachTwinDocumentFromJSONTyped(json, false);
 }

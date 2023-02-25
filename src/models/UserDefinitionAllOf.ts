@@ -39,6 +39,15 @@ export interface UserDefinitionAllOf {
     account?: string;
 }
 
+/**
+ * Check if a given object implements the UserDefinitionAllOf interface.
+ */
+export function instanceOfUserDefinitionAllOf(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function UserDefinitionAllOfFromJSON(json: any): UserDefinitionAllOf {
     return UserDefinitionAllOfFromJSONTyped(json, false);
 }

@@ -57,6 +57,15 @@ export interface CreateUserSecret {
     updatedTs?: number;
 }
 
+/**
+ * Check if a given object implements the CreateUserSecret interface.
+ */
+export function instanceOfCreateUserSecret(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function CreateUserSecretFromJSON(json: any): CreateUserSecret {
     return CreateUserSecretFromJSONTyped(json, false);
 }

@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { ReferenceEntryTimeseries } from './ReferenceEntryTimeseries';
 import {
-    LedgerEntryTimeseries,
-    LedgerEntryTimeseriesFromJSON,
-    LedgerEntryTimeseriesFromJSONTyped,
-    LedgerEntryTimeseriesToJSON,
-} from './LedgerEntryTimeseries';
+    ReferenceEntryTimeseriesFromJSON,
+    ReferenceEntryTimeseriesFromJSONTyped,
+    ReferenceEntryTimeseriesToJSON,
+} from './ReferenceEntryTimeseries';
 
 /**
  * Ledger's value key
@@ -32,12 +32,6 @@ export interface ValueEntry {
      * @memberof ValueEntry
      */
     value?: string;
-    /**
-     * type of value
-     * @type {string}
-     * @memberof ValueEntry
-     */
-    type?: ValueEntryTypeEnum;
     /**
      * Visibility of the Entry
      * @type {string}
@@ -67,26 +61,29 @@ export interface ValueEntry {
      * @type {string}
      * @memberof ValueEntry
      */
-    history?: string | null;
+    history?: string;
     /**
      * 
-     * @type {LedgerEntryTimeseries}
+     * @type {ReferenceEntryTimeseries}
      * @memberof ValueEntry
      */
-    timeseries?: LedgerEntryTimeseries;
+    timeseries?: ReferenceEntryTimeseries;
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof ValueEntry
+     */
+    publish?: { [key: string]: string; };
 }
 
-
 /**
- * @export
+ * Check if a given object implements the ValueEntry interface.
  */
-export const ValueEntryTypeEnum = {
-    String: 'string',
-    Integer: 'integer',
-    Datetime: 'datetime'
-} as const;
-export type ValueEntryTypeEnum = typeof ValueEntryTypeEnum[keyof typeof ValueEntryTypeEnum];
+export function instanceOfValueEntry(value: object): boolean {
+    let isInstance = true;
 
+    return isInstance;
+}
 
 export function ValueEntryFromJSON(json: any): ValueEntry {
     return ValueEntryFromJSONTyped(json, false);
@@ -99,13 +96,13 @@ export function ValueEntryFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     return {
         
         'value': !exists(json, 'value') ? undefined : json['value'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
         'visibility': !exists(json, 'visibility') ? undefined : json['visibility'],
         'entryCreatedTs': !exists(json, 'entry_created_ts') ? undefined : json['entry_created_ts'],
         'entryUpdatedTs': !exists(json, 'entry_updated_ts') ? undefined : json['entry_updated_ts'],
         'valueChangedTs': !exists(json, 'value_changed_ts') ? undefined : json['value_changed_ts'],
         'history': !exists(json, 'history') ? undefined : json['history'],
-        'timeseries': !exists(json, 'timeseries') ? undefined : LedgerEntryTimeseriesFromJSON(json['timeseries']),
+        'timeseries': !exists(json, 'timeseries') ? undefined : ReferenceEntryTimeseriesFromJSON(json['timeseries']),
+        'publish': !exists(json, 'publish') ? undefined : json['publish'],
     };
 }
 
@@ -119,10 +116,10 @@ export function ValueEntryToJSON(value?: ValueEntry | null): any {
     return {
         
         'value': value.value,
-        'type': value.type,
         'visibility': value.visibility,
         'history': value.history,
-        'timeseries': LedgerEntryTimeseriesToJSON(value.timeseries),
+        'timeseries': ReferenceEntryTimeseriesToJSON(value.timeseries),
+        'publish': value.publish,
     };
 }
 

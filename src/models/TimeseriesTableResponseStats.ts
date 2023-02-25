@@ -13,13 +13,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    TimeseriesDatabaseTableDetails,
-    TimeseriesDatabaseTableDetailsFromJSON,
-    TimeseriesDatabaseTableDetailsFromJSONTyped,
-    TimeseriesDatabaseTableDetailsToJSON,
-} from './TimeseriesDatabaseTableDetails';
-
 /**
  * 
  * @export
@@ -50,6 +43,15 @@ export interface TimeseriesTableResponseStats {
      * @memberof TimeseriesTableResponseStats
      */
     totalSize?: number;
+}
+
+/**
+ * Check if a given object implements the TimeseriesTableResponseStats interface.
+ */
+export function instanceOfTimeseriesTableResponseStats(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function TimeseriesTableResponseStatsFromJSON(json: any): TimeseriesTableResponseStats {

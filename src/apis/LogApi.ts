@@ -14,11 +14,13 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  ErrorObject,
+  GetLogResponse,
+} from '../models';
 import {
-    ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
-    GetLogResponse,
     GetLogResponseFromJSON,
     GetLogResponseToJSON,
 } from '../models';
@@ -35,7 +37,7 @@ export class LogApi extends runtime.BaseAPI {
     /**
      * Gets user\'s logs
      */
-    async getLogRaw(requestParameters: LogApiGetLogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetLogResponse>> {
+    async getLogRaw(requestParameters: LogApiGetLogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLogResponse>> {
         const queryParameters: any = {};
 
         if (requestParameters.fragment !== undefined) {
@@ -61,7 +63,7 @@ export class LogApi extends runtime.BaseAPI {
     /**
      * Gets user\'s logs
      */
-    async getLog(requestParameters: LogApiGetLogRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetLogResponse> {
+    async getLog(requestParameters: LogApiGetLogRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLogResponse> {
         const response = await this.getLogRaw(requestParameters, initOverrides);
         return await response.value();
     }

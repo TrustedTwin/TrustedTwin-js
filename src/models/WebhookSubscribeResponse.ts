@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { WebhookSubscription } from './WebhookSubscription';
 import {
-    WebhookSubscription,
     WebhookSubscriptionFromJSON,
     WebhookSubscriptionFromJSONTyped,
     WebhookSubscriptionToJSON,
@@ -50,6 +50,15 @@ export interface WebhookSubscribeResponse {
      * @memberof WebhookSubscribeResponse
      */
     serverSecret?: number;
+}
+
+/**
+ * Check if a given object implements the WebhookSubscribeResponse interface.
+ */
+export function instanceOfWebhookSubscribeResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function WebhookSubscribeResponseFromJSON(json: any): WebhookSubscribeResponse {

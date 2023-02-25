@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { IdentityCreationCertificate } from './IdentityCreationCertificate';
 import {
-    IdentityRemovalPropertiesCreationCertificate,
-    IdentityRemovalPropertiesCreationCertificateFromJSON,
-    IdentityRemovalPropertiesCreationCertificateFromJSONTyped,
-    IdentityRemovalPropertiesCreationCertificateToJSON,
-} from './IdentityRemovalPropertiesCreationCertificate';
+    IdentityCreationCertificateFromJSON,
+    IdentityCreationCertificateFromJSONTyped,
+    IdentityCreationCertificateToJSON,
+} from './IdentityCreationCertificate';
 
 /**
  * 
@@ -46,10 +46,19 @@ export interface IdentityRemovalProperties {
     updatedTs?: number;
     /**
      * 
-     * @type {IdentityRemovalPropertiesCreationCertificate}
+     * @type {IdentityCreationCertificate}
      * @memberof IdentityRemovalProperties
      */
-    creationCertificate?: IdentityRemovalPropertiesCreationCertificate;
+    readonly creationCertificate?: IdentityCreationCertificate;
+}
+
+/**
+ * Check if a given object implements the IdentityRemovalProperties interface.
+ */
+export function instanceOfIdentityRemovalProperties(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function IdentityRemovalPropertiesFromJSON(json: any): IdentityRemovalProperties {
@@ -65,7 +74,7 @@ export function IdentityRemovalPropertiesFromJSONTyped(json: any, ignoreDiscrimi
         'validityTs': !exists(json, 'validity_ts') ? undefined : json['validity_ts'],
         'visibility': !exists(json, 'visibility') ? undefined : json['visibility'],
         'updatedTs': !exists(json, 'updated_ts') ? undefined : json['updated_ts'],
-        'creationCertificate': !exists(json, 'creation_certificate') ? undefined : IdentityRemovalPropertiesCreationCertificateFromJSON(json['creation_certificate']),
+        'creationCertificate': !exists(json, 'creation_certificate') ? undefined : IdentityCreationCertificateFromJSON(json['creation_certificate']),
     };
 }
 
@@ -81,7 +90,6 @@ export function IdentityRemovalPropertiesToJSON(value?: IdentityRemovalPropertie
         'validity_ts': value.validityTs,
         'visibility': value.visibility,
         'updated_ts': value.updatedTs,
-        'creation_certificate': IdentityRemovalPropertiesCreationCertificateToJSON(value.creationCertificate),
     };
 }
 

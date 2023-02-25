@@ -45,10 +45,31 @@ export interface Sticker {
     createdTs?: number;
     /**
      * 
-     * @type {number}
+     * @type {Array<string>}
      * @memberof Sticker
      */
-    updatedTs?: number;
+    publish?: Array<StickerPublishEnum>;
+}
+
+
+/**
+ * @export
+ */
+export const StickerPublishEnum = {
+    Put: 'on_put',
+    Remove: 'on_remove',
+    Expire: 'on_expire'
+} as const;
+export type StickerPublishEnum = typeof StickerPublishEnum[keyof typeof StickerPublishEnum];
+
+
+/**
+ * Check if a given object implements the Sticker interface.
+ */
+export function instanceOfSticker(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function StickerFromJSON(json: any): Sticker {
@@ -65,7 +86,7 @@ export function StickerFromJSONTyped(json: any, ignoreDiscriminator: boolean): S
         'recipients': !exists(json, 'recipients') ? undefined : json['recipients'],
         'validityTs': !exists(json, 'validity_ts') ? undefined : json['validity_ts'],
         'createdTs': !exists(json, 'created_ts') ? undefined : json['created_ts'],
-        'updatedTs': !exists(json, 'updated_ts') ? undefined : json['updated_ts'],
+        'publish': !exists(json, 'publish') ? undefined : json['publish'],
     };
 }
 
@@ -82,7 +103,7 @@ export function StickerToJSON(value?: Sticker | null): any {
         'recipients': value.recipients,
         'validity_ts': value.validityTs,
         'created_ts': value.createdTs,
-        'updated_ts': value.updatedTs,
+        'publish': value.publish,
     };
 }
 

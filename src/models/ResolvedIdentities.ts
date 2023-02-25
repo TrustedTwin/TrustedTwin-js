@@ -27,6 +27,15 @@ export interface ResolvedIdentities {
     twins?: Array<string>;
 }
 
+/**
+ * Check if a given object implements the ResolvedIdentities interface.
+ */
+export function instanceOfResolvedIdentities(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function ResolvedIdentitiesFromJSON(json: any): ResolvedIdentities {
     return ResolvedIdentitiesFromJSONTyped(json, false);
 }

@@ -39,10 +39,31 @@ export interface StickersResponseAccountsValueValue {
     createdTs?: number;
     /**
      * 
-     * @type {number}
+     * @type {Array<string>}
      * @memberof StickersResponseAccountsValueValue
      */
-    updatedTs?: number;
+    publish?: Array<StickersResponseAccountsValueValuePublishEnum>;
+}
+
+
+/**
+ * @export
+ */
+export const StickersResponseAccountsValueValuePublishEnum = {
+    Put: 'on_put',
+    Remove: 'on_remove',
+    Expire: 'on_expire'
+} as const;
+export type StickersResponseAccountsValueValuePublishEnum = typeof StickersResponseAccountsValueValuePublishEnum[keyof typeof StickersResponseAccountsValueValuePublishEnum];
+
+
+/**
+ * Check if a given object implements the StickersResponseAccountsValueValue interface.
+ */
+export function instanceOfStickersResponseAccountsValueValue(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function StickersResponseAccountsValueValueFromJSON(json: any): StickersResponseAccountsValueValue {
@@ -58,7 +79,7 @@ export function StickersResponseAccountsValueValueFromJSONTyped(json: any, ignor
         'message': !exists(json, 'message') ? undefined : json['message'],
         'validityTs': !exists(json, 'validity_ts') ? undefined : json['validity_ts'],
         'createdTs': !exists(json, 'created_ts') ? undefined : json['created_ts'],
-        'updatedTs': !exists(json, 'updated_ts') ? undefined : json['updated_ts'],
+        'publish': !exists(json, 'publish') ? undefined : json['publish'],
     };
 }
 
@@ -74,7 +95,7 @@ export function StickersResponseAccountsValueValueToJSON(value?: StickersRespons
         'message': value.message,
         'validity_ts': value.validityTs,
         'created_ts': value.createdTs,
-        'updated_ts': value.updatedTs,
+        'publish': value.publish,
     };
 }
 

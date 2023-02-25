@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { StickersResponseAccountsValueValue } from './StickersResponseAccountsValueValue';
 import {
-    StickersResponseAccountsValueValue,
     StickersResponseAccountsValueValueFromJSON,
     StickersResponseAccountsValueValueFromJSONTyped,
     StickersResponseAccountsValueValueToJSON,
@@ -32,6 +32,15 @@ export interface StickersResponse {
      * @memberof StickersResponse
      */
     accounts?: { [key: string]: { [key: string]: StickersResponseAccountsValueValue; }; };
+}
+
+/**
+ * Check if a given object implements the StickersResponse interface.
+ */
+export function instanceOfStickersResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function StickersResponseFromJSON(json: any): StickersResponse {

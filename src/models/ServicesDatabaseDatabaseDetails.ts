@@ -45,6 +45,15 @@ export const ServicesDatabaseDatabaseDetailsStatusEnum = {
 export type ServicesDatabaseDatabaseDetailsStatusEnum = typeof ServicesDatabaseDatabaseDetailsStatusEnum[keyof typeof ServicesDatabaseDatabaseDetailsStatusEnum];
 
 
+/**
+ * Check if a given object implements the ServicesDatabaseDatabaseDetails interface.
+ */
+export function instanceOfServicesDatabaseDatabaseDetails(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function ServicesDatabaseDatabaseDetailsFromJSON(json: any): ServicesDatabaseDatabaseDetails {
     return ServicesDatabaseDatabaseDetailsFromJSONTyped(json, false);
 }

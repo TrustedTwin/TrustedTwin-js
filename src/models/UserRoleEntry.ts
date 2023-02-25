@@ -39,6 +39,15 @@ export interface UserRoleEntry {
     updatedTs?: string;
 }
 
+/**
+ * Check if a given object implements the UserRoleEntry interface.
+ */
+export function instanceOfUserRoleEntry(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function UserRoleEntryFromJSON(json: any): UserRoleEntry {
     return UserRoleEntryFromJSONTyped(json, false);
 }

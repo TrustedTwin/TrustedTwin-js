@@ -16,43 +16,37 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface PatchUser
+ * @interface UserEntry
  */
-export interface PatchUser {
+export interface UserEntry {
     /**
-     * Optional User name (doesn't have to be unique), must conform to '^[0-9A-Za-z][0-9A-Za-z_ \-]{0,30}[0-9A-Za-z]$'
+     * User name
      * @type {string}
-     * @memberof PatchUser
+     * @memberof UserEntry
      */
     name?: string;
     /**
      * Role UUID
      * @type {string}
-     * @memberof PatchUser
+     * @memberof UserEntry
      */
     role?: string;
-    /**
-     * Custom defined variables
-     * @type {{ [key: string]: string; }}
-     * @memberof PatchUser
-     */
-    description?: { [key: string]: string; };
 }
 
 /**
- * Check if a given object implements the PatchUser interface.
+ * Check if a given object implements the UserEntry interface.
  */
-export function instanceOfPatchUser(value: object): boolean {
+export function instanceOfUserEntry(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function PatchUserFromJSON(json: any): PatchUser {
-    return PatchUserFromJSONTyped(json, false);
+export function UserEntryFromJSON(json: any): UserEntry {
+    return UserEntryFromJSONTyped(json, false);
 }
 
-export function PatchUserFromJSONTyped(json: any, ignoreDiscriminator: boolean): PatchUser {
+export function UserEntryFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserEntry {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -60,11 +54,10 @@ export function PatchUserFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         
         'name': !exists(json, 'name') ? undefined : json['name'],
         'role': !exists(json, 'role') ? undefined : json['role'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
     };
 }
 
-export function PatchUserToJSON(value?: PatchUser | null): any {
+export function UserEntryToJSON(value?: UserEntry | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -75,7 +68,6 @@ export function PatchUserToJSON(value?: PatchUser | null): any {
         
         'name': value.name,
         'role': value.role,
-        'description': value.description,
     };
 }
 

@@ -14,12 +14,14 @@
 
 import {
     TableError,
+    instanceOfTableError,
     TableErrorFromJSON,
     TableErrorFromJSONTyped,
     TableErrorToJSON,
 } from './TableError';
 import {
     TimeseriesTable,
+    instanceOfTimeseriesTable,
     TimeseriesTableFromJSON,
     TimeseriesTableFromJSONTyped,
     TimeseriesTableToJSON,
@@ -51,9 +53,13 @@ export function CreateTimeseriesTablesResponseTimeseriesValueToJSON(value?: Crea
         return null;
     }
 
-    if ("error" in value) {
-        return { ...TableErrorToJSON(value)}
+    if (instanceOfTableError(value)) {
+        return TableErrorToJSON(value as TableError);
     }
-    return { ...TimeseriesTableToJSON(value) };
+    if (instanceOfTimeseriesTable(value)) {
+        return TimeseriesTableToJSON(value as TimeseriesTable);
+    }
+
+    return {};
 }
 

@@ -33,6 +33,15 @@ export interface IdentityCreationCertificate {
     readonly creator?: string;
 }
 
+/**
+ * Check if a given object implements the IdentityCreationCertificate interface.
+ */
+export function instanceOfIdentityCreationCertificate(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function IdentityCreationCertificateFromJSON(json: any): IdentityCreationCertificate {
     return IdentityCreationCertificateFromJSONTyped(json, false);
 }

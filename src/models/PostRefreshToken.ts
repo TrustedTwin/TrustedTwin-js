@@ -27,6 +27,15 @@ export interface PostRefreshToken {
     validityTs?: number;
 }
 
+/**
+ * Check if a given object implements the PostRefreshToken interface.
+ */
+export function instanceOfPostRefreshToken(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function PostRefreshTokenFromJSON(json: any): PostRefreshToken {
     return PostRefreshTokenFromJSONTyped(json, false);
 }

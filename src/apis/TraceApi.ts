@@ -14,8 +14,10 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  ErrorObject,
+} from '../models';
 import {
-    ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
 } from '../models';
@@ -28,7 +30,7 @@ export class TraceApi extends runtime.BaseAPI {
     /**
      * Trace a dummy task through the entire system for logging purposes
      */
-    async traceRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async traceRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -50,7 +52,7 @@ export class TraceApi extends runtime.BaseAPI {
     /**
      * Trace a dummy task through the entire system for logging purposes
      */
-    async trace(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async trace(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.traceRaw(initOverrides);
     }
 

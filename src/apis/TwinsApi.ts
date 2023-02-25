@@ -14,92 +14,93 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  AttachTwinDocument,
+  AttachTwinDocumentResponse,
+  CreateStickersBody,
+  CreateStickersResponse,
+  DeletedSticker,
+  Description,
+  ErrorObject,
+  GetDoc,
+  GetTwinLedgerEntryLedgerParameter,
+  GetUserLedgerEntryValue,
+  IdentityProperties,
+  IdentityRemovalProperties,
+  LedgerEntriesHistory,
+  PatchIdentityProperties,
+  PatchUserLedger,
+  PatchUserLedgerEntryValue,
+  PatchedUserLedger,
+  PostLedgerEntries,
+  PostTwinIdentities,
+  ResolvedIdentities,
+  Sticker,
+  StickersResponse,
+  Twin,
+  TwinAlive,
+  TwinDocs,
+  TwinTerminated,
+  UpdateTwinDoc,
+  UserLedger,
+} from '../models';
 import {
-    AttachTwinDocument,
     AttachTwinDocumentFromJSON,
     AttachTwinDocumentToJSON,
-    AttachTwinDocumentResponse,
     AttachTwinDocumentResponseFromJSON,
     AttachTwinDocumentResponseToJSON,
-    CreateStickersBody,
     CreateStickersBodyFromJSON,
     CreateStickersBodyToJSON,
-    CreateStickersResponse,
     CreateStickersResponseFromJSON,
     CreateStickersResponseToJSON,
-    DeletedSticker,
     DeletedStickerFromJSON,
     DeletedStickerToJSON,
-    Description,
     DescriptionFromJSON,
     DescriptionToJSON,
-    ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
-    GetDoc,
     GetDocFromJSON,
     GetDocToJSON,
-    GetUserLedgerEntryValue,
+    GetTwinLedgerEntryLedgerParameterFromJSON,
+    GetTwinLedgerEntryLedgerParameterToJSON,
     GetUserLedgerEntryValueFromJSON,
     GetUserLedgerEntryValueToJSON,
-    IdentityProperties,
     IdentityPropertiesFromJSON,
     IdentityPropertiesToJSON,
-    IdentityRemovalProperties,
     IdentityRemovalPropertiesFromJSON,
     IdentityRemovalPropertiesToJSON,
-    LedgerAlias,
-    LedgerAliasFromJSON,
-    LedgerAliasToJSON,
-    LedgerEntriesHistory,
     LedgerEntriesHistoryFromJSON,
     LedgerEntriesHistoryToJSON,
-    PatchIdentityProperties,
     PatchIdentityPropertiesFromJSON,
     PatchIdentityPropertiesToJSON,
-    PatchUserLedger,
     PatchUserLedgerFromJSON,
     PatchUserLedgerToJSON,
-    PatchUserLedgerEntryValue,
     PatchUserLedgerEntryValueFromJSON,
     PatchUserLedgerEntryValueToJSON,
-    PatchedUserLedger,
     PatchedUserLedgerFromJSON,
     PatchedUserLedgerToJSON,
-    PostLedgerEntries,
     PostLedgerEntriesFromJSON,
     PostLedgerEntriesToJSON,
-    PostTwinIdentities,
     PostTwinIdentitiesFromJSON,
     PostTwinIdentitiesToJSON,
-    ResolvedIdentities,
     ResolvedIdentitiesFromJSON,
     ResolvedIdentitiesToJSON,
-    Sticker,
     StickerFromJSON,
     StickerToJSON,
-    StickersResponse,
     StickersResponseFromJSON,
     StickersResponseToJSON,
-    TerminationCertificate,
-    TerminationCertificateFromJSON,
-    TerminationCertificateToJSON,
-    Twin,
     TwinFromJSON,
     TwinToJSON,
-    TwinAlive,
     TwinAliveFromJSON,
     TwinAliveToJSON,
-    TwinDocs,
     TwinDocsFromJSON,
     TwinDocsToJSON,
-    UpdateTwinDoc,
+    TwinTerminatedFromJSON,
+    TwinTerminatedToJSON,
     UpdateTwinDocFromJSON,
     UpdateTwinDocToJSON,
-    UserLedger,
     UserLedgerFromJSON,
     UserLedgerToJSON,
-    GetTwinLedgerEntryLedgerParameter,
 } from '../models';
 
 export interface TwinsApiAddTwinLedgerEntryRequest {
@@ -226,7 +227,7 @@ export interface TwinsApiTerminateTwinRequest {
 
 export interface TwinsApiUpdateTwinRequest {
     twin: string;
-    description: Description;
+    description?: Description;
 }
 
 export interface TwinsApiUpdateTwinDocRequest {
@@ -261,7 +262,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Add one or more Entries to Ledger
      */
-    async addTwinLedgerEntryRaw(requestParameters: TwinsApiAddTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<UserLedger>> {
+    async addTwinLedgerEntryRaw(requestParameters: TwinsApiAddTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserLedger>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling addTwinLedgerEntry.');
         }
@@ -298,7 +299,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Add one or more Entries to Ledger
      */
-    async addTwinLedgerEntry(requestParameters: TwinsApiAddTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<UserLedger> {
+    async addTwinLedgerEntry(requestParameters: TwinsApiAddTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserLedger> {
         const response = await this.addTwinLedgerEntryRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -306,7 +307,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Attach Doc to the Twin
      */
-    async attachTwinDocRaw(requestParameters: TwinsApiAttachTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<AttachTwinDocumentResponse>> {
+    async attachTwinDocRaw(requestParameters: TwinsApiAttachTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AttachTwinDocumentResponse>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling attachTwinDoc.');
         }
@@ -335,7 +336,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Attach Doc to the Twin
      */
-    async attachTwinDoc(requestParameters: TwinsApiAttachTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<AttachTwinDocumentResponse> {
+    async attachTwinDoc(requestParameters: TwinsApiAttachTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AttachTwinDocumentResponse> {
         const response = await this.attachTwinDocRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -343,7 +344,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Create a Twin
      */
-    async createTwinRaw(requestParameters: TwinsApiCreateTwinRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<TwinAlive>> {
+    async createTwinRaw(requestParameters: TwinsApiCreateTwinRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TwinAlive>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -368,7 +369,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Create a Twin
      */
-    async createTwin(requestParameters: TwinsApiCreateTwinRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<TwinAlive> {
+    async createTwin(requestParameters: TwinsApiCreateTwinRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TwinAlive> {
         const response = await this.createTwinRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -376,7 +377,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Create one or more Identities and attach them to the given Twin
      */
-    async createTwinIdentityRaw(requestParameters: TwinsApiCreateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<string>>> {
+    async createTwinIdentityRaw(requestParameters: TwinsApiCreateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<string>>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling createTwinIdentity.');
         }
@@ -409,7 +410,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Create one or more Identities and attach them to the given Twin
      */
-    async createTwinIdentity(requestParameters: TwinsApiCreateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<string>> {
+    async createTwinIdentity(requestParameters: TwinsApiCreateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<string>> {
         const response = await this.createTwinIdentityRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -417,7 +418,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Delete Doc attached to given Twin
      */
-    async deleteTwinDocRaw(requestParameters: TwinsApiDeleteTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetDoc>> {
+    async deleteTwinDocRaw(requestParameters: TwinsApiDeleteTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetDoc>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling deleteTwinDoc.');
         }
@@ -447,7 +448,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Delete Doc attached to given Twin
      */
-    async deleteTwinDoc(requestParameters: TwinsApiDeleteTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetDoc> {
+    async deleteTwinDoc(requestParameters: TwinsApiDeleteTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetDoc> {
         const response = await this.deleteTwinDocRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -455,7 +456,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Delete Docs attached to given Twin
      */
-    async deleteTwinDocsRaw(requestParameters: TwinsApiDeleteTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetDoc>> {
+    async deleteTwinDocsRaw(requestParameters: TwinsApiDeleteTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetDoc>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling deleteTwinDocs.');
         }
@@ -481,7 +482,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Delete Docs attached to given Twin
      */
-    async deleteTwinDocs(requestParameters: TwinsApiDeleteTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetDoc> {
+    async deleteTwinDocs(requestParameters: TwinsApiDeleteTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetDoc> {
         const response = await this.deleteTwinDocsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -489,7 +490,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Delete Twin\'s Identity
      */
-    async deleteTwinIdentityRaw(requestParameters: TwinsApiDeleteTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<IdentityRemovalProperties>> {
+    async deleteTwinIdentityRaw(requestParameters: TwinsApiDeleteTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRemovalProperties>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling deleteTwinIdentity.');
         }
@@ -519,7 +520,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Delete Twin\'s Identity
      */
-    async deleteTwinIdentity(requestParameters: TwinsApiDeleteTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<IdentityRemovalProperties> {
+    async deleteTwinIdentity(requestParameters: TwinsApiDeleteTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRemovalProperties> {
         const response = await this.deleteTwinIdentityRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -527,7 +528,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Delete Entry from Ledger
      */
-    async deleteTwinLedgerEntryRaw(requestParameters: TwinsApiDeleteTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
+    async deleteTwinLedgerEntryRaw(requestParameters: TwinsApiDeleteTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling deleteTwinLedgerEntry.');
         }
@@ -561,14 +562,14 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Delete Entry from Ledger
      */
-    async deleteTwinLedgerEntry(requestParameters: TwinsApiDeleteTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
+    async deleteTwinLedgerEntry(requestParameters: TwinsApiDeleteTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteTwinLedgerEntryRaw(requestParameters, initOverrides);
     }
 
     /**
      * Get sticker created by own Account
      */
-    async getStickerRaw(requestParameters: TwinsApiGetStickerRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Sticker>> {
+    async getStickerRaw(requestParameters: TwinsApiGetStickerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Sticker>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getSticker.');
         }
@@ -598,7 +599,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get sticker created by own Account
      */
-    async getSticker(requestParameters: TwinsApiGetStickerRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Sticker> {
+    async getSticker(requestParameters: TwinsApiGetStickerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Sticker> {
         const response = await this.getStickerRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -606,7 +607,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Gets all stickers attached to the given Twin visible for the caller
      */
-    async getStickersRaw(requestParameters: TwinsApiGetStickersRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<StickersResponse>> {
+    async getStickersRaw(requestParameters: TwinsApiGetStickersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StickersResponse>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getStickers.');
         }
@@ -632,7 +633,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Gets all stickers attached to the given Twin visible for the caller
      */
-    async getStickers(requestParameters: TwinsApiGetStickersRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<StickersResponse> {
+    async getStickers(requestParameters: TwinsApiGetStickersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StickersResponse> {
         const response = await this.getStickersRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -640,7 +641,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Twin
      */
-    async getTwinRaw(requestParameters: TwinsApiGetTwinRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Twin>> {
+    async getTwinRaw(requestParameters: TwinsApiGetTwinRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Twin>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwin.');
         }
@@ -670,7 +671,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Twin
      */
-    async getTwin(requestParameters: TwinsApiGetTwinRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Twin> {
+    async getTwin(requestParameters: TwinsApiGetTwinRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Twin> {
         const response = await this.getTwinRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -678,7 +679,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Obtain URL to download attached Doc
      */
-    async getTwinDocRaw(requestParameters: TwinsApiGetTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetDoc>> {
+    async getTwinDocRaw(requestParameters: TwinsApiGetTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetDoc>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinDoc.');
         }
@@ -712,7 +713,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Obtain URL to download attached Doc
      */
-    async getTwinDoc(requestParameters: TwinsApiGetTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetDoc> {
+    async getTwinDoc(requestParameters: TwinsApiGetTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetDoc> {
         const response = await this.getTwinDocRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -720,7 +721,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Docs attached to given Twin
      */
-    async getTwinDocsRaw(requestParameters: TwinsApiGetTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<TwinDocs>> {
+    async getTwinDocsRaw(requestParameters: TwinsApiGetTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TwinDocs>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinDocs.');
         }
@@ -746,7 +747,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Docs attached to given Twin
      */
-    async getTwinDocs(requestParameters: TwinsApiGetTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<TwinDocs> {
+    async getTwinDocs(requestParameters: TwinsApiGetTwinDocsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TwinDocs> {
         const response = await this.getTwinDocsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -754,7 +755,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Identities of the given Twin
      */
-    async getTwinIdentitiesRaw(requestParameters: TwinsApiGetTwinIdentitiesRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<string>>> {
+    async getTwinIdentitiesRaw(requestParameters: TwinsApiGetTwinIdentitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<string>>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinIdentities.');
         }
@@ -804,7 +805,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Identities of the given Twin
      */
-    async getTwinIdentities(requestParameters: TwinsApiGetTwinIdentitiesRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<string>> {
+    async getTwinIdentities(requestParameters: TwinsApiGetTwinIdentitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<string>> {
         const response = await this.getTwinIdentitiesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -812,7 +813,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Twin\'s Identity
      */
-    async getTwinIdentityRaw(requestParameters: TwinsApiGetTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<IdentityProperties>> {
+    async getTwinIdentityRaw(requestParameters: TwinsApiGetTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityProperties>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinIdentity.');
         }
@@ -842,7 +843,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Twin\'s Identity
      */
-    async getTwinIdentity(requestParameters: TwinsApiGetTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<IdentityProperties> {
+    async getTwinIdentity(requestParameters: TwinsApiGetTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityProperties> {
         const response = await this.getTwinIdentityRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -850,7 +851,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Entry from Ledger
      */
-    async getTwinLedgerEntryRaw(requestParameters: TwinsApiGetTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<UserLedger>> {
+    async getTwinLedgerEntryRaw(requestParameters: TwinsApiGetTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserLedger>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinLedgerEntry.');
         }
@@ -896,7 +897,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Entry from Ledger
      */
-    async getTwinLedgerEntry(requestParameters: TwinsApiGetTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<UserLedger> {
+    async getTwinLedgerEntry(requestParameters: TwinsApiGetTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserLedger> {
         const response = await this.getTwinLedgerEntryRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -904,7 +905,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Ledger Entry History
      */
-    async getTwinLedgerEntryHistoryRaw(requestParameters: TwinsApiGetTwinLedgerEntryHistoryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<LedgerEntriesHistory>> {
+    async getTwinLedgerEntryHistoryRaw(requestParameters: TwinsApiGetTwinLedgerEntryHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LedgerEntriesHistory>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinLedgerEntryHistory.');
         }
@@ -950,7 +951,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Ledger Entry History
      */
-    async getTwinLedgerEntryHistory(requestParameters: TwinsApiGetTwinLedgerEntryHistoryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<LedgerEntriesHistory> {
+    async getTwinLedgerEntryHistory(requestParameters: TwinsApiGetTwinLedgerEntryHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LedgerEntriesHistory> {
         const response = await this.getTwinLedgerEntryHistoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -958,7 +959,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Entry Value from Ledger
      */
-    async getTwinLedgerEntryValueRaw(requestParameters: TwinsApiGetTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetUserLedgerEntryValue>> {
+    async getTwinLedgerEntryValueRaw(requestParameters: TwinsApiGetTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUserLedgerEntryValue>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinLedgerEntryValue.');
         }
@@ -992,7 +993,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Get Entry Value from Ledger
      */
-    async getTwinLedgerEntryValue(requestParameters: TwinsApiGetTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetUserLedgerEntryValue> {
+    async getTwinLedgerEntryValue(requestParameters: TwinsApiGetTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUserLedgerEntryValue> {
         const response = await this.getTwinLedgerEntryValueRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1000,7 +1001,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Puts a sticker on a twin
      */
-    async putStickerRaw(requestParameters: TwinsApiPutStickerRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<CreateStickersResponse>> {
+    async putStickerRaw(requestParameters: TwinsApiPutStickerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateStickersResponse>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling putSticker.');
         }
@@ -1029,7 +1030,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Puts a sticker on a twin
      */
-    async putSticker(requestParameters: TwinsApiPutStickerRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<CreateStickersResponse> {
+    async putSticker(requestParameters: TwinsApiPutStickerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateStickersResponse> {
         const response = await this.putStickerRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1037,7 +1038,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * deletes a given sticker
      */
-    async removeStickerRaw(requestParameters: TwinsApiRemoveStickerRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<DeletedSticker>> {
+    async removeStickerRaw(requestParameters: TwinsApiRemoveStickerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeletedSticker>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling removeSticker.');
         }
@@ -1067,7 +1068,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * deletes a given sticker
      */
-    async removeSticker(requestParameters: TwinsApiRemoveStickerRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<DeletedSticker> {
+    async removeSticker(requestParameters: TwinsApiRemoveStickerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeletedSticker> {
         const response = await this.removeStickerRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1075,7 +1076,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Resolve Twin\'s Identity to system UUID
      */
-    async resolveTwinIdentityRaw(requestParameters: TwinsApiResolveTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<ResolvedIdentities>> {
+    async resolveTwinIdentityRaw(requestParameters: TwinsApiResolveTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ResolvedIdentities>> {
         if (requestParameters.identity === null || requestParameters.identity === undefined) {
             throw new runtime.RequiredError('identity','Required parameter requestParameters.identity was null or undefined when calling resolveTwinIdentity.');
         }
@@ -1105,7 +1106,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Resolve Twin\'s Identity to system UUID
      */
-    async resolveTwinIdentity(requestParameters: TwinsApiResolveTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<ResolvedIdentities> {
+    async resolveTwinIdentity(requestParameters: TwinsApiResolveTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ResolvedIdentities> {
         const response = await this.resolveTwinIdentityRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1113,7 +1114,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Terminate given Twin
      */
-    async terminateTwinRaw(requestParameters: TwinsApiTerminateTwinRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<TerminationCertificate>> {
+    async terminateTwinRaw(requestParameters: TwinsApiTerminateTwinRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TwinTerminated>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling terminateTwin.');
         }
@@ -1133,13 +1134,13 @@ export class TwinsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => TerminationCertificateFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TwinTerminatedFromJSON(jsonValue));
     }
 
     /**
      * Terminate given Twin
      */
-    async terminateTwin(requestParameters: TwinsApiTerminateTwinRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<TerminationCertificate> {
+    async terminateTwin(requestParameters: TwinsApiTerminateTwinRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TwinTerminated> {
         const response = await this.terminateTwinRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1147,13 +1148,9 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Update existing Twin
      */
-    async updateTwinRaw(requestParameters: TwinsApiUpdateTwinRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<TwinAlive>> {
+    async updateTwinRaw(requestParameters: TwinsApiUpdateTwinRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TwinAlive>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling updateTwin.');
-        }
-
-        if (requestParameters.description === null || requestParameters.description === undefined) {
-            throw new runtime.RequiredError('description','Required parameter requestParameters.description was null or undefined when calling updateTwin.');
         }
 
         const queryParameters: any = {};
@@ -1180,7 +1177,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Update existing Twin
      */
-    async updateTwin(requestParameters: TwinsApiUpdateTwinRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<TwinAlive> {
+    async updateTwin(requestParameters: TwinsApiUpdateTwinRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TwinAlive> {
         const response = await this.updateTwinRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1188,7 +1185,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Update Twin\'s Doc
      */
-    async updateTwinDocRaw(requestParameters: TwinsApiUpdateTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetDoc>> {
+    async updateTwinDocRaw(requestParameters: TwinsApiUpdateTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetDoc>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling updateTwinDoc.');
         }
@@ -1221,7 +1218,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Update Twin\'s Doc
      */
-    async updateTwinDoc(requestParameters: TwinsApiUpdateTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetDoc> {
+    async updateTwinDoc(requestParameters: TwinsApiUpdateTwinDocRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetDoc> {
         const response = await this.updateTwinDocRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1229,7 +1226,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Update Twin Identity
      */
-    async updateTwinIdentityRaw(requestParameters: TwinsApiUpdateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<IdentityProperties>> {
+    async updateTwinIdentityRaw(requestParameters: TwinsApiUpdateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityProperties>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling updateTwinIdentity.');
         }
@@ -1266,7 +1263,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * Update Twin Identity
      */
-    async updateTwinIdentity(requestParameters: TwinsApiUpdateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<IdentityProperties> {
+    async updateTwinIdentity(requestParameters: TwinsApiUpdateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityProperties> {
         const response = await this.updateTwinIdentityRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1274,7 +1271,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * PATCH one or more Entries in given Ledger
      */
-    async updateTwinLedgerEntryRaw(requestParameters: TwinsApiUpdateTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<PatchedUserLedger>> {
+    async updateTwinLedgerEntryRaw(requestParameters: TwinsApiUpdateTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchedUserLedger>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling updateTwinLedgerEntry.');
         }
@@ -1311,7 +1308,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * PATCH one or more Entries in given Ledger
      */
-    async updateTwinLedgerEntry(requestParameters: TwinsApiUpdateTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<PatchedUserLedger> {
+    async updateTwinLedgerEntry(requestParameters: TwinsApiUpdateTwinLedgerEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchedUserLedger> {
         const response = await this.updateTwinLedgerEntryRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1319,7 +1316,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * PATCH one or more Entries values in given Ledger
      */
-    async updateTwinLedgerEntryValueRaw(requestParameters: TwinsApiUpdateTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<PatchedUserLedger>> {
+    async updateTwinLedgerEntryValueRaw(requestParameters: TwinsApiUpdateTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PatchedUserLedger>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling updateTwinLedgerEntryValue.');
         }
@@ -1356,7 +1353,7 @@ export class TwinsApi extends runtime.BaseAPI {
     /**
      * PATCH one or more Entries values in given Ledger
      */
-    async updateTwinLedgerEntryValue(requestParameters: TwinsApiUpdateTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<PatchedUserLedger> {
+    async updateTwinLedgerEntryValue(requestParameters: TwinsApiUpdateTwinLedgerEntryValueRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PatchedUserLedger> {
         const response = await this.updateTwinLedgerEntryValueRaw(requestParameters, initOverrides);
         return await response.value();
     }

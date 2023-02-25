@@ -13,14 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { CreateIndexTablesResponseIndexesValue } from './CreateIndexTablesResponseIndexesValue';
 import {
-    CreateIndexTablesResponse,
-    CreateIndexTablesResponseFromJSON,
-    CreateIndexTablesResponseFromJSONTyped,
-    CreateIndexTablesResponseToJSON,
-} from './CreateIndexTablesResponse';
-import {
-    CreateIndexTablesResponseIndexesValue,
     CreateIndexTablesResponseIndexesValueFromJSON,
     CreateIndexTablesResponseIndexesValueFromJSONTyped,
     CreateIndexTablesResponseIndexesValueToJSON,
@@ -38,6 +32,15 @@ export interface CreateIndexesTable201Response {
      * @memberof CreateIndexesTable201Response
      */
     indexes?: { [key: string]: CreateIndexTablesResponseIndexesValue; };
+}
+
+/**
+ * Check if a given object implements the CreateIndexesTable201Response interface.
+ */
+export function instanceOfCreateIndexesTable201Response(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function CreateIndexesTable201ResponseFromJSON(json: any): CreateIndexesTable201Response {

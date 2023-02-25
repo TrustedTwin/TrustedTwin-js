@@ -27,6 +27,15 @@ export interface CreateStickersResponseStickersValueAnyOf {
     error?: string;
 }
 
+/**
+ * Check if a given object implements the CreateStickersResponseStickersValueAnyOf interface.
+ */
+export function instanceOfCreateStickersResponseStickersValueAnyOf(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function CreateStickersResponseStickersValueAnyOfFromJSON(json: any): CreateStickersResponseStickersValueAnyOf {
     return CreateStickersResponseStickersValueAnyOfFromJSONTyped(json, false);
 }

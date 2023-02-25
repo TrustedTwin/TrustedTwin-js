@@ -13,13 +13,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    IndexesDatabaseTableDetails,
-    IndexesDatabaseTableDetailsFromJSON,
-    IndexesDatabaseTableDetailsFromJSONTyped,
-    IndexesDatabaseTableDetailsToJSON,
-} from './IndexesDatabaseTableDetails';
-
 /**
  * 
  * @export
@@ -50,6 +43,15 @@ export interface IndexTableResponseStats {
      * @memberof IndexTableResponseStats
      */
     totalSize?: number;
+}
+
+/**
+ * Check if a given object implements the IndexTableResponseStats interface.
+ */
+export function instanceOfIndexTableResponseStats(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function IndexTableResponseStatsFromJSON(json: any): IndexTableResponseStats {

@@ -45,6 +45,15 @@ export interface ErrorObject {
     help?: string;
 }
 
+/**
+ * Check if a given object implements the ErrorObject interface.
+ */
+export function instanceOfErrorObject(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function ErrorObjectFromJSON(json: any): ErrorObject {
     return ErrorObjectFromJSONTyped(json, false);
 }

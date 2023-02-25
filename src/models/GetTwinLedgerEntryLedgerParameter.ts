@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { LedgerAlias } from './LedgerAlias';
 import {
-    LedgerAlias,
     LedgerAliasFromJSON,
     LedgerAliasFromJSONTyped,
     LedgerAliasToJSON,
@@ -26,7 +26,15 @@ import {
  * @interface GetTwinLedgerEntryLedgerParameter
  */
 export interface GetTwinLedgerEntryLedgerParameter {
-    value: any;
+}
+
+/**
+ * Check if a given object implements the GetTwinLedgerEntryLedgerParameter interface.
+ */
+export function instanceOfGetTwinLedgerEntryLedgerParameter(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function GetTwinLedgerEntryLedgerParameterFromJSON(json: any): GetTwinLedgerEntryLedgerParameter {

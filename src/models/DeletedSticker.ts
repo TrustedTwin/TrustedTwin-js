@@ -43,12 +43,15 @@ export interface DeletedSticker {
      * @memberof DeletedSticker
      */
     createdTs?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof DeletedSticker
-     */
-    updatedTs?: number;
+}
+
+/**
+ * Check if a given object implements the DeletedSticker interface.
+ */
+export function instanceOfDeletedSticker(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function DeletedStickerFromJSON(json: any): DeletedSticker {
@@ -65,7 +68,6 @@ export function DeletedStickerFromJSONTyped(json: any, ignoreDiscriminator: bool
         'message': !exists(json, 'message') ? undefined : json['message'],
         'validityTs': !exists(json, 'validity_ts') ? undefined : json['validity_ts'],
         'createdTs': !exists(json, 'created_ts') ? undefined : json['created_ts'],
-        'updatedTs': !exists(json, 'updated_ts') ? undefined : json['updated_ts'],
     };
 }
 
@@ -82,7 +84,6 @@ export function DeletedStickerToJSON(value?: DeletedSticker | null): any {
         'message': value.message,
         'validity_ts': value.validityTs,
         'created_ts': value.createdTs,
-        'updated_ts': value.updatedTs,
     };
 }
 

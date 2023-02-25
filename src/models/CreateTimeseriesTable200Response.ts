@@ -13,14 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { CreateTimeseriesTablesResponseTimeseriesValue } from './CreateTimeseriesTablesResponseTimeseriesValue';
 import {
-    CreateTimeseriesTablesResponse,
-    CreateTimeseriesTablesResponseFromJSON,
-    CreateTimeseriesTablesResponseFromJSONTyped,
-    CreateTimeseriesTablesResponseToJSON,
-} from './CreateTimeseriesTablesResponse';
-import {
-    CreateTimeseriesTablesResponseTimeseriesValue,
     CreateTimeseriesTablesResponseTimeseriesValueFromJSON,
     CreateTimeseriesTablesResponseTimeseriesValueFromJSONTyped,
     CreateTimeseriesTablesResponseTimeseriesValueToJSON,
@@ -38,6 +32,15 @@ export interface CreateTimeseriesTable200Response {
      * @memberof CreateTimeseriesTable200Response
      */
     timeseries?: { [key: string]: CreateTimeseriesTablesResponseTimeseriesValue; };
+}
+
+/**
+ * Check if a given object implements the CreateTimeseriesTable200Response interface.
+ */
+export function instanceOfCreateTimeseriesTable200Response(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function CreateTimeseriesTable200ResponseFromJSON(json: any): CreateTimeseriesTable200Response {

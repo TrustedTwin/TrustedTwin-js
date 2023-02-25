@@ -57,6 +57,15 @@ export interface UserSecretResponse {
     updatedTs?: number;
 }
 
+/**
+ * Check if a given object implements the UserSecretResponse interface.
+ */
+export function instanceOfUserSecretResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function UserSecretResponseFromJSON(json: any): UserSecretResponse {
     return UserSecretResponseFromJSONTyped(json, false);
 }

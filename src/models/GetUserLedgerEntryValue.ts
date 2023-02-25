@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { ValueEntry } from './ValueEntry';
 import {
-    ValueEntry,
     ValueEntryFromJSON,
     ValueEntryFromJSONTyped,
     ValueEntryToJSON,
@@ -32,6 +32,15 @@ export interface GetUserLedgerEntryValue {
      * @memberof GetUserLedgerEntryValue
      */
     entries?: { [key: string]: ValueEntry; };
+}
+
+/**
+ * Check if a given object implements the GetUserLedgerEntryValue interface.
+ */
+export function instanceOfGetUserLedgerEntryValue(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function GetUserLedgerEntryValueFromJSON(json: any): GetUserLedgerEntryValue {

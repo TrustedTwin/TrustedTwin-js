@@ -13,20 +13,20 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { LedgerEntryTimeseries } from './LedgerEntryTimeseries';
 import {
-    LedgerEntryTimeseries,
     LedgerEntryTimeseriesFromJSON,
     LedgerEntryTimeseriesFromJSONTyped,
     LedgerEntryTimeseriesToJSON,
 } from './LedgerEntryTimeseries';
+import type { TimeseriesColumns } from './TimeseriesColumns';
 import {
-    TimeseriesColumns,
     TimeseriesColumnsFromJSON,
     TimeseriesColumnsFromJSONTyped,
     TimeseriesColumnsToJSON,
 } from './TimeseriesColumns';
+import type { TimeseriesTableResponseStats } from './TimeseriesTableResponseStats';
 import {
-    TimeseriesTableResponseStats,
     TimeseriesTableResponseStatsFromJSON,
     TimeseriesTableResponseStatsFromJSONTyped,
     TimeseriesTableResponseStatsToJSON,
@@ -67,13 +67,25 @@ export interface TimeseriesTableResponse {
      * @type {string}
      * @memberof TimeseriesTableResponse
      */
-    retention?: string | null;
+    retention?: string;
     /**
      * 
      * @type {string}
      * @memberof TimeseriesTableResponse
      */
-    chunk?: string | null;
+    chunk?: string;
+}
+
+/**
+ * Check if a given object implements the TimeseriesTableResponse interface.
+ */
+export function instanceOfTimeseriesTableResponse(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "stats" in value;
+    isInstance = isInstance && "dimensions" in value;
+    isInstance = isInstance && "measurements" in value;
+
+    return isInstance;
 }
 
 export function TimeseriesTableResponseFromJSON(json: any): TimeseriesTableResponse {

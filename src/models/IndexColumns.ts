@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { ServicesDatabaseColumnType } from './ServicesDatabaseColumnType';
 import {
-    ServicesDatabaseColumnType,
     ServicesDatabaseColumnTypeFromJSON,
     ServicesDatabaseColumnTypeFromJSONTyped,
     ServicesDatabaseColumnTypeToJSON,
@@ -38,6 +38,15 @@ export interface IndexColumns {
      * @memberof IndexColumns
      */
     types?: Array<ServicesDatabaseColumnType>;
+}
+
+/**
+ * Check if a given object implements the IndexColumns interface.
+ */
+export function instanceOfIndexColumns(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function IndexColumnsFromJSON(json: any): IndexColumns {

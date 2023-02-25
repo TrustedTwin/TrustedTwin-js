@@ -36,7 +36,10 @@ export const ServicesDatabaseColumnType = {
     Time: 'time',
     Timestamp: 'timestamp',
     Timestamptz: 'timestamptz',
-    Uuid: 'uuid'
+    Uuid: 'uuid',
+    Interval: 'interval',
+    Geography: 'geography',
+    Geometry: 'geometry'
 } as const;
 export type ServicesDatabaseColumnType = typeof ServicesDatabaseColumnType[keyof typeof ServicesDatabaseColumnType];
 

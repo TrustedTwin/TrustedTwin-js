@@ -14,35 +14,37 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  CreateIndexesTable201Response,
+  DeleteIndexesTable200Response,
+  ErrorObject,
+  GetIndexTablesResponse,
+  IndexTableResponse,
+  IndexTableUpdate,
+  IndexTables,
+  ServicesDatabaseUsersAccess,
+  TruncateIndexesTable200Response,
+  UpdateIndexesTable200Response,
+} from '../models';
 import {
-    CreateIndexesTable201Response,
     CreateIndexesTable201ResponseFromJSON,
     CreateIndexesTable201ResponseToJSON,
-    DeleteIndexesTable200Response,
     DeleteIndexesTable200ResponseFromJSON,
     DeleteIndexesTable200ResponseToJSON,
-    ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
-    GetIndexTablesResponse,
     GetIndexTablesResponseFromJSON,
     GetIndexTablesResponseToJSON,
-    IndexTableResponse,
     IndexTableResponseFromJSON,
     IndexTableResponseToJSON,
-    IndexTableUpdate,
     IndexTableUpdateFromJSON,
     IndexTableUpdateToJSON,
-    IndexTables,
     IndexTablesFromJSON,
     IndexTablesToJSON,
-    ServicesDatabaseUsersAccess,
     ServicesDatabaseUsersAccessFromJSON,
     ServicesDatabaseUsersAccessToJSON,
-    TruncateIndexesTable200Response,
     TruncateIndexesTable200ResponseFromJSON,
     TruncateIndexesTable200ResponseToJSON,
-    UpdateIndexesTable200Response,
     UpdateIndexesTable200ResponseFromJSON,
     UpdateIndexesTable200ResponseToJSON,
 } from '../models';
@@ -80,7 +82,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Create Index tables
      */
-    async createIndexesTableRaw(requestParameters: IndexesApiCreateIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<CreateIndexesTable201Response>> {
+    async createIndexesTableRaw(requestParameters: IndexesApiCreateIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateIndexesTable201Response>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -105,7 +107,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Create Index tables
      */
-    async createIndexesTable(requestParameters: IndexesApiCreateIndexesTableRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<CreateIndexesTable201Response> {
+    async createIndexesTable(requestParameters: IndexesApiCreateIndexesTableRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateIndexesTable201Response> {
         const response = await this.createIndexesTableRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -113,7 +115,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Delete Index table
      */
-    async deleteIndexesTableRaw(requestParameters: IndexesApiDeleteIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<DeleteIndexesTable200Response>> {
+    async deleteIndexesTableRaw(requestParameters: IndexesApiDeleteIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteIndexesTable200Response>> {
         if (requestParameters.index === null || requestParameters.index === undefined) {
             throw new runtime.RequiredError('index','Required parameter requestParameters.index was null or undefined when calling deleteIndexesTable.');
         }
@@ -139,7 +141,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Delete Index table
      */
-    async deleteIndexesTable(requestParameters: IndexesApiDeleteIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<DeleteIndexesTable200Response> {
+    async deleteIndexesTable(requestParameters: IndexesApiDeleteIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteIndexesTable200Response> {
         const response = await this.deleteIndexesTableRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -147,7 +149,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Gets details of a given Index table
      */
-    async getIndexesTableRaw(requestParameters: IndexesApiGetIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<IndexTableResponse>> {
+    async getIndexesTableRaw(requestParameters: IndexesApiGetIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IndexTableResponse>> {
         if (requestParameters.index === null || requestParameters.index === undefined) {
             throw new runtime.RequiredError('index','Required parameter requestParameters.index was null or undefined when calling getIndexesTable.');
         }
@@ -173,7 +175,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Gets details of a given Index table
      */
-    async getIndexesTable(requestParameters: IndexesApiGetIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<IndexTableResponse> {
+    async getIndexesTable(requestParameters: IndexesApiGetIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IndexTableResponse> {
         const response = await this.getIndexesTableRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -181,7 +183,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Gets list of existing Index tables + database information
      */
-    async getIndexesTablesRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<GetIndexTablesResponse>> {
+    async getIndexesTablesRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetIndexTablesResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -203,7 +205,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Gets list of existing Index tables + database information
      */
-    async getIndexesTables(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<GetIndexTablesResponse> {
+    async getIndexesTables(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetIndexTablesResponse> {
         const response = await this.getIndexesTablesRaw(initOverrides);
         return await response.value();
     }
@@ -211,7 +213,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Delete Index table data
      */
-    async truncateIndexesTableRaw(requestParameters: IndexesApiTruncateIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<TruncateIndexesTable200Response>> {
+    async truncateIndexesTableRaw(requestParameters: IndexesApiTruncateIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TruncateIndexesTable200Response>> {
         if (requestParameters.index === null || requestParameters.index === undefined) {
             throw new runtime.RequiredError('index','Required parameter requestParameters.index was null or undefined when calling truncateIndexesTable.');
         }
@@ -237,7 +239,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Delete Index table data
      */
-    async truncateIndexesTable(requestParameters: IndexesApiTruncateIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<TruncateIndexesTable200Response> {
+    async truncateIndexesTable(requestParameters: IndexesApiTruncateIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TruncateIndexesTable200Response> {
         const response = await this.truncateIndexesTableRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -245,7 +247,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Update Index service access
      */
-    async updateIndexesAccessRaw(requestParameters: IndexesApiUpdateIndexesAccessRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<ServicesDatabaseUsersAccess>> {
+    async updateIndexesAccessRaw(requestParameters: IndexesApiUpdateIndexesAccessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServicesDatabaseUsersAccess>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -270,7 +272,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Update Index service access
      */
-    async updateIndexesAccess(requestParameters: IndexesApiUpdateIndexesAccessRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<ServicesDatabaseUsersAccess> {
+    async updateIndexesAccess(requestParameters: IndexesApiUpdateIndexesAccessRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServicesDatabaseUsersAccess> {
         const response = await this.updateIndexesAccessRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -278,7 +280,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Update Index table
      */
-    async updateIndexesTableRaw(requestParameters: IndexesApiUpdateIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<UpdateIndexesTable200Response>> {
+    async updateIndexesTableRaw(requestParameters: IndexesApiUpdateIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateIndexesTable200Response>> {
         if (requestParameters.index === null || requestParameters.index === undefined) {
             throw new runtime.RequiredError('index','Required parameter requestParameters.index was null or undefined when calling updateIndexesTable.');
         }
@@ -307,7 +309,7 @@ export class IndexesApi extends runtime.BaseAPI {
     /**
      * Update Index table
      */
-    async updateIndexesTable(requestParameters: IndexesApiUpdateIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<UpdateIndexesTable200Response> {
+    async updateIndexesTable(requestParameters: IndexesApiUpdateIndexesTableRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateIndexesTable200Response> {
         const response = await this.updateIndexesTableRaw(requestParameters, initOverrides);
         return await response.value();
     }

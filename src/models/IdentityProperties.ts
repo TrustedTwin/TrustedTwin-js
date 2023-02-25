@@ -33,6 +33,15 @@ export interface IdentityProperties {
     visibility?: string;
 }
 
+/**
+ * Check if a given object implements the IdentityProperties interface.
+ */
+export function instanceOfIdentityProperties(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function IdentityPropertiesFromJSON(json: any): IdentityProperties {
     return IdentityPropertiesFromJSONTyped(json, false);
 }

@@ -31,6 +31,21 @@ export interface PostNewRoleRules {
      * @memberof PostNewRoleRules
      */
     entryRule?: string;
+    /**
+     * Rule applied to control access to an Identity
+     * @type {string}
+     * @memberof PostNewRoleRules
+     */
+    identityRule?: string;
+}
+
+/**
+ * Check if a given object implements the PostNewRoleRules interface.
+ */
+export function instanceOfPostNewRoleRules(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function PostNewRoleRulesFromJSON(json: any): PostNewRoleRules {
@@ -45,6 +60,7 @@ export function PostNewRoleRulesFromJSONTyped(json: any, ignoreDiscriminator: bo
         
         'twinRule': !exists(json, 'twin_rule') ? undefined : json['twin_rule'],
         'entryRule': !exists(json, 'entry_rule') ? undefined : json['entry_rule'],
+        'identityRule': !exists(json, 'identity_rule') ? undefined : json['identity_rule'],
     };
 }
 
@@ -59,6 +75,7 @@ export function PostNewRoleRulesToJSON(value?: PostNewRoleRules | null): any {
         
         'twin_rule': value.twinRule,
         'entry_rule': value.entryRule,
+        'identity_rule': value.identityRule,
     };
 }
 

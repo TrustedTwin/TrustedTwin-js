@@ -27,6 +27,16 @@ export interface TableError {
     error: string;
 }
 
+/**
+ * Check if a given object implements the TableError interface.
+ */
+export function instanceOfTableError(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "error" in value;
+
+    return isInstance;
+}
+
 export function TableErrorFromJSON(json: any): TableError {
     return TableErrorFromJSONTyped(json, false);
 }

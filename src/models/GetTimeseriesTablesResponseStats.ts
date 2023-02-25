@@ -13,13 +13,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    ServicesDatabaseDatabaseDetails,
-    ServicesDatabaseDatabaseDetailsFromJSON,
-    ServicesDatabaseDatabaseDetailsFromJSONTyped,
-    ServicesDatabaseDatabaseDetailsToJSON,
-} from './ServicesDatabaseDatabaseDetails';
-
 /**
  * 
  * @export
@@ -51,6 +44,15 @@ export const GetTimeseriesTablesResponseStatsStatusEnum = {
 } as const;
 export type GetTimeseriesTablesResponseStatsStatusEnum = typeof GetTimeseriesTablesResponseStatsStatusEnum[keyof typeof GetTimeseriesTablesResponseStatsStatusEnum];
 
+
+/**
+ * Check if a given object implements the GetTimeseriesTablesResponseStats interface.
+ */
+export function instanceOfGetTimeseriesTablesResponseStats(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
 
 export function GetTimeseriesTablesResponseStatsFromJSON(json: any): GetTimeseriesTablesResponseStats {
     return GetTimeseriesTablesResponseStatsFromJSONTyped(json, false);

@@ -13,14 +13,14 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { DocCreationCertificate } from './DocCreationCertificate';
 import {
-    DocCreationCertificate,
     DocCreationCertificateFromJSON,
     DocCreationCertificateFromJSONTyped,
     DocCreationCertificateToJSON,
 } from './DocCreationCertificate';
+import type { GetDocDownload } from './GetDocDownload';
 import {
-    GetDocDownload,
     GetDocDownloadFromJSON,
     GetDocDownloadFromJSONTyped,
     GetDocDownloadToJSON,
@@ -91,6 +91,15 @@ export const GetDocStatusEnum = {
 } as const;
 export type GetDocStatusEnum = typeof GetDocStatusEnum[keyof typeof GetDocStatusEnum];
 
+
+/**
+ * Check if a given object implements the GetDoc interface.
+ */
+export function instanceOfGetDoc(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
 
 export function GetDocFromJSON(json: any): GetDoc {
     return GetDocFromJSONTyped(json, false);

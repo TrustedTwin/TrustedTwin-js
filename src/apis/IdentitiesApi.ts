@@ -14,23 +14,25 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  ErrorObject,
+  IdentityProperties,
+  IdentityRemovalProperties,
+  PatchIdentityProperties,
+  PostTwinIdentities,
+  ResolvedIdentities,
+} from '../models';
 import {
-    ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
-    IdentityProperties,
     IdentityPropertiesFromJSON,
     IdentityPropertiesToJSON,
-    IdentityRemovalProperties,
     IdentityRemovalPropertiesFromJSON,
     IdentityRemovalPropertiesToJSON,
-    PatchIdentityProperties,
     PatchIdentityPropertiesFromJSON,
     PatchIdentityPropertiesToJSON,
-    PostTwinIdentities,
     PostTwinIdentitiesFromJSON,
     PostTwinIdentitiesToJSON,
-    ResolvedIdentities,
     ResolvedIdentitiesFromJSON,
     ResolvedIdentitiesToJSON,
 } from '../models';
@@ -79,7 +81,7 @@ export class IdentitiesApi extends runtime.BaseAPI {
     /**
      * Create one or more Identities and attach them to the given Twin
      */
-    async createTwinIdentityRaw(requestParameters: IdentitiesApiCreateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<string>>> {
+    async createTwinIdentityRaw(requestParameters: IdentitiesApiCreateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<string>>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling createTwinIdentity.');
         }
@@ -112,7 +114,7 @@ export class IdentitiesApi extends runtime.BaseAPI {
     /**
      * Create one or more Identities and attach them to the given Twin
      */
-    async createTwinIdentity(requestParameters: IdentitiesApiCreateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<string>> {
+    async createTwinIdentity(requestParameters: IdentitiesApiCreateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<string>> {
         const response = await this.createTwinIdentityRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -120,7 +122,7 @@ export class IdentitiesApi extends runtime.BaseAPI {
     /**
      * Delete Twin\'s Identity
      */
-    async deleteTwinIdentityRaw(requestParameters: IdentitiesApiDeleteTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<IdentityRemovalProperties>> {
+    async deleteTwinIdentityRaw(requestParameters: IdentitiesApiDeleteTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityRemovalProperties>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling deleteTwinIdentity.');
         }
@@ -150,7 +152,7 @@ export class IdentitiesApi extends runtime.BaseAPI {
     /**
      * Delete Twin\'s Identity
      */
-    async deleteTwinIdentity(requestParameters: IdentitiesApiDeleteTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<IdentityRemovalProperties> {
+    async deleteTwinIdentity(requestParameters: IdentitiesApiDeleteTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityRemovalProperties> {
         const response = await this.deleteTwinIdentityRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -158,7 +160,7 @@ export class IdentitiesApi extends runtime.BaseAPI {
     /**
      * Get Identities of the given Twin
      */
-    async getTwinIdentitiesRaw(requestParameters: IdentitiesApiGetTwinIdentitiesRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<string>>> {
+    async getTwinIdentitiesRaw(requestParameters: IdentitiesApiGetTwinIdentitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<string>>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinIdentities.');
         }
@@ -208,7 +210,7 @@ export class IdentitiesApi extends runtime.BaseAPI {
     /**
      * Get Identities of the given Twin
      */
-    async getTwinIdentities(requestParameters: IdentitiesApiGetTwinIdentitiesRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<string>> {
+    async getTwinIdentities(requestParameters: IdentitiesApiGetTwinIdentitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<string>> {
         const response = await this.getTwinIdentitiesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -216,7 +218,7 @@ export class IdentitiesApi extends runtime.BaseAPI {
     /**
      * Get Twin\'s Identity
      */
-    async getTwinIdentityRaw(requestParameters: IdentitiesApiGetTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<IdentityProperties>> {
+    async getTwinIdentityRaw(requestParameters: IdentitiesApiGetTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityProperties>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling getTwinIdentity.');
         }
@@ -246,7 +248,7 @@ export class IdentitiesApi extends runtime.BaseAPI {
     /**
      * Get Twin\'s Identity
      */
-    async getTwinIdentity(requestParameters: IdentitiesApiGetTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<IdentityProperties> {
+    async getTwinIdentity(requestParameters: IdentitiesApiGetTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityProperties> {
         const response = await this.getTwinIdentityRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -254,7 +256,7 @@ export class IdentitiesApi extends runtime.BaseAPI {
     /**
      * Resolve Twin\'s Identity to system UUID
      */
-    async resolveTwinIdentityRaw(requestParameters: IdentitiesApiResolveTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<ResolvedIdentities>> {
+    async resolveTwinIdentityRaw(requestParameters: IdentitiesApiResolveTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ResolvedIdentities>> {
         if (requestParameters.identity === null || requestParameters.identity === undefined) {
             throw new runtime.RequiredError('identity','Required parameter requestParameters.identity was null or undefined when calling resolveTwinIdentity.');
         }
@@ -284,7 +286,7 @@ export class IdentitiesApi extends runtime.BaseAPI {
     /**
      * Resolve Twin\'s Identity to system UUID
      */
-    async resolveTwinIdentity(requestParameters: IdentitiesApiResolveTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<ResolvedIdentities> {
+    async resolveTwinIdentity(requestParameters: IdentitiesApiResolveTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ResolvedIdentities> {
         const response = await this.resolveTwinIdentityRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -292,7 +294,7 @@ export class IdentitiesApi extends runtime.BaseAPI {
     /**
      * Update Twin Identity
      */
-    async updateTwinIdentityRaw(requestParameters: IdentitiesApiUpdateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<IdentityProperties>> {
+    async updateTwinIdentityRaw(requestParameters: IdentitiesApiUpdateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IdentityProperties>> {
         if (requestParameters.twin === null || requestParameters.twin === undefined) {
             throw new runtime.RequiredError('twin','Required parameter requestParameters.twin was null or undefined when calling updateTwinIdentity.');
         }
@@ -329,7 +331,7 @@ export class IdentitiesApi extends runtime.BaseAPI {
     /**
      * Update Twin Identity
      */
-    async updateTwinIdentity(requestParameters: IdentitiesApiUpdateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<IdentityProperties> {
+    async updateTwinIdentity(requestParameters: IdentitiesApiUpdateTwinIdentityRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IdentityProperties> {
         const response = await this.updateTwinIdentityRaw(requestParameters, initOverrides);
         return await response.value();
     }

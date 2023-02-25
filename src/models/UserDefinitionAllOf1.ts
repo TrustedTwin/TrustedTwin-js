@@ -33,6 +33,15 @@ export interface UserDefinitionAllOf1 {
     updatedTs?: number;
 }
 
+/**
+ * Check if a given object implements the UserDefinitionAllOf1 interface.
+ */
+export function instanceOfUserDefinitionAllOf1(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function UserDefinitionAllOf1FromJSON(json: any): UserDefinitionAllOf1 {
     return UserDefinitionAllOf1FromJSONTyped(json, false);
 }

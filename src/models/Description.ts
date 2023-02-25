@@ -27,6 +27,15 @@ export interface Description {
     description?: { [key: string]: string; };
 }
 
+/**
+ * Check if a given object implements the Description interface.
+ */
+export function instanceOfDescription(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function DescriptionFromJSON(json: any): Description {
     return DescriptionFromJSONTyped(json, false);
 }

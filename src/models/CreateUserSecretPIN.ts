@@ -27,6 +27,15 @@ export interface CreateUserSecretPIN {
     validityTs?: number;
 }
 
+/**
+ * Check if a given object implements the CreateUserSecretPIN interface.
+ */
+export function instanceOfCreateUserSecretPIN(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function CreateUserSecretPINFromJSON(json: any): CreateUserSecretPIN {
     return CreateUserSecretPINFromJSONTyped(json, false);
 }

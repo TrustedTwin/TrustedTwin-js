@@ -14,26 +14,28 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  ErrorObject,
+  NewTokenResponse,
+  PostNewToken,
+  PostRefreshToken,
+  RefreshTokenResponse,
+} from '../models';
 import {
-    ErrorObject,
     ErrorObjectFromJSON,
     ErrorObjectToJSON,
-    NewTokenResponse,
     NewTokenResponseFromJSON,
     NewTokenResponseToJSON,
-    PostNewToken,
     PostNewTokenFromJSON,
     PostNewTokenToJSON,
-    PostRefreshToken,
     PostRefreshTokenFromJSON,
     PostRefreshTokenToJSON,
-    RefreshTokenResponse,
     RefreshTokenResponseFromJSON,
     RefreshTokenResponseToJSON,
 } from '../models';
 
 export interface TokenApiCreateUserTokenRequest {
-    postNewToken: PostNewToken;
+    postNewToken?: PostNewToken;
 }
 
 export interface TokenApiRefreshUserTokenRequest {
@@ -48,11 +50,7 @@ export class TokenApi extends runtime.BaseAPI {
     /**
      * Create a new user token
      */
-    async createUserTokenRaw(requestParameters: TokenApiCreateUserTokenRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<NewTokenResponse>> {
-        if (requestParameters.postNewToken === null || requestParameters.postNewToken === undefined) {
-            throw new runtime.RequiredError('postNewToken','Required parameter requestParameters.postNewToken was null or undefined when calling createUserToken.');
-        }
-
+    async createUserTokenRaw(requestParameters: TokenApiCreateUserTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NewTokenResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -77,7 +75,7 @@ export class TokenApi extends runtime.BaseAPI {
     /**
      * Create a new user token
      */
-    async createUserToken(requestParameters: TokenApiCreateUserTokenRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<NewTokenResponse> {
+    async createUserToken(requestParameters: TokenApiCreateUserTokenRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NewTokenResponse> {
         const response = await this.createUserTokenRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -85,7 +83,7 @@ export class TokenApi extends runtime.BaseAPI {
     /**
      * Refresh user token
      */
-    async refreshUserTokenRaw(requestParameters: TokenApiRefreshUserTokenRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<RefreshTokenResponse>> {
+    async refreshUserTokenRaw(requestParameters: TokenApiRefreshUserTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RefreshTokenResponse>> {
         if (requestParameters.postRefreshToken === null || requestParameters.postRefreshToken === undefined) {
             throw new runtime.RequiredError('postRefreshToken','Required parameter requestParameters.postRefreshToken was null or undefined when calling refreshUserToken.');
         }
@@ -114,7 +112,7 @@ export class TokenApi extends runtime.BaseAPI {
     /**
      * Refresh user token
      */
-    async refreshUserToken(requestParameters: TokenApiRefreshUserTokenRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<RefreshTokenResponse> {
+    async refreshUserToken(requestParameters: TokenApiRefreshUserTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RefreshTokenResponse> {
         const response = await this.refreshUserTokenRaw(requestParameters, initOverrides);
         return await response.value();
     }

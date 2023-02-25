@@ -13,14 +13,14 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { LedgerEntryTimeseries } from './LedgerEntryTimeseries';
 import {
-    LedgerEntryTimeseries,
     LedgerEntryTimeseriesFromJSON,
     LedgerEntryTimeseriesFromJSONTyped,
     LedgerEntryTimeseriesToJSON,
 } from './LedgerEntryTimeseries';
+import type { TimeseriesColumns } from './TimeseriesColumns';
 import {
-    TimeseriesColumns,
     TimeseriesColumnsFromJSON,
     TimeseriesColumnsFromJSONTyped,
     TimeseriesColumnsToJSON,
@@ -55,13 +55,24 @@ export interface TimeseriesTable {
      * @type {string}
      * @memberof TimeseriesTable
      */
-    retention?: string | null;
+    retention?: string;
     /**
      * 
      * @type {string}
      * @memberof TimeseriesTable
      */
-    chunk?: string | null;
+    chunk?: string;
+}
+
+/**
+ * Check if a given object implements the TimeseriesTable interface.
+ */
+export function instanceOfTimeseriesTable(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "dimensions" in value;
+    isInstance = isInstance && "measurements" in value;
+
+    return isInstance;
 }
 
 export function TimeseriesTableFromJSON(json: any): TimeseriesTable {

@@ -35,72 +35,72 @@ import {
 /**
  * 
  * @export
- * @interface Twin
+ * @interface TwinTerminated
  */
-export interface Twin {
+export interface TwinTerminated {
     /**
      * Current Twin status
      * @type {string}
-     * @memberof Twin
+     * @memberof TwinTerminated
      */
-    readonly status?: TwinStatusEnum;
+    readonly status?: TwinTerminatedStatusEnum;
     /**
      * Account UUID of current Twin owner
      * @type {string}
-     * @memberof Twin
+     * @memberof TwinTerminated
      */
     readonly owner?: string;
     /**
      * UTC timestamp denoting when the Twin was last updated
      * @type {number}
-     * @memberof Twin
+     * @memberof TwinTerminated
      */
-    updatedTs?: number;
+    readonly updatedTs?: number;
     /**
      * 
      * @type {Description}
-     * @memberof Twin
+     * @memberof TwinTerminated
      */
     description?: Description;
     /**
      * 
      * @type {TwinCreationCertificate}
-     * @memberof Twin
+     * @memberof TwinTerminated
      */
-    readonly creationCertificate?: TwinCreationCertificate;
+    creationCertificate?: TwinCreationCertificate;
     /**
      * 
      * @type {TerminationCertificate}
-     * @memberof Twin
+     * @memberof TwinTerminated
      */
-    readonly terminationCertificate?: TerminationCertificate;
+    terminationCertificate?: TerminationCertificate;
 }
 
 
 /**
  * @export
  */
-export const TwinStatusEnum = {
+export const TwinTerminatedStatusEnum = {
     Alive: 'alive',
     Terminated: 'terminated'
 } as const;
-export type TwinStatusEnum = typeof TwinStatusEnum[keyof typeof TwinStatusEnum];
+export type TwinTerminatedStatusEnum = typeof TwinTerminatedStatusEnum[keyof typeof TwinTerminatedStatusEnum];
 
 
 /**
- * Check if a given object implements the Twin interface.
+ * Check if a given object implements the TwinTerminated interface.
  */
-export function instanceOfTwin(value: object): boolean {
+export function instanceOfTwinTerminated(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function TwinFromJSON(json: any): Twin {
-    return TwinFromJSONTyped(json, false);
+export function TwinTerminatedFromJSON(json: any): TwinTerminated {
+    return TwinTerminatedFromJSONTyped(json, false);
 }
 
-export function TwinFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twin {
+export function TwinTerminatedFromJSONTyped(json: any, ignoreDiscriminator: boolean): TwinTerminated {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -115,7 +115,7 @@ export function TwinFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twin
     };
 }
 
-export function TwinToJSON(value?: Twin | null): any {
+export function TwinTerminatedToJSON(value?: TwinTerminated | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -124,8 +124,9 @@ export function TwinToJSON(value?: Twin | null): any {
     }
     return {
         
-        'updated_ts': value.updatedTs,
         'description': DescriptionToJSON(value.description),
+        'creation_certificate': TwinCreationCertificateToJSON(value.creationCertificate),
+        'termination_certificate': TerminationCertificateToJSON(value.terminationCertificate),
     };
 }
 

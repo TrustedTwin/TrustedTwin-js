@@ -1,7 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export * from './AccountApi';
-export * from './CORSApi';
 export * from './DocsApi';
 export * from './IdentitiesApi';
 export * from './IndexesApi';

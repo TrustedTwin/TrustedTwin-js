@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { UserRoleEntry } from './UserRoleEntry';
 import {
-    UserRoleEntry,
     UserRoleEntryFromJSON,
     UserRoleEntryFromJSONTyped,
     UserRoleEntryToJSON,
@@ -32,6 +32,15 @@ export interface GetRoles {
      * @memberof GetRoles
      */
     roles?: { [key: string]: UserRoleEntry; };
+}
+
+/**
+ * Check if a given object implements the GetRoles interface.
+ */
+export function instanceOfGetRoles(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function GetRolesFromJSON(json: any): GetRoles {

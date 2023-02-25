@@ -33,6 +33,15 @@ export interface TwinCreationCertificateAllOf {
     readonly creator?: string;
 }
 
+/**
+ * Check if a given object implements the TwinCreationCertificateAllOf interface.
+ */
+export function instanceOfTwinCreationCertificateAllOf(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function TwinCreationCertificateAllOfFromJSON(json: any): TwinCreationCertificateAllOf {
     return TwinCreationCertificateAllOfFromJSONTyped(json, false);
 }

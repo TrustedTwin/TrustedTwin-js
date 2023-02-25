@@ -27,6 +27,15 @@ export interface IndexTemplates {
     properties?: { [key: string]: string; };
 }
 
+/**
+ * Check if a given object implements the IndexTemplates interface.
+ */
+export function instanceOfIndexTemplates(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function IndexTemplatesFromJSON(json: any): IndexTemplates {
     return IndexTemplatesFromJSONTyped(json, false);
 }

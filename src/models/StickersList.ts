@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { StickersListStickersInner } from './StickersListStickersInner';
 import {
-    StickersListStickersInner,
     StickersListStickersInnerFromJSON,
     StickersListStickersInnerFromJSONTyped,
     StickersListStickersInnerToJSON,
@@ -32,6 +32,15 @@ export interface StickersList {
      * @memberof StickersList
      */
     stickers?: Array<StickersListStickersInner>;
+}
+
+/**
+ * Check if a given object implements the StickersList interface.
+ */
+export function instanceOfStickersList(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function StickersListFromJSON(json: any): StickersList {

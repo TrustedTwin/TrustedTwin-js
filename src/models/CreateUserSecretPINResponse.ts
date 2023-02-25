@@ -27,6 +27,15 @@ export interface CreateUserSecretPINResponse {
     pin?: string;
 }
 
+/**
+ * Check if a given object implements the CreateUserSecretPINResponse interface.
+ */
+export function instanceOfCreateUserSecretPINResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function CreateUserSecretPINResponseFromJSON(json: any): CreateUserSecretPINResponse {
     return CreateUserSecretPINResponseFromJSONTyped(json, false);
 }

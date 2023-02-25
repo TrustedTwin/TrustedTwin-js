@@ -17,7 +17,7 @@
  * 
  * @export
  */
-export type LedgerEntriesHistoryEntriesValue = { [key: string]: any; } | { [key: string]: string; };
+export type LedgerEntriesHistoryEntriesValue = { [key: string]: object; } | { [key: string]: string; };
 
 export function LedgerEntriesHistoryEntriesValueFromJSON(json: any): LedgerEntriesHistoryEntriesValue {
     return LedgerEntriesHistoryEntriesValueFromJSONTyped(json, false);
@@ -27,7 +27,7 @@ export function LedgerEntriesHistoryEntriesValueFromJSONTyped(json: any, ignoreD
     if ((json === undefined) || (json === null)) {
         return json;
     }
-    return { ...LedgerEntriesHistoryEntriesValueFromJSONTyped(json, true), ...LedgerEntriesHistoryEntriesValueFromJSONTyped(json, true) };
+    return json;
 }
 
 export function LedgerEntriesHistoryEntriesValueToJSON(value?: LedgerEntriesHistoryEntriesValue | null): any {
@@ -37,6 +37,7 @@ export function LedgerEntriesHistoryEntriesValueToJSON(value?: LedgerEntriesHist
     if (value === null) {
         return null;
     }
-    return { ...LedgerEntriesHistoryEntriesValueToJSON(value), ...LedgerEntriesHistoryEntriesValueToJSON(value) };
+
+    return value;
 }
 

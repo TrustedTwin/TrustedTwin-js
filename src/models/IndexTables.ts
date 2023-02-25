@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { IndexTable } from './IndexTable';
 import {
-    IndexTable,
     IndexTableFromJSON,
     IndexTableFromJSONTyped,
     IndexTableToJSON,
@@ -32,6 +32,15 @@ export interface IndexTables {
      * @memberof IndexTables
      */
     indexes?: { [key: string]: IndexTable; };
+}
+
+/**
+ * Check if a given object implements the IndexTables interface.
+ */
+export function instanceOfIndexTables(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function IndexTablesFromJSON(json: any): IndexTables {

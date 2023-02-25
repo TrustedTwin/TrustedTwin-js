@@ -41,10 +41,20 @@ export const LedgerReferenceStatusEnum = {
     NotFound: 'not_found',
     LoopDetected: 'loop_detected',
     TooManyHops: 'too_many_hops',
-    Ok: 'ok'
+    Ok: 'ok',
+    Created: 'created'
 } as const;
 export type LedgerReferenceStatusEnum = typeof LedgerReferenceStatusEnum[keyof typeof LedgerReferenceStatusEnum];
 
+
+/**
+ * Check if a given object implements the LedgerReference interface.
+ */
+export function instanceOfLedgerReference(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
 
 export function LedgerReferenceFromJSON(json: any): LedgerReference {
     return LedgerReferenceFromJSONTyped(json, false);

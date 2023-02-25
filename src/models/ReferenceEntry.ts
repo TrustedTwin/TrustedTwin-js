@@ -13,12 +13,18 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { LedgerReference } from './LedgerReference';
 import {
-    LedgerReference,
     LedgerReferenceFromJSON,
     LedgerReferenceFromJSONTyped,
     LedgerReferenceToJSON,
 } from './LedgerReference';
+import type { ReferenceEntryTimeseries } from './ReferenceEntryTimeseries';
+import {
+    ReferenceEntryTimeseriesFromJSON,
+    ReferenceEntryTimeseriesFromJSONTyped,
+    ReferenceEntryTimeseriesToJSON,
+} from './ReferenceEntryTimeseries';
 
 /**
  * Ledger's reference key
@@ -62,6 +68,33 @@ export interface ReferenceEntry {
      * @memberof ReferenceEntry
      */
     readonly valueChangedTs?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReferenceEntry
+     */
+    history?: string;
+    /**
+     * 
+     * @type {ReferenceEntryTimeseries}
+     * @memberof ReferenceEntry
+     */
+    timeseries?: ReferenceEntryTimeseries;
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof ReferenceEntry
+     */
+    publish?: { [key: string]: string; };
+}
+
+/**
+ * Check if a given object implements the ReferenceEntry interface.
+ */
+export function instanceOfReferenceEntry(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function ReferenceEntryFromJSON(json: any): ReferenceEntry {
@@ -80,6 +113,9 @@ export function ReferenceEntryFromJSONTyped(json: any, ignoreDiscriminator: bool
         'entryCreatedTs': !exists(json, 'entry_created_ts') ? undefined : json['entry_created_ts'],
         'entryUpdatedTs': !exists(json, 'entry_updated_ts') ? undefined : json['entry_updated_ts'],
         'valueChangedTs': !exists(json, 'value_changed_ts') ? undefined : json['value_changed_ts'],
+        'history': !exists(json, 'history') ? undefined : json['history'],
+        'timeseries': !exists(json, 'timeseries') ? undefined : ReferenceEntryTimeseriesFromJSON(json['timeseries']),
+        'publish': !exists(json, 'publish') ? undefined : json['publish'],
     };
 }
 
@@ -95,6 +131,9 @@ export function ReferenceEntryToJSON(value?: ReferenceEntry | null): any {
         'ref': LedgerReferenceToJSON(value.ref),
         'value': value.value,
         'visibility': value.visibility,
+        'history': value.history,
+        'timeseries': ReferenceEntryTimeseriesToJSON(value.timeseries),
+        'publish': value.publish,
     };
 }
 

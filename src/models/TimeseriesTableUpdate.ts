@@ -13,12 +13,18 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { LedgerEntryTimeseries } from './LedgerEntryTimeseries';
 import {
-    LedgerEntryTimeseries,
     LedgerEntryTimeseriesFromJSON,
     LedgerEntryTimeseriesFromJSONTyped,
     LedgerEntryTimeseriesToJSON,
 } from './LedgerEntryTimeseries';
+import type { TimeseriesColumns } from './TimeseriesColumns';
+import {
+    TimeseriesColumnsFromJSON,
+    TimeseriesColumnsFromJSONTyped,
+    TimeseriesColumnsToJSON,
+} from './TimeseriesColumns';
 
 /**
  * 
@@ -37,13 +43,34 @@ export interface TimeseriesTableUpdate {
      * @type {string}
      * @memberof TimeseriesTableUpdate
      */
-    retention?: string | null;
+    retention?: string;
     /**
      * 
      * @type {string}
      * @memberof TimeseriesTableUpdate
      */
-    chunk?: string | null;
+    chunk?: string;
+    /**
+     * 
+     * @type {TimeseriesColumns}
+     * @memberof TimeseriesTableUpdate
+     */
+    dimensions?: TimeseriesColumns;
+    /**
+     * 
+     * @type {TimeseriesColumns}
+     * @memberof TimeseriesTableUpdate
+     */
+    measurements?: TimeseriesColumns;
+}
+
+/**
+ * Check if a given object implements the TimeseriesTableUpdate interface.
+ */
+export function instanceOfTimeseriesTableUpdate(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function TimeseriesTableUpdateFromJSON(json: any): TimeseriesTableUpdate {
@@ -59,6 +86,8 @@ export function TimeseriesTableUpdateFromJSONTyped(json: any, ignoreDiscriminato
         'defaults': !exists(json, 'defaults') ? undefined : LedgerEntryTimeseriesFromJSON(json['defaults']),
         'retention': !exists(json, 'retention') ? undefined : json['retention'],
         'chunk': !exists(json, 'chunk') ? undefined : json['chunk'],
+        'dimensions': !exists(json, 'dimensions') ? undefined : TimeseriesColumnsFromJSON(json['dimensions']),
+        'measurements': !exists(json, 'measurements') ? undefined : TimeseriesColumnsFromJSON(json['measurements']),
     };
 }
 
@@ -74,6 +103,8 @@ export function TimeseriesTableUpdateToJSON(value?: TimeseriesTableUpdate | null
         'defaults': LedgerEntryTimeseriesToJSON(value.defaults),
         'retention': value.retention,
         'chunk': value.chunk,
+        'dimensions': TimeseriesColumnsToJSON(value.dimensions),
+        'measurements': TimeseriesColumnsToJSON(value.measurements),
     };
 }
 

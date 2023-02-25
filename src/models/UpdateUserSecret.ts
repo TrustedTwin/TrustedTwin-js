@@ -27,6 +27,15 @@ export interface UpdateUserSecret {
     validityTs?: number;
 }
 
+/**
+ * Check if a given object implements the UpdateUserSecret interface.
+ */
+export function instanceOfUpdateUserSecret(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function UpdateUserSecretFromJSON(json: any): UpdateUserSecret {
     return UpdateUserSecretFromJSONTyped(json, false);
 }

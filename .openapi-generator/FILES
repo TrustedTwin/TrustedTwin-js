@@ -4,7 +4,6 @@
 README.md
 package.json
 src/apis/AccountApi.ts
-src/apis/CORSApi.ts
 src/apis/DocsApi.ts
 src/apis/IdentitiesApi.ts
 src/apis/IndexesApi.ts
@@ -60,7 +59,7 @@ src/models/GetUserLedgerEntryValue.ts
 src/models/IdentityCreationCertificate.ts
 src/models/IdentityProperties.ts
 src/models/IdentityRemovalProperties.ts
-src/models/IdentityRemovalPropertiesCreationCertificate.ts
+src/models/IncludeEntry.ts
 src/models/IndexColumns.ts
 src/models/IndexTable.ts
 src/models/IndexTableResponse.ts
@@ -74,6 +73,7 @@ src/models/LedgerAlias.ts
 src/models/LedgerEntriesHistory.ts
 src/models/LedgerEntriesHistoryEntriesValue.ts
 src/models/LedgerEntryTimeseries.ts
+src/models/LedgerInclude.ts
 src/models/LedgerReference.ts
 src/models/NewRole.ts
 src/models/NewRoleStatement.ts
@@ -93,11 +93,13 @@ src/models/PostNewUser.ts
 src/models/PostRefreshToken.ts
 src/models/PostTwinIdentities.ts
 src/models/ReferenceEntry.ts
+src/models/ReferenceEntryTimeseries.ts
 src/models/RefreshTokenResponse.ts
 src/models/ResolvedIdentities.ts
 src/models/ServicesDatabaseColumnType.ts
 src/models/ServicesDatabaseDatabaseDetails.ts
 src/models/ServicesDatabaseUserAccessCommand.ts
+src/models/ServicesDatabaseUserAccessRights.ts
 src/models/ServicesDatabaseUsersAccess.ts
 src/models/Sticker.ts
 src/models/StickersList.ts
@@ -121,7 +123,7 @@ src/models/TwinAlive.ts
 src/models/TwinCreationCertificate.ts
 src/models/TwinCreationCertificateAllOf.ts
 src/models/TwinDocs.ts
-src/models/TwinTerminationCertificate.ts
+src/models/TwinTerminated.ts
 src/models/UUID.ts
 src/models/UpdateIndexesTable200Response.ts
 src/models/UpdateRole.ts
@@ -135,9 +137,11 @@ src/models/Usage.ts
 src/models/UserDefinition.ts
 src/models/UserDefinitionAllOf.ts
 src/models/UserDefinitionAllOf1.ts
+src/models/UserEntry.ts
 src/models/UserLedger.ts
 src/models/UserRoleEntry.ts
 src/models/UserSecretResponse.ts
+src/models/UsersResponse.ts
 src/models/ValueEntry.ts
 src/models/WebhookRefreshSubscription.ts
 src/models/WebhookRefreshSubscriptionResponse.ts

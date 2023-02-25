@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { IdentityProperties } from './IdentityProperties';
 import {
-    IdentityProperties,
     IdentityPropertiesFromJSON,
     IdentityPropertiesFromJSONTyped,
     IdentityPropertiesToJSON,
@@ -32,6 +32,15 @@ export interface PostTwinIdentities {
      * @memberof PostTwinIdentities
      */
     identities?: { [key: string]: IdentityProperties; };
+}
+
+/**
+ * Check if a given object implements the PostTwinIdentities interface.
+ */
+export function instanceOfPostTwinIdentities(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function PostTwinIdentitiesFromJSON(json: any): PostTwinIdentities {

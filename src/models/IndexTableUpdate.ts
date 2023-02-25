@@ -13,6 +13,19 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { IndexColumns } from './IndexColumns';
+import {
+    IndexColumnsFromJSON,
+    IndexColumnsFromJSONTyped,
+    IndexColumnsToJSON,
+} from './IndexColumns';
+import type { IndexTemplates } from './IndexTemplates';
+import {
+    IndexTemplatesFromJSON,
+    IndexTemplatesFromJSONTyped,
+    IndexTemplatesToJSON,
+} from './IndexTemplates';
+
 /**
  * 
  * @export
@@ -25,6 +38,27 @@ export interface IndexTableUpdate {
      * @memberof IndexTableUpdate
      */
     rule?: string;
+    /**
+     * 
+     * @type {IndexColumns}
+     * @memberof IndexTableUpdate
+     */
+    properties?: IndexColumns;
+    /**
+     * 
+     * @type {IndexTemplates}
+     * @memberof IndexTableUpdate
+     */
+    templates?: IndexTemplates;
+}
+
+/**
+ * Check if a given object implements the IndexTableUpdate interface.
+ */
+export function instanceOfIndexTableUpdate(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function IndexTableUpdateFromJSON(json: any): IndexTableUpdate {
@@ -38,6 +72,8 @@ export function IndexTableUpdateFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {
         
         'rule': !exists(json, 'rule') ? undefined : json['rule'],
+        'properties': !exists(json, 'properties') ? undefined : IndexColumnsFromJSON(json['properties']),
+        'templates': !exists(json, 'templates') ? undefined : IndexTemplatesFromJSON(json['templates']),
     };
 }
 
@@ -51,6 +87,8 @@ export function IndexTableUpdateToJSON(value?: IndexTableUpdate | null): any {
     return {
         
         'rule': value.rule,
+        'properties': IndexColumnsToJSON(value.properties),
+        'templates': IndexTemplatesToJSON(value.templates),
     };
 }
 

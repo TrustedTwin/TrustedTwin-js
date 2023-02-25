@@ -44,11 +44,20 @@ export interface NewTokenResponse {
  * @export
  */
 export const NewTokenResponseOptionsEnum = {
-    Refresh: 'REFRESH',
-    Create: 'CREATE'
+    Refresh: 'refresh',
+    Create: 'create'
 } as const;
 export type NewTokenResponseOptionsEnum = typeof NewTokenResponseOptionsEnum[keyof typeof NewTokenResponseOptionsEnum];
 
+
+/**
+ * Check if a given object implements the NewTokenResponse interface.
+ */
+export function instanceOfNewTokenResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
 
 export function NewTokenResponseFromJSON(json: any): NewTokenResponse {
     return NewTokenResponseFromJSONTyped(json, false);

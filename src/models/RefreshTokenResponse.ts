@@ -33,6 +33,15 @@ export interface RefreshTokenResponse {
     validityTs?: number;
 }
 
+/**
+ * Check if a given object implements the RefreshTokenResponse interface.
+ */
+export function instanceOfRefreshTokenResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function RefreshTokenResponseFromJSON(json: any): RefreshTokenResponse {
     return RefreshTokenResponseFromJSONTyped(json, false);
 }

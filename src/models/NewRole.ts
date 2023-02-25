@@ -13,14 +13,14 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { NewRoleStatement } from './NewRoleStatement';
 import {
-    NewRoleStatement,
     NewRoleStatementFromJSON,
     NewRoleStatementFromJSONTyped,
     NewRoleStatementToJSON,
 } from './NewRoleStatement';
+import type { PostNewRoleRules } from './PostNewRoleRules';
 import {
-    PostNewRoleRules,
     PostNewRoleRulesFromJSON,
     PostNewRoleRulesFromJSONTyped,
     PostNewRoleRulesToJSON,
@@ -39,11 +39,17 @@ export interface NewRole {
      */
     uuid?: string;
     /**
-     * Role name (doesn't have to be unique), must conform to '^[0-9A-Za-z][0-9A-Za-z_ \-]{0,30}[0-9A-Za-z]*$'
+     * Role name (doesn't have to be unique), must conform to '^[0-9A-Za-z][0-9A-Za-z_ \-]{0,30}[0-9A-Za-z]$'
      * @type {string}
      * @memberof NewRole
      */
     name?: string;
+    /**
+     * Account UUID
+     * @type {string}
+     * @memberof NewRole
+     */
+    account?: string;
     /**
      * 
      * @type {NewRoleStatement}
@@ -70,6 +76,15 @@ export interface NewRole {
     updatedTs?: number;
 }
 
+/**
+ * Check if a given object implements the NewRole interface.
+ */
+export function instanceOfNewRole(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function NewRoleFromJSON(json: any): NewRole {
     return NewRoleFromJSONTyped(json, false);
 }
@@ -82,6 +97,7 @@ export function NewRoleFromJSONTyped(json: any, ignoreDiscriminator: boolean): N
         
         'uuid': !exists(json, 'uuid') ? undefined : json['uuid'],
         'name': !exists(json, 'name') ? undefined : json['name'],
+        'account': !exists(json, 'account') ? undefined : json['account'],
         'statement': !exists(json, 'statement') ? undefined : NewRoleStatementFromJSON(json['statement']),
         'rules': !exists(json, 'rules') ? undefined : PostNewRoleRulesFromJSON(json['rules']),
         'createdTs': !exists(json, 'created_ts') ? undefined : json['created_ts'],
@@ -100,6 +116,7 @@ export function NewRoleToJSON(value?: NewRole | null): any {
         
         'uuid': value.uuid,
         'name': value.name,
+        'account': value.account,
         'statement': NewRoleStatementToJSON(value.statement),
         'rules': PostNewRoleRulesToJSON(value.rules),
         'created_ts': value.createdTs,

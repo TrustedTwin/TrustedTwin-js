@@ -45,6 +45,15 @@ export interface DocCreationCertificate {
     creator?: string;
 }
 
+/**
+ * Check if a given object implements the DocCreationCertificate interface.
+ */
+export function instanceOfDocCreationCertificate(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function DocCreationCertificateFromJSON(json: any): DocCreationCertificate {
     return DocCreationCertificateFromJSONTyped(json, false);
 }

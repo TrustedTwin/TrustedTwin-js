@@ -13,25 +13,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    PostNewUser,
-    PostNewUserFromJSON,
-    PostNewUserFromJSONTyped,
-    PostNewUserToJSON,
-} from './PostNewUser';
-import {
-    UserDefinitionAllOf,
-    UserDefinitionAllOfFromJSON,
-    UserDefinitionAllOfFromJSONTyped,
-    UserDefinitionAllOfToJSON,
-} from './UserDefinitionAllOf';
-import {
-    UserDefinitionAllOf1,
-    UserDefinitionAllOf1FromJSON,
-    UserDefinitionAllOf1FromJSONTyped,
-    UserDefinitionAllOf1ToJSON,
-} from './UserDefinitionAllOf1';
-
 /**
  * 
  * @export
@@ -57,7 +38,7 @@ export interface UserDefinition {
      */
     account?: string;
     /**
-     * Optional User name (doesn't have to be unique), must conform to '^[0-9A-Za-z][0-9A-Za-z_ \-]{0,30}[0-9A-Za-z]*$'
+     * Optional User name (doesn't have to be unique), must conform to '^[0-9A-Za-z][0-9A-Za-z_ \-]{0,30}[0-9A-Za-z]$'
      * @type {string}
      * @memberof UserDefinition
      */
@@ -80,6 +61,16 @@ export interface UserDefinition {
      * @memberof UserDefinition
      */
     updatedTs?: number;
+}
+
+/**
+ * Check if a given object implements the UserDefinition interface.
+ */
+export function instanceOfUserDefinition(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "role" in value;
+
+    return isInstance;
 }
 
 export function UserDefinitionFromJSON(json: any): UserDefinition {

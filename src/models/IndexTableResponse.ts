@@ -13,20 +13,20 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { IndexColumns } from './IndexColumns';
 import {
-    IndexColumns,
     IndexColumnsFromJSON,
     IndexColumnsFromJSONTyped,
     IndexColumnsToJSON,
 } from './IndexColumns';
+import type { IndexTableResponseStats } from './IndexTableResponseStats';
 import {
-    IndexTableResponseStats,
     IndexTableResponseStatsFromJSON,
     IndexTableResponseStatsFromJSONTyped,
     IndexTableResponseStatsToJSON,
 } from './IndexTableResponseStats';
+import type { IndexTemplates } from './IndexTemplates';
 import {
-    IndexTemplates,
     IndexTemplatesFromJSON,
     IndexTemplatesFromJSONTyped,
     IndexTemplatesToJSON,
@@ -62,6 +62,19 @@ export interface IndexTableResponse {
      * @memberof IndexTableResponse
      */
     templates: IndexTemplates;
+}
+
+/**
+ * Check if a given object implements the IndexTableResponse interface.
+ */
+export function instanceOfIndexTableResponse(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "stats" in value;
+    isInstance = isInstance && "rule" in value;
+    isInstance = isInstance && "properties" in value;
+    isInstance = isInstance && "templates" in value;
+
+    return isInstance;
 }
 
 export function IndexTableResponseFromJSON(json: any): IndexTableResponse {

@@ -26,7 +26,7 @@ export interface WebhookSubscribe {
      */
     callbackUrl?: string;
     /**
-     * Topic name to which subscribe
+     * Topic name to which a subscription is created
      * @type {string}
      * @memberof WebhookSubscribe
      */
@@ -43,6 +43,15 @@ export interface WebhookSubscribe {
      * @memberof WebhookSubscribe
      */
     expires?: number;
+}
+
+/**
+ * Check if a given object implements the WebhookSubscribe interface.
+ */
+export function instanceOfWebhookSubscribe(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function WebhookSubscribeFromJSON(json: any): WebhookSubscribe {

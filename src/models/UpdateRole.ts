@@ -13,14 +13,14 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { PostNewRoleRules } from './PostNewRoleRules';
 import {
-    PostNewRoleRules,
     PostNewRoleRulesFromJSON,
     PostNewRoleRulesFromJSONTyped,
     PostNewRoleRulesToJSON,
 } from './PostNewRoleRules';
+import type { UpdateRoleStatement } from './UpdateRoleStatement';
 import {
-    UpdateRoleStatement,
     UpdateRoleStatementFromJSON,
     UpdateRoleStatementFromJSONTyped,
     UpdateRoleStatementToJSON,
@@ -33,7 +33,7 @@ import {
  */
 export interface UpdateRole {
     /**
-     * Role name (doesn't have to be unique), must conform to '^[0-9A-Za-z][0-9A-Za-z_ \-]{0,30}[0-9A-Za-z]*$'
+     * Role name (doesn't have to be unique), must conform to '^[0-9A-Za-z][0-9A-Za-z_ \-]{0,30}[0-9A-Za-z]$'
      * @type {string}
      * @memberof UpdateRole
      */
@@ -50,6 +50,15 @@ export interface UpdateRole {
      * @memberof UpdateRole
      */
     rules?: PostNewRoleRules;
+}
+
+/**
+ * Check if a given object implements the UpdateRole interface.
+ */
+export function instanceOfUpdateRole(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function UpdateRoleFromJSON(json: any): UpdateRole {

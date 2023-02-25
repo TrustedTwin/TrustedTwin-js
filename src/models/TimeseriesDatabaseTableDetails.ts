@@ -45,6 +45,15 @@ export interface TimeseriesDatabaseTableDetails {
     totalSize?: number;
 }
 
+/**
+ * Check if a given object implements the TimeseriesDatabaseTableDetails interface.
+ */
+export function instanceOfTimeseriesDatabaseTableDetails(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function TimeseriesDatabaseTableDetailsFromJSON(json: any): TimeseriesDatabaseTableDetails {
     return TimeseriesDatabaseTableDetailsFromJSONTyped(json, false);
 }

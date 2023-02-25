@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { CreateStickersBodyStickersValue } from './CreateStickersBodyStickersValue';
 import {
-    CreateStickersBodyStickersValue,
     CreateStickersBodyStickersValueFromJSON,
     CreateStickersBodyStickersValueFromJSONTyped,
     CreateStickersBodyStickersValueToJSON,
@@ -32,6 +32,15 @@ export interface CreateStickersBody {
      * @memberof CreateStickersBody
      */
     stickers?: { [key: string]: CreateStickersBodyStickersValue; };
+}
+
+/**
+ * Check if a given object implements the CreateStickersBody interface.
+ */
+export function instanceOfCreateStickersBody(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function CreateStickersBodyFromJSON(json: any): CreateStickersBody {

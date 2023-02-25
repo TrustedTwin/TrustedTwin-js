@@ -13,14 +13,14 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { Description } from './Description';
 import {
-    Description,
     DescriptionFromJSON,
     DescriptionFromJSONTyped,
     DescriptionToJSON,
 } from './Description';
+import type { TwinCreationCertificate } from './TwinCreationCertificate';
 import {
-    TwinCreationCertificate,
     TwinCreationCertificateFromJSON,
     TwinCreationCertificateFromJSONTyped,
     TwinCreationCertificateToJSON,
@@ -44,6 +44,12 @@ export interface TwinAlive {
      * @memberof TwinAlive
      */
     readonly owner?: string;
+    /**
+     * UTC timestamp denoting when the Twin was last updated
+     * @type {number}
+     * @memberof TwinAlive
+     */
+    readonly updatedTs?: number;
     /**
      * 
      * @type {Description}
@@ -69,6 +75,15 @@ export const TwinAliveStatusEnum = {
 export type TwinAliveStatusEnum = typeof TwinAliveStatusEnum[keyof typeof TwinAliveStatusEnum];
 
 
+/**
+ * Check if a given object implements the TwinAlive interface.
+ */
+export function instanceOfTwinAlive(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function TwinAliveFromJSON(json: any): TwinAlive {
     return TwinAliveFromJSONTyped(json, false);
 }
@@ -81,6 +96,7 @@ export function TwinAliveFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         
         'status': !exists(json, 'status') ? undefined : json['status'],
         'owner': !exists(json, 'owner') ? undefined : json['owner'],
+        'updatedTs': !exists(json, 'updated_ts') ? undefined : json['updated_ts'],
         'description': !exists(json, 'description') ? undefined : DescriptionFromJSON(json['description']),
         'creationCertificate': !exists(json, 'creation_certificate') ? undefined : TwinCreationCertificateFromJSON(json['creation_certificate']),
     };

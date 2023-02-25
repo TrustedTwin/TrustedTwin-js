@@ -57,6 +57,15 @@ export interface DeleteUserSecretResponse {
     updatedTs?: number;
 }
 
+/**
+ * Check if a given object implements the DeleteUserSecretResponse interface.
+ */
+export function instanceOfDeleteUserSecretResponse(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function DeleteUserSecretResponseFromJSON(json: any): DeleteUserSecretResponse {
     return DeleteUserSecretResponseFromJSONTyped(json, false);
 }

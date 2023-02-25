@@ -45,6 +45,15 @@ export interface IndexesDatabaseTableDetails {
     totalSize?: number;
 }
 
+/**
+ * Check if a given object implements the IndexesDatabaseTableDetails interface.
+ */
+export function instanceOfIndexesDatabaseTableDetails(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function IndexesDatabaseTableDetailsFromJSON(json: any): IndexesDatabaseTableDetails {
     return IndexesDatabaseTableDetailsFromJSONTyped(json, false);
 }

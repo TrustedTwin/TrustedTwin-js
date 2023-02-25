@@ -14,12 +14,14 @@
 
 import {
     IndexTable,
+    instanceOfIndexTable,
     IndexTableFromJSON,
     IndexTableFromJSONTyped,
     IndexTableToJSON,
 } from './IndexTable';
 import {
     TableError,
+    instanceOfTableError,
     TableErrorFromJSON,
     TableErrorFromJSONTyped,
     TableErrorToJSON,
@@ -50,9 +52,14 @@ export function CreateIndexTablesResponseIndexesValueToJSON(value?: CreateIndexT
     if (value === null) {
         return null;
     }
-    if ("error" in value) {
-        return { ...TableErrorToJSON(value)}
+
+    if (instanceOfIndexTable(value)) {
+        return IndexTableToJSON(value as IndexTable);
     }
-    return { ...IndexTableToJSON(value) };
+    if (instanceOfTableError(value)) {
+        return TableErrorToJSON(value as TableError);
+    }
+
+    return {};
 }
 

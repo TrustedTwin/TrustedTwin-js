@@ -13,14 +13,14 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { CreateStickersResponseStickersValueAnyOf } from './CreateStickersResponseStickersValueAnyOf';
 import {
-    CreateStickersResponseStickersValueAnyOf,
     CreateStickersResponseStickersValueAnyOfFromJSON,
     CreateStickersResponseStickersValueAnyOfFromJSONTyped,
     CreateStickersResponseStickersValueAnyOfToJSON,
 } from './CreateStickersResponseStickersValueAnyOf';
+import type { Sticker } from './Sticker';
 import {
-    Sticker,
     StickerFromJSON,
     StickerFromJSONTyped,
     StickerToJSON,
@@ -58,16 +58,37 @@ export interface CreateStickersResponseStickersValue {
     createdTs?: number;
     /**
      * 
-     * @type {number}
+     * @type {Array<string>}
      * @memberof CreateStickersResponseStickersValue
      */
-    updatedTs?: number;
+    publish?: Array<CreateStickersResponseStickersValuePublishEnum>;
     /**
      * 
      * @type {string}
      * @memberof CreateStickersResponseStickersValue
      */
     error?: string;
+}
+
+
+/**
+ * @export
+ */
+export const CreateStickersResponseStickersValuePublishEnum = {
+    Put: 'on_put',
+    Remove: 'on_remove',
+    Expire: 'on_expire'
+} as const;
+export type CreateStickersResponseStickersValuePublishEnum = typeof CreateStickersResponseStickersValuePublishEnum[keyof typeof CreateStickersResponseStickersValuePublishEnum];
+
+
+/**
+ * Check if a given object implements the CreateStickersResponseStickersValue interface.
+ */
+export function instanceOfCreateStickersResponseStickersValue(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function CreateStickersResponseStickersValueFromJSON(json: any): CreateStickersResponseStickersValue {
@@ -84,7 +105,7 @@ export function CreateStickersResponseStickersValueFromJSONTyped(json: any, igno
         'recipients': !exists(json, 'recipients') ? undefined : json['recipients'],
         'validityTs': !exists(json, 'validity_ts') ? undefined : json['validity_ts'],
         'createdTs': !exists(json, 'created_ts') ? undefined : json['created_ts'],
-        'updatedTs': !exists(json, 'updated_ts') ? undefined : json['updated_ts'],
+        'publish': !exists(json, 'publish') ? undefined : json['publish'],
         'error': !exists(json, 'error') ? undefined : json['error'],
     };
 }
@@ -102,7 +123,7 @@ export function CreateStickersResponseStickersValueToJSON(value?: CreateStickers
         'recipients': value.recipients,
         'validity_ts': value.validityTs,
         'created_ts': value.createdTs,
-        'updated_ts': value.updatedTs,
+        'publish': value.publish,
         'error': value.error,
     };
 }

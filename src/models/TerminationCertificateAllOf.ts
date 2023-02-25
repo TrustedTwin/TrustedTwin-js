@@ -33,6 +33,15 @@ export interface TerminationCertificateAllOf {
     readonly terminatedTs?: number;
 }
 
+/**
+ * Check if a given object implements the TerminationCertificateAllOf interface.
+ */
+export function instanceOfTerminationCertificateAllOf(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function TerminationCertificateAllOfFromJSON(json: any): TerminationCertificateAllOf {
     return TerminationCertificateAllOfFromJSONTyped(json, false);
 }
